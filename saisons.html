@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Calendrier des fruits et légumes de saison, mois par mois | Croq’Saison</title>
+  <meta name="description" content="Le calendrier complet des fruits, légumes et herbes de saison en France : sélectionnez un mois pour voir ce qui est en pleine saison.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://www.croqsaison.fr/saisons.html">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
+  <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
+  <script src="produits-data.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.croqsaison.fr/"},{"@type":"ListItem","position":2,"name":"Calendrier des saisons","item":"https://www.croqsaison.fr/saisons.html"}]}</script>
+  <style>
+    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    a { color: var(--color-accent-700); }
+    a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
+    *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  </style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-direction: column;">
+  <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
+    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center; gap: var(--space-2); font-size: 22px;">
+        <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 22px; transform: rotate(-12deg);">🥕</span>
+        <span>Croq’Saison</span>
+      </a>
+      <div style="display: flex; gap: var(--space-4); align-items: center;">
+        <a href="index.html">Accueil</a>
+        <a href="saisons.html" aria-current="page">Calendrier</a>
+        <a href="lexique.html">Lexique</a>
+      </div>
+      <form role="search" action="index.html" method="get" style="position: relative; flex: 1 1 220px; max-width: 300px; margin: 0;">
+        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
+        <input id="q" name="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
+      </form>
+    </nav>
+  </header>
+
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8);">
+    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-8); max-width: 720px;">
+      <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Calendrier des saisons</span></nav>
+      <h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Le calendrier des fruits et légumes de saison</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p>
+    </div>
+
+    <section aria-label="Choisir un mois" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: var(--space-2);">
+      <sc-for list="{{ months }}" as="mo" hint-placeholder-count="12">
+        <button type="button" onClick="{{ mo.pick }}" aria-pressed="{{ mo.on }}" style="{{ mo.style }}" style-hover="transform: translateY(-2px);">
+          <span style="font-size: 30px; line-height: 1;" aria-hidden="true"><sc-if value="{{ mo.img }}" hint-placeholder-val="{{ false }}"><img src="{{ mo.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: inline-block; vertical-align: -0.15em;"></sc-if><sc-if value="{{ mo.noImg }}" hint-placeholder-val="{{ true }}">{{ mo.e }}</sc-if></span>
+          <span style="font-weight: 700; font-size: 15px;">{{ mo.label }}</span>
+          <span style="font-size: 12px; opacity: 0.8;">{{ mo.count }}</span>
+        </button>
+      </sc-for>
+    </section>
+
+    <section aria-labelledby="titre-mois" style="display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3);">
+        <h2 id="titre-mois" style="margin: 0; font-size: clamp(30px, 4vw, 44px);">{{ moisTitre }}</h2>
+        <sc-if value="{{ isNow }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 13px;">Mois en cours</span></sc-if>
+        <div style="margin-left: auto; display: flex; gap: var(--space-2);">
+          <button type="button" class="btn btn-secondary btn-icon" aria-label="Mois précédent" onClick="{{ prev }}" style="width: 42px; height: 42px; font-size: 18px;">←</button>
+          <button type="button" class="btn btn-secondary btn-icon" aria-label="Mois suivant" onClick="{{ next }}" style="width: 42px; height: 42px; font-size: 18px;">→</button>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h3 style="margin: 0; font-size: 22px; display: flex; gap: var(--space-2); align-items: center;"><span aria-hidden="true">{{ g.e }}</span>{{ g.label }}</h3>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px;">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <li>
+                  <a href="{{ it.href }}" style="display: flex; align-items: center; gap: var(--space-3); padding: 8px 14px 8px 8px; background: var(--color-neutral-100); border-radius: 999px; text-decoration: none; color: var(--color-text);" style-hover="background: var(--color-bg); color: var(--color-text);">
+                    <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; background: var(--color-bg);"><sc-if value="{{ it.img }}" hint-placeholder-val="{{ false }}"><img src="{{ it.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: block;"></sc-if><sc-if value="{{ it.noImg }}" hint-placeholder-val="{{ true }}">{{ it.e }}</sc-if></span>
+                    <span style="font-weight: 600; font-size: 16px; flex: 1;">{{ it.n }}</span>
+                    <span class="{{ it.cls }}" style="font-size: 12px;">{{ it.status }}</span>
+                  </a>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="titre-frise" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+        <h2 id="titre-frise" style="margin: 0; font-size: clamp(26px, 3vw, 34px); margin-right: auto;">La frise de l’année</h2>
+        <div role="group" aria-label="Filtrer la frise" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+          <sc-for list="{{ typeFilters }}" as="tf" hint-placeholder-count="4">
+            <button type="button" class="{{ tf.cls }}" aria-pressed="{{ tf.on }}" onClick="{{ tf.pick }}" style="white-space: nowrap; flex: none; padding: 8px 14px; font-size: 14px;">{{ tf.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; gap: var(--space-4); font-size: 13px; align-items: center; flex-wrap: wrap;">
+        <span style="display: flex; gap: 6px; align-items: center;"><span aria-hidden="true" style="font-size: 18px; line-height: 1;">{{ legendSmiley }}</span>Pleine saison (un smiley par mois)</span>
+        <span style="display: flex; gap: 6px; align-items: center;"><span style="width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-2-300);"></span>Disponible</span>
+      </div>
+      <div style="overflow-x: auto; background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3);">
+        <table class="table" style="min-width: 760px;">
+          <caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Disponibilité des produits par mois</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="width: 190px;">Produit</th>
+              <sc-for list="{{ headMonths }}" as="hm" hint-placeholder-count="12"><th scope="col" style="{{ hm.style }}">{{ hm.label }}</th></sc-for>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+              <tr>
+                <th scope="row" style="text-transform: none; letter-spacing: 0; font-size: 15px; color: var(--color-text); font-weight: 600; border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);"><a href="{{ r.href }}" style="color: inherit; text-decoration: none; display: flex; gap: 8px; align-items: center;"><span aria-hidden="true"><sc-if value="{{ r.img }}" hint-placeholder-val="{{ false }}"><img src="{{ r.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: inline-block; vertical-align: -0.15em;"></sc-if><sc-if value="{{ r.noImg }}" hint-placeholder-val="{{ true }}">{{ r.e }}</sc-if></span>{{ r.n }}</a></th>
+                <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="12">
+                  <td style="text-align: center; padding: 6px 2px;" title="{{ cell.title }}"><span style="{{ cell.style }}">{{ cell.smiley }}</span></td>
+                </sc-for>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #f4efe6;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
+      <span style="font-family: var(--font-heading); font-size: 18px;">🥕 Croq’Saison</span>
+      <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="index.html">Accueil</a>
+        <a href="saisons.html">Calendrier des saisons</a>
+        <a href="lexique.html">Lexique</a>
+        <a href="index.html#a-propos">À propos</a>
+        <a href="produits/carotte.html">Fiche carotte</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { m: new Date().getMonth() + 1, type: 'all', ready: !!window.SAISON };
+  componentDidMount() {
+    const pm = parseInt(new URLSearchParams(location.search).get('mois'), 10);
+    if (pm >= 1 && pm <= 12) this.setState({ m: pm });
+    if (!window.SAISON) this._t = setInterval(() => { if (window.SAISON) { clearInterval(this._t); this.setState({ ready: true }); } }, 50);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const S = window.SAISON;
+    const { m, type } = this.state;
+    const now = new Date().getMonth() + 1;
+    const pill = on => 'btn ' + (on ? 'btn-primary' : 'btn-secondary');
+    const typeFilters = [['all', 'Tous'], ['fruit', '🍊 Fruits'], ['legume', '🥦 Légumes'], ['herbe', '🌿 Herbes']].map(([k, label]) => ({ label, on: type === k, cls: pill(type === k), pick: () => this.setState({ type: k }) }));
+    const go = d => () => this.setState(s => ({ m: ((s.m - 1 + d + 12) % 12) + 1 }));
+    if (!S) return { legendSmiley: '', months: [], groups: [], rows: [], headMonths: [], typeFilters, moisTitre: '', isNow: false, prev: go(-1), next: go(1) };
+    const months = S.MOIS.map((label, i) => {
+      const mm = i + 1, on = mm === m;
+      const star = S.produits.find(p => p.f.includes(mm) && p.t !== 'herbe');
+      const count = S.produits.filter(p => p.f.includes(mm)).length;
+      return { label, ...(star ? S.vis(star) : { e: '🌱', img: '', noImg: true }), count: count + ' en pleine saison', on, pick: () => this.setState({ m: mm }),
+        style: 'display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border-radius:var(--radius-lg);cursor:pointer;font:inherit;text-align:left;transition:transform .15s ease;' +
+          (on ? 'background:var(--color-accent);color:var(--color-bg);border:1.5px solid var(--color-accent);' : 'background:var(--color-neutral-100);color:var(--color-text);border:1.5px solid ' + (mm === now ? 'var(--color-accent-400)' : 'var(--color-divider)') + ';') };
+    });
+    const toObj = s => s.split(';').filter(Boolean).reduce((o, kv) => { const i = kv.indexOf(':'); o[kv.slice(0, i).trim().replace(/-([a-z])/g, (_, c) => c.toUpperCase())] = kv.slice(i + 1).trim(); return o; }, {});
+    months.forEach(x => x.style = toObj(x.style));
+    const groups = ['fruit', 'legume', 'herbe'].map(t => {
+      const items = S.produits.filter(p => p.t === t && p.m.includes(m))
+        .sort((a, b) => (b.f.includes(m) - a.f.includes(m)) || a.n.localeCompare(b.n, 'fr'))
+        .map(p => { const pleine = p.f.includes(m); return { ...S.vis(p), href: S.url(p), n: p.n, status: pleine ? 'Pleine saison' : 'Disponible', cls: 'tag ' + (pleine ? 'tag-accent' : 'tag-accent-2') }; });
+      return { label: S.TYPES[t].label, e: S.TYPES[t].e, items };
+    }).filter(g => g.items.length);
+    const headMonths = S.MOIS_C.map((l, i) => ({ label: l, style: { textAlign: 'center', padding: '8px 2px', color: i + 1 === m ? 'var(--color-accent-700)' : undefined, fontWeight: i + 1 === m ? 700 : undefined } }));
+    const SMILEYS = ['🥶','🥰','😊','🤗','😄','😁','🤩','😎','🤓','😋','😌','🥳'];
+    const rows = S.produits.filter(p => type === 'all' || p.t === type).slice().sort((a, b) => a.n.localeCompare(b.n, 'fr')).map(p => ({
+      ...S.vis(p), href: S.url(p), n: p.n,
+      cells: S.MOIS.map((mn, i) => {
+        const mm = i + 1, f = p.f.includes(mm), d = p.m.includes(mm);
+        const smiley = f ? SMILEYS[i] : '';
+        return { smiley, title: p.n + ' — ' + mn + ' : ' + (f ? 'pleine saison' : d ? 'disponible' : 'hors saison'),
+          style: f ? { display: 'inline-block', fontSize: 22, lineHeight: 1, verticalAlign: 'middle', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : 'transparent', border: !d ? '1.5px dashed var(--color-divider)' : 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
+      })
+    }));
+    return { legendSmiley: SMILEYS[m - 1], months, groups, rows, headMonths, typeFilters, moisTitre: 'En ' + S.MOIS[m - 1].toLowerCase(), isNow: m === now, prev: go(-1), next: go(1) };
+  }
+}
+</script>
+</body>
+</html>

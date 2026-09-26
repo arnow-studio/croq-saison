@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
+  <script src="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
+  <script src="../produits-data.js"></script>
+  <script src="../produits-textes.js"></script>
+  <style>
+    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    a { color: var(--color-accent-700); }
+    a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
+    *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    summary::-webkit-details-marker { display: none; }
+  </style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-direction: column;">
+  <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
+    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
+      <a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: var(--space-2); font-size: 22px;">
+        <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 22px; transform: rotate(-12deg);">🥕</span>
+        <span>Croq’Saison</span>
+      </a>
+      <div style="display: flex; gap: var(--space-4); align-items: center;">
+        <a href="../index.html">Accueil</a>
+        <a href="../saisons.html">Calendrier</a>
+        <a href="../lexique.html">Lexique</a>
+      </div>
+      <form role="search" action="../index.html" method="get" style="position: relative; flex: 1 1 220px; max-width: 300px; margin: 0;">
+        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
+        <input id="q" name="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
+      </form>
+    </nav>
+  </header>
+
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8);">
+    <article style="display: flex; flex-direction: column; gap: var(--space-8);">
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6);">
+        <nav aria-label="Fil d’Ariane" style="font-size: 14px;">
+          <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <li><a href="../index.html">Accueil</a></li>
+            <li aria-hidden="true">›</li>
+            <li><a href="../saisons.html">{{ typeLabel }}</a></li>
+            <li aria-hidden="true">›</li>
+            <li aria-current="page">{{ nom }}</li>
+          </ol>
+        </nav>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center;">
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 620px;">
+            <h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.04; text-wrap: balance;">{{ h1 }}</h1>
+            <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--color-neutral-800); text-wrap: pretty;">{{ intro }}</p>
+            <ul aria-label="En bref" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+              <sc-for list="{{ facts }}" as="fa" hint-placeholder-count="4">
+                <li class="{{ fa.cls }}" style="white-space: nowrap; font-size: 14px; padding: 7px 14px; gap: 6px;"><span style="opacity: 0.75;">{{ fa.k }}</span><strong>{{ fa.v }}</strong></li>
+              </sc-for>
+            </ul>
+          </div>
+          <div aria-hidden="true" style="position: relative; justify-self: center; width: min(380px, 80vw); aspect-ratio: 1;">
+            <div style="position: absolute; inset: 0; background: var(--color-accent-200); border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%;"></div>
+            
+            <div style="position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(140px, 22vw, 210px); line-height: 1; transform: rotate(-10deg);"><sc-if value="{{ hero.img }}" hint-placeholder-val="{{ false }}"><img src="{{ hero.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: block;"></sc-if><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ true }}">{{ hero.e }}</sc-if></div>
+          </div>
+        </div>
+      </div>
+
+      <section aria-labelledby="h-calendrier" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--color-surface); border-radius: var(--radius-lg);">
+        <h2 id="h-calendrier" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Calendrier de saison {{ duDe }}</h2>
+        <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 6px;">
+          <sc-for list="{{ cal }}" as="cm" hint-placeholder-count="12">
+            <li style="{{ cm.style }}" title="{{ cm.title }}">
+              <span style="font-weight: 700; font-size: 14px;">{{ cm.label }}</span>
+              <span style="font-size: 11px;">{{ cm.state }}</span>
+            </li>
+          </sc-for>
+        </ol>
+        <p style="margin: 0; font-size: 15px; color: var(--color-neutral-800);">{{ calSummary }}</p>
+      </section>
+
+      <sc-if value="{{ hasTextes }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); max-width: 860px;">
+          <section aria-labelledby="h-histoire" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-histoire" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Histoire</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; text-wrap: pretty;">{{ tx.histoire }}</p>
+          </section>
+
+          <section aria-labelledby="h-origine" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-origine" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Origine</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; text-wrap: pretty;">{{ tx.origine }}</p>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+              <sc-for list="{{ tx.regions }}" as="rg" hint-placeholder-count="3">
+                <li class="tag tag-accent-2" style="white-space: nowrap; font-size: 14px; padding: 7px 14px;">📍 {{ rg }}</li>
+              </sc-for>
+            </ul>
+            <sc-if value="{{ tx.label }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) var(--space-4); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg); font-size: 16px; line-height: 1.6;"><span aria-hidden="true" style="font-size: 22px; line-height: 1.2;">🏅</span><span>{{ tx.label }}</span></p>
+            </sc-if>
+          </section>
+
+          <section aria-labelledby="h-classification" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-classification" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Classification</h2>
+            <dl style="margin: 0; display: flex; flex-direction: column; gap: 6px;">
+              <sc-for list="{{ classification }}" as="cl" hint-placeholder-count="4">
+                <div style="display: flex; flex-wrap: wrap; gap: 4px var(--space-4); padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); border-radius: var(--radius-lg);">
+                  <dt style="flex: 0 0 210px; font-weight: 700; font-size: 15px; line-height: 1.55;">{{ cl.k }}</dt>
+                  <dd style="flex: 1 1 280px; margin: 0; font-size: 16px; line-height: 1.55; min-width: 0;">{{ cl.v }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+          </section>
+
+          <section aria-labelledby="h-bienfaits" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-bienfaits" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Bienfaits &amp; valeurs nutritionnelles</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7;">{{ tx.bienfaitsIntro }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4);">
+              <sc-for list="{{ bienfaits }}" as="b" hint-placeholder-count="4">
+                <div style="display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); background: var(--color-accent-2-100); border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
+                  <h3 style="margin: 0; font-size: 20px; color: var(--color-accent-2-900);">{{ b.t }}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.55;">{{ b.x }}</p>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ hasNutrition }}" hint-placeholder-val="{{ false }}">
+              <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4);">
+              <table class="table">
+                <caption style="text-align: left; font-size: 14px; padding: var(--space-2); color: var(--color-neutral-800);">Valeurs moyennes pour 100 g · {{ nomLower }} crue (indicatives)</caption>
+                <thead><tr><th scope="col">Nutriment</th><th scope="col" style="text-align: right;">Pour 100 g</th></tr></thead>
+                <tbody>
+                  <sc-for list="{{ nutrition }}" as="nu" hint-placeholder-count="6">
+                    <tr><td>{{ nu.k }}</td><td style="text-align: right; font-weight: 600;">{{ nu.v }}</td></tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+            </sc-if>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); max-width: 860px;">
+          <section aria-labelledby="h-choisir" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-choisir" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Bien la choisir et la conserver</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4);">
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <h3 style="margin: 0; font-size: 21px; display: flex; gap: 8px; align-items: center;">Au marché</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.choisir }}</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <h3 style="margin: 0; font-size: 21px; display: flex; gap: 8px; align-items: center;">À la maison</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.conserver }}</p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="h-recettes" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-recettes" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Idées recettes</h2>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <sc-for list="{{ recettes }}" as="r" hint-placeholder-count="3">
+                <div style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); border-radius: 999px;">
+                  <span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); color: var(--color-accent-900); display: grid; place-items: center; font-family: var(--font-heading); font-size: 18px;">{{ r.i }}</span>
+                  <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <h3 style="margin: 0; font-size: 19px;">{{ r.t }}</h3>
+                    <p style="margin: 0; font-size: 15px; color: var(--color-neutral-800);">{{ r.x }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+
+          <aside aria-label="Le saviez-vous ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-2-200); color: var(--color-accent-2-900); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 6px;">
+            <span aria-hidden="true" style="font-size: 44px; line-height: 1;">💡</span>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <span style="font-family: var(--font-heading); font-size: 22px;">Le saviez-vous ?</span>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.saviez }}</p>
+            </div>
+          </aside>
+
+          <section aria-labelledby="h-faq" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-faq" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Questions fréquentes</h2>
+            <sc-for list="{{ faq }}" as="fq" hint-placeholder-count="3">
+              <details style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4);">
+                <summary style="cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--space-3); align-items: center;">
+                  <h3 style="margin: 0; font-family: var(--font-body); font-weight: 700; font-size: 17px;">{{ fq.q }}</h3>
+                  <span aria-hidden="true" style="flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-weight: 700;">+</span>
+                </summary>
+                <p style="margin: var(--space-2) 0 0; font-size: 16px; line-height: 1.6;">{{ fq.a }}</p>
+              </details>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasLex }}" hint-placeholder-val="{{ false }}">
+        <section aria-labelledby="h-lexique" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="h-lexique" style="margin: 0; font-size: clamp(22px, 2.4vw, 28px);">Les mots à connaître</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <sc-for list="{{ lex }}" as="lx" hint-placeholder-count="3">
+              <a href="{{ lx.href }}" class="tag tag-outline" style="font-size: 14px; padding: 7px 14px; text-decoration: none;">{{ lx.terme }}</a>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+    </article>
+
+    <section aria-labelledby="h-related" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
+      <h2 id="h-related" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">{{ relatedTitle }}</h2>
+      <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: var(--space-3);">
+        <sc-for list="{{ related }}" as="rp" hint-placeholder-count="6">
+          <li style="display: flex;">
+            <a href="{{ rp.href }}" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); transition: transform .18s ease;" style-hover="transform: translateY(-3px) rotate(-0.6deg); color: var(--color-text);">
+              <span aria-hidden="true" style="font-size: 44px; line-height: 1;"><sc-if value="{{ rp.img }}" hint-placeholder-val="{{ false }}"><img src="{{ rp.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: block;"></sc-if><sc-if value="{{ rp.noImg }}" hint-placeholder-val="{{ true }}">{{ rp.e }}</sc-if></span>
+              <span style="font-family: var(--font-heading); font-size: 19px;">{{ rp.n }}</span>
+              <span style="font-size: 13px; color: var(--color-neutral-700);">{{ rp.flag }} {{ rp.origine }}</span>
+            </a>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  </main>
+
+  <footer style="background: #f4efe6;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
+      <span style="font-family: var(--font-heading); font-size: 18px;">🥕 Croq’Saison</span>
+      <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="../index.html">Accueil</a>
+        <a href="../saisons.html">Calendrier des saisons</a>
+        <a href="../lexique.html">Lexique</a>
+        <a href="../index.html#a-propos">À propos</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;produit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;carotte&quot;,&quot;options&quot;:[&quot;carotte&quot;,&quot;tomate&quot;,&quot;fraise&quot;,&quot;pomme&quot;,&quot;basilic&quot;,&quot;potiron&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Produit (aperçu)&quot;}}">
+class Component extends DCLogic {
+  state = { ready: !!(window.SAISON && window.SAISON_TEXTES) };
+  componentDidMount() {
+    const done = () => { this.applySeo(); this.setState({ ready: true }); };
+    const ok = () => window.SAISON && window.SAISON_TEXTES;
+    if (ok()) setTimeout(done, 0); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); done(); } }, 50);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  slug() { return new URLSearchParams(location.search).get('p') || this.props.produit || 'carotte'; }
+  applySeo() {
+    const S = window.SAISON, p = S.bySlug(this.slug());
+    if (!p) return;
+    const base = 'https://www.croqsaison.fr/produits/' + p.s + '.html';
+    // Pages statiques (ex. carotte.dc.html) déclarent déjà leurs balises : on ne complète que les fiches générées.
+    if (document.querySelector('script[type="application/ld+json"]')) return;
+    const title = p.detail ? p.detail.title : p.n + ' de saison : origine, calendrier & conseils';
+    document.title = title + ' | Croq’Saison';
+    const meta = (attr, key, content) => { let m = document.querySelector('meta[' + attr + '="' + key + '"]'); if (!m) { m = document.createElement('meta'); m.setAttribute(attr, key); document.head.appendChild(m); } m.setAttribute('content', content); };
+    const months = p.m.length === 12 ? 'toute l’année' : S.MOIS[p.m[0] - 1].toLowerCase() + ' à ' + S.MOIS[p.m[p.m.length - 1] - 1].toLowerCase();
+    meta('name', 'description', p.n + ' : de saison ' + months + '. ' + p.d);
+    meta('property', 'og:title', title);
+    let c = document.querySelector('link[rel="canonical"]'); if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); } c.href = base;
+    const s = document.createElement('script'); s.type = 'application/ld+json';
+    s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+      { '@type': 'Thing', name: p.n, description: p.d, url: base, additionalType: 'https://www.wikidata.org/wiki/Q11004' },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.croqsaison.fr/' },
+        { '@type': 'ListItem', position: 2, name: S.TYPES[p.t].label, item: 'https://www.croqsaison.fr/saisons.html' },
+        { '@type': 'ListItem', position: 3, name: p.n, item: base }] }] });
+    document.head.appendChild(s);
+  }
+  renderVals() {
+    const S = window.SAISON;
+    const p = S && S.bySlug(this.slug());
+    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '' };
+    const now = new Date().getMonth() + 1;
+    const d = p.detail || null;
+    const tx = (window.SAISON_TEXTES || {})[p.s] || null;
+    const duDe = ': ' + p.n.toLowerCase();
+    const range = arr => arr.length ? arr.map(x => S.MOIS[x - 1].toLowerCase()).join(', ') : '';
+    const facts = [
+      { k: 'Type', v: S.TYPES[p.t].one, cls: 'tag tag-neutral' },
+      { k: 'Famille', v: p.fam, cls: 'tag tag-accent-2' },
+      { k: 'Origine', v: p.orig.flag + ' ' + p.orig.label, cls: 'tag tag-neutral' },
+      { k: 'Pleine saison', v: p.f.length ? p.f.map(x => S.MOIS_C[x - 1]).join(' · ') : (p.m.length === 12 ? 'Toute l’année' : '—'), cls: 'tag tag-accent' }
+    ];
+    const cal = S.MOIS_C.map((label, i) => {
+      const mm = i + 1, f = p.f.includes(mm), av = p.m.includes(mm);
+      return { label, state: f ? 'Pleine saison' : av ? 'Disponible' : 'Hors saison', title: S.MOIS[i] + (mm === now ? ' (mois en cours)' : ''),
+        style: { display: 'flex', flexDirection: 'column', gap: 2, padding: '10px 12px', borderRadius: 18,
+          background: f ? 'var(--color-accent)' : av ? 'var(--color-accent-2-200)' : 'var(--color-neutral-100)',
+          color: f ? 'var(--color-bg)' : av ? 'var(--color-accent-2-900)' : 'var(--color-neutral-700)',
+          border: mm === now ? '2px solid var(--color-text)' : av ? '2px solid transparent' : '2px dashed var(--color-divider)' } };
+    });
+    const calSummary = p.m.length === 12
+      ? p.n + ' est disponible toute l’année' + (p.f.length ? ', avec une pleine saison en ' + range(p.f) + '.' : '.')
+      : 'Disponible en ' + range(p.m) + (p.f.length ? ' ; pleine saison en ' + range(p.f) + '.' : '.');
+    const lexIds = (d && d.lexique) || [];
+    const famTerm = S.lexique.find(t => S.norm(t.terme) === S.norm(p.fam));
+    const lexList = [...new Set([...(famTerm ? [famTerm.id] : []), ...lexIds, ...S.lexique.filter(t => t.ex.includes(p.s)).map(t => t.id)])]
+      .map(id => S.lexique.find(t => t.id === id)).filter(Boolean)
+      .map(t => ({ terme: t.terme, href: '../lexique.html#' + t.id }));
+    const peak = p.f[0] || now;
+    const related = S.produits.filter(o => o.s !== p.s && o.f.includes(peak)).sort((a, b) => (b.t === p.t) - (a.t === p.t)).slice(0, 6)
+      .map(o => ({ ...S.vis(o, '../'), href: S.url(o, '../'), n: o.n, flag: o.orig.flag, origine: o.orig.label }));
+    return {
+      nom: p.n, nomLower: p.n.toLowerCase(), emoji: p.e, hero: S.vis(p, '../'), typeLabel: S.TYPES[p.t].label,
+      h1: d ? d.title : p.n + ' de saison\u00a0: calendrier & origine',
+      intro: d ? d.intro : p.d, facts, cal, calSummary, duDe,
+      hasDetail: !!d, d: d || {},
+      bienfaits: tx ? tx.bienfaits.map(([t, x]) => ({ t, x })) : [],
+      hasTextes: !!tx, tx: tx || {}, classification: tx ? tx.classification.map(([k, v]) => ({ k, v })) : [], hasNutrition: !!(d && d.nutrition),
+      nutrition: d ? d.nutrition.map(([k, v]) => ({ k, v })) : [],
+      recettes: d ? d.recettes.map(([t, x], i) => ({ t, x, i: i + 1 })) : [],
+      faq: d ? d.faq.map(([q, a]) => ({ q, a })) : [],
+      lex: lexList, hasLex: lexList.length > 0,
+      related, relatedTitle: 'Aussi de saison en ' + S.MOIS[peak - 1].toLowerCase()
+    };
+  }
+}
+</script>
+</body>
+</html>

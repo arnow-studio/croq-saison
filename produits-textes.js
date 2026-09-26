@@ -1,0 +1,402 @@
+// Textes éditoriaux par produit : Histoire, Origine, Classification, Bienfaits (window.SAISON_TEXTES).
+(function () {
+  function T(h, o, r, l, c, bi, b) { return { histoire: h, origine: o, regions: r, label: l, classification: c, bienfaitsIntro: bi, bienfaits: b }; }
+  window.SAISON_TEXTES = {
+    carotte: T(
+      'Originaire d’Asie centrale (actuel Afghanistan), la carotte sauvage était d’abord cultivée pour ses feuilles et ses graines aromatiques. Les premières racines consommées étaient violettes ou jaunes. La carotte orange que nous connaissons est née d’une sélection menée aux Pays-Bas au XVIIᵉ siècle, avant de conquérir toute l’Europe.',
+      'La France figure parmi les grands producteurs européens de carottes, cultivées surtout dans des sols sableux et légers qui donnent des racines droites et lisses :',
+      ['Nouvelle-Aquitaine (Landes)', 'Normandie (Créances)', 'Hauts-de-France', 'Bretagne'],
+      'Les « carottes des sables » de la côte normande sont réputées pour leur finesse et leur goût sucré.',
+      [['Type botanico-culinaire', 'Légume-racine : on consomme la racine pivotante, réserve nutritive de la plante.'], ['Famille', 'Apiacées (Daucus carota), comme le céleri, le fenouil et le persil.'], ['Variété principale en France', 'La Nantaise, cylindrique, lisse et sucrée.'], ['Organe consommé', 'Racine (les fanes sont aussi comestibles).']],
+      'La carotte est une alliée simple et quotidienne :',
+      [['Riche en bêta-carotène', 'Transformé en vitamine A par l’organisme, il contribue à la santé de la vue et de la peau. Un filet d’huile améliore son absorption.'], ['Fibres douces', 'Bien tolérées, elles participent au bon transit, crues comme cuites.'], ['Peu calorique', 'Environ 36 kcal/100 g : une base légère pour les soupes et les purées.'], ['Source de potassium', 'Utile à l’équilibre hydrique et au fonctionnement musculaire.']]
+    ),
+    tomate: T(
+      'Originaire des Andes, la tomate a été domestiquée au Mexique avant d’être rapportée en Europe par les Espagnols au XVIᵉ siècle. De la même famille que la belladone, elle fut longtemps jugée toxique et cultivée comme plante ornementale, sous le nom de « pomme d’amour ». Elle ne s’impose dans la cuisine française qu’à la fin du XVIIIᵉ siècle, en commençant par la Provence.',
+      'La France produit des tomates surtout sous serre, mais aussi en plein champ l’été :',
+      ['Bretagne', 'Pays de la Loire', 'Provence-Alpes-Côte d’Azur', 'Occitanie'],
+      'Les variétés anciennes (Cœur de bœuf, Noire de Crimée, Marmande) retrouvent leur place sur les marchés d’été.',
+      [['Type botanico-culinaire', 'Botaniquement un fruit, cuisiné comme un légume : on parle de légume-fruit.'], ['Famille', 'Solanacées (Solanum lycopersicum).'], ['Variétés courantes', 'Tomate grappe, cœur de bœuf, allongée type Roma, tomate cerise.'], ['Type de fruit', 'Baie charnue à nombreuses graines.']],
+      'La tomate est l’un des piliers de l’alimentation méditerranéenne :',
+      [['Riche en lycopène', 'Ce pigment rouge antioxydant est mieux assimilé quand la tomate est cuite avec un peu d’huile.'], ['Très hydratante', 'Composée d’environ 94 % d’eau, pour à peine 20 kcal/100 g.'], ['Source de vitamine C', 'Surtout consommée crue et bien mûre.'], ['Potassium', 'Contribue au maintien d’une pression artérielle normale.']]
+    ),
+    aubergine: T(
+      'Originaire de l’Inde et d’Asie du Sud-Est, l’aubergine a été diffusée autour de la Méditerranée par les Arabes au Moyen Âge, d’abord en Espagne. Longtemps regardée avec méfiance, elle s’installe dans le sud de la France au XVIIᵉ et au XVIIIᵉ siècle, avant de devenir un pilier de la cuisine provençale.',
+      'L’aubergine française pousse sous le soleil du Sud et sous abri :',
+      ['Provence-Alpes-Côte d’Azur', 'Occitanie', 'Nouvelle-Aquitaine'],
+      '',
+      [['Type botanico-culinaire', 'Fruit botanique consommé comme un légume ; elle se mange toujours cuite.'], ['Famille', 'Solanacées (Solanum melongena), comme la tomate et le poivron.'], ['Variété principale en France', 'L’aubergine violette longue, à peau brillante.'], ['Type de fruit', 'Baie.']],
+      'Légère et fondante, l’aubergine gagne à être cuisinée avec peu de matière grasse :',
+      [['Peu calorique', 'Environ 25 kcal/100 g, à condition de maîtriser l’huile, qu’elle absorbe comme une éponge.'], ['Fibres', 'Elles favorisent la satiété et le transit.'], ['Antioxydants dans la peau', 'La peau violette contient des anthocyanes : inutile de l’éplucher.'], ['Potassium', 'Participe à l’équilibre hydrique.']]
+    ),
+    courgette: T(
+      'Les courges sont originaires d’Amérique centrale, où elles étaient cultivées il y a plusieurs milliers d’années. La courgette elle-même est une sélection italienne (la « zucchina »), obtenue en récoltant très jeunes certaines courges. Elle ne se répand vraiment en France qu’au XXᵉ siècle, notamment après les années 1950.',
+      'La courgette française est surtout cultivée dans le Sud-Est et l’Ouest :',
+      ['Provence-Alpes-Côte d’Azur', 'Occitanie', 'Pays de la Loire'],
+      'La courgette ronde de Nice est une spécialité locale, idéale farcie.',
+      [['Type botanico-culinaire', 'Fruit récolté immature, consommé comme un légume.'], ['Famille', 'Cucurbitacées (Cucurbita pepo), comme le potiron et le concombre.'], ['Variétés courantes', 'Verte longue, blanche, jaune, ronde de Nice.'], ['Type de fruit', 'Péponide (baie à écorce).']],
+      'La courgette est l’un des légumes les plus légers de l’été :',
+      [['Très hydratante', 'Environ 95 % d’eau pour 16 kcal/100 g.'], ['Vitamine B9', 'Utile au renouvellement des cellules.'], ['Potassium', 'Contribue à l’équilibre hydrique.'], ['Digeste', 'Sa peau fine et sa chair tendre la rendent facile à digérer.']]
+    ),
+    concombre: T(
+      'Originaire des contreforts de l’Himalaya, en Inde, le concombre est cultivé depuis plus de 3 000 ans. Les Romains en raffolaient : l’empereur Tibère en exigeait toute l’année. En France, Charlemagne le fait inscrire parmi les plantes à cultiver dans les domaines royaux, au IXᵉ siècle.',
+      'En France, le concombre est surtout produit sous serre, ce qui allonge sa saison :',
+      ['Pays de la Loire', 'Bretagne', 'Centre-Val de Loire'],
+      '',
+      [['Type botanico-culinaire', 'Fruit botanique consommé comme un légume, généralement cru.'], ['Famille', 'Cucurbitacées (Cucumis sativus) ; le cornichon est la même espèce, récoltée très jeune.'], ['Variété principale en France', 'Le concombre long type hollandais, à peau lisse.'], ['Type de fruit', 'Péponide.']],
+      'Le concombre est le champion de la fraîcheur :',
+      [['Hydratation maximale', 'Environ 96 % d’eau pour 12 kcal/100 g.'], ['Vitamine K', 'Présente surtout dans la peau.'], ['Potassium', 'Favorise l’élimination de l’eau.'], ['Rassasiant', 'Croquant et volumineux, pour très peu de calories.']]
+    ),
+    poivron: T(
+      'Originaire d’Amérique centrale et du Sud, le poivron a été rapporté en Europe par Christophe Colomb dès 1493. Il se répand d’abord en Espagne puis dans tout le bassin méditerranéen et en Europe centrale, où la Hongrie en tire son célèbre paprika.',
+      'Le poivron français pousse au soleil ou sous serre :',
+      ['Provence-Alpes-Côte d’Azur', 'Occitanie', 'Bretagne (sous serre)'],
+      '',
+      [['Type botanico-culinaire', 'Fruit botanique consommé comme un légume, cru ou cuit.'], ['Famille', 'Solanacées (Capsicum annuum), la même espèce que de nombreux piments.'], ['Variétés courantes', 'Carré, Lamuyo (allongé), corne de bœuf.'], ['Type de fruit', 'Baie creuse.']],
+      'Le poivron, surtout rouge, est une vraie réserve de vitamines :',
+      [['Très riche en vitamine C', 'Le poivron rouge en contient davantage que l’orange.'], ['Caroténoïdes', 'Plus il mûrit (vert → jaune → rouge), plus il en est riche.'], ['Peu calorique', 'Environ 25 kcal/100 g.'], ['Fibres', 'Participent à la satiété.']]
+    ),
+    piment: T(
+      'Domestiqué au Mexique il y a environ 6 000 ans, le piment a traversé l’Atlantique avec Christophe Colomb, qui pensait avoir trouvé une nouvelle forme de poivre. Arrivé au Pays basque au XVIᵉ siècle, il y a d’abord servi à conserver les viandes avant de devenir une épice emblématique.',
+      'La principale production française de piment se concentre au Pays basque :',
+      ['Pays basque (Espelette)', 'Sud-Ouest'],
+      'Le piment d’Espelette bénéficie d’une AOP (Appellation d’Origine Protégée), qui encadre sa culture dans une vingtaine de communes.',
+      [['Type botanico-culinaire', 'Fruit utilisé comme condiment ou comme épice, frais ou séché.'], ['Famille', 'Solanacées (Capsicum annuum, variété « Gorria » pour l’Espelette).'], ['Composé actif', 'La capsaïcine, responsable de la sensation de brûlure.'], ['Type de fruit', 'Baie.']],
+      'Utilisé en petites quantités, le piment apporte bien plus que du piquant :',
+      [['Capsaïcine', 'Elle stimule la salivation et donne une sensation de chaleur.'], ['Vitamine C', 'Le piment frais en est riche.'], ['Relève sans sel', 'Il permet d’assaisonner en réduisant le sel.'], ['Caroténoïdes', 'Surtout dans les piments rouges bien mûrs.']]
+    ),
+    brocoli: T(
+      'Le brocoli descend du chou sauvage méditerranéen. Il a été sélectionné en Italie dès l’Antiquité, puis développé par les jardiniers italiens de la Renaissance. Il arrive en France au XVIᵉ siècle, selon la tradition avec Catherine de Médicis, et reste longtemps appelé « chou d’Italie ».',
+      'Le brocoli français est surtout cultivé sur les côtes de l’Ouest, au climat doux et humide :',
+      ['Bretagne', 'Normandie', 'Pays de la Loire'],
+      '',
+      [['Type botanico-culinaire', 'Légume-fleur : on consomme les boutons floraux avant leur éclosion.'], ['Famille', 'Brassicacées (Brassica oleracea var. italica), comme tous les choux.'], ['Variété principale en France', 'Le brocoli vert type Calabrais ; le romanesco est un proche cousin.'], ['Organe consommé', 'Inflorescence et tige.']],
+      'Le brocoli est l’un des légumes les plus denses en nutriments :',
+      [['Vitamine C et K', 'Une portion couvre une large part des besoins quotidiens.'], ['Composés soufrés', 'Il contient du sulforaphane, étudié pour ses propriétés protectrices.'], ['Vitamine B9', 'Importante notamment pendant la grossesse.'], ['Cuisson courte', 'Quelques minutes à la vapeur préservent sa couleur et ses vitamines.']]
+    ),
+    chou: T(
+      'Issu du chou sauvage des côtes atlantiques et méditerranéennes, le chou est consommé depuis l’Antiquité. Les Grecs et les Romains lui prêtaient de nombreuses vertus, et Caton l’Ancien en faisait l’éloge. Facile à cultiver et à conserver, il devient au Moyen Âge un aliment de base des campagnes européennes.',
+      'Le chou pousse dans les régions fraîches du nord et de l’ouest de la France :',
+      ['Bretagne', 'Hauts-de-France', 'Alsace'],
+      'En Alsace, la choucroute, faite de chou blanc fermenté, bénéficie d’une IGP.',
+      [['Type botanico-culinaire', 'Légume-feuille : on consomme la « pomme » formée par les feuilles serrées.'], ['Famille', 'Brassicacées (Brassica oleracea var. capitata).'], ['Variété principale', 'Le chou de Milan, à feuilles frisées et cloquées.'], ['Organe consommé', 'Feuilles.']],
+      'Le chou est un légume d’hiver précieux :',
+      [['Vitamine C', 'Elle se maintient bien pendant la conservation, un atout pour l’hiver.'], ['Vitamine K', 'Présente en grande quantité dans les feuilles vertes.'], ['Fibres', 'Elles favorisent le transit ; une cuisson douce le rend plus digeste.'], ['Peu calorique', 'Environ 25 kcal/100 g.']]
+    ),
+    laitue: T(
+      'Originaire du Moyen-Orient et du bassin méditerranéen, la laitue était déjà cultivée par les Égyptiens il y a plus de 4 000 ans. Les Romains la servaient en fin de repas. Selon la tradition, Rabelais aurait rapporté d’Italie des graines de laitue romaine au XVIᵉ siècle.',
+      'La laitue est cultivée partout en France, en plein champ et sous abri :',
+      ['Provence-Alpes-Côte d’Azur', 'Occitanie', 'Pays de la Loire', 'Hauts-de-France'],
+      '',
+      [['Type botanico-culinaire', 'Légume-feuille, consommé cru en salade.'], ['Famille', 'Astéracées (Lactuca sativa), comme la chicorée et l’artichaut.'], ['Variétés courantes', 'Batavia, feuille de chêne, romaine, laitue beurre.'], ['Organe consommé', 'Feuilles.']],
+      'La laitue apporte fraîcheur et légèreté à tous les repas :',
+      [['Très hydratante', 'Environ 95 % d’eau pour 15 kcal/100 g.'], ['Vitamine B9', 'Surtout dans les feuilles vertes extérieures.'], ['Vitamine K', 'Participe à la coagulation normale du sang.'], ['Fibres', 'Elle accompagne idéalement les plats plus riches.']]
+    ),
+    epinard: T(
+      'Originaire de Perse, l’épinard a été introduit en Espagne par les Arabes vers le XIᵉ siècle. Catherine de Médicis, qui l’appréciait beaucoup, l’aurait popularisé à la cour de France : les plats « à la florentine » lui rendent hommage. Sa réputation d’aliment très riche en fer est en partie un mythe, entretenu par le personnage de Popeye.',
+      'L’épinard préfère les saisons fraîches, au printemps et à l’automne :',
+      ['Hauts-de-France', 'Bretagne', 'Normandie', 'Provence'],
+      '',
+      [['Type botanico-culinaire', 'Légume-feuille, consommé cru en jeunes pousses ou cuit.'], ['Famille', 'Amaranthacées (Spinacia oleracea), comme la betterave et la blette.'], ['Formes courantes', 'Jeunes pousses, épinard en branches.'], ['Organe consommé', 'Feuilles.']],
+      'L’épinard est riche en micronutriments :',
+      [['Vitamine B9', 'Il en est l’une des meilleures sources végétales.'], ['Vitamine K', 'Très présente dans les feuilles.'], ['Lutéine', 'Un pigment utile à la santé des yeux.'], ['Fer', 'Présent, mais sous une forme moins bien absorbée que celle de la viande.']]
+    ),
+    'pomme-de-terre': T(
+      'Domestiquée dans les Andes péruviennes il y a environ 8 000 ans, la pomme de terre arrive en Espagne au XVIᵉ siècle. Longtemps réservée au bétail en France, elle est popularisée à la fin du XVIIIᵉ siècle par le pharmacien Antoine Parmentier, qui aurait fait garder un champ par des soldats pour attiser la curiosité des Parisiens.',
+      'La France est l’un des premiers producteurs et exportateurs européens de pommes de terre :',
+      ['Hauts-de-France', 'Grand Est', 'Normandie', 'Bretagne'],
+      'La pomme de terre de l’île de Ré bénéficie d’une AOP, tout comme la Béa du Roussillon.',
+      [['Type botanico-culinaire', 'Tubercule : une tige souterraine renflée, riche en amidon.'], ['Famille', 'Solanacées (Solanum tuberosum), comme la tomate.'], ['Variétés courantes', 'Charlotte, Agata, Bintje, Ratte.'], ['Organe consommé', 'Tubercule (les parties vertes sont toxiques).']],
+      'La pomme de terre est un aliment énergétique et complet :',
+      [['Glucides complexes', 'Son amidon fournit une énergie durable.'], ['Vitamine C', 'Surtout dans les pommes de terre nouvelles.'], ['Potassium', 'Elle en est une excellente source.'], ['Cuisson en peau', 'Elle préserve mieux les vitamines et minéraux.']]
+    ),
+    mais: T(
+      'Le maïs a été domestiqué au Mexique il y a environ 9 000 ans à partir d’une graminée sauvage, la téosinte. Base de l’alimentation des Mayas et des Aztèques, il arrive en Europe avec Christophe Colomb. Le maïs doux, plus sucré, provient d’une mutation naturelle et s’est surtout popularisé aux États-Unis.',
+      'La France est le premier producteur européen de maïs doux, cultivé surtout dans le Sud-Ouest :',
+      ['Nouvelle-Aquitaine (Landes)', 'Occitanie'],
+      '',
+      [['Type botanico-culinaire', 'Céréale consommée comme un légume lorsqu’elle est récoltée jeune.'], ['Famille', 'Poacées (Zea mays), la famille des graminées.'], ['Variété', 'Maïs doux, riche en sucres.'], ['Type de fruit', 'Caryopse (chaque grain est un fruit).']],
+      'Le maïs doux est gourmand et nourrissant :',
+      [['Énergie', 'Riche en glucides, il rassasie durablement.'], ['Fibres', 'Présentes dans l’enveloppe des grains.'], ['Lutéine et zéaxanthine', 'Des pigments jaunes utiles à la santé des yeux.'], ['Sans gluten', 'Il convient aux personnes intolérantes.']]
+    ),
+    'petit-pois': T(
+      'Originaire du Proche-Orient, le pois est l’une des plus anciennes plantes cultivées, depuis environ 9 000 ans. Longtemps consommé sec, le petit pois frais devient une véritable mode à la cour de Louis XIV, où l’on s’en régale jusque tard dans la nuit.',
+      'Le petit pois est cultivé dans les grandes plaines du nord de la France :',
+      ['Hauts-de-France', 'Centre-Val de Loire', 'Bretagne'],
+      '',
+      [['Type botanico-culinaire', 'Légumineuse : on consomme les graines fraîches.'], ['Famille', 'Fabacées (Pisum sativum).'], ['Variétés courantes', 'Petit pois à écosser, pois mangetout.'], ['Type de fruit', 'Gousse contenant plusieurs graines.']],
+      'Le petit pois est plus nourrissant que la plupart des légumes verts :',
+      [['Protéines végétales', 'Il en contient davantage que la plupart des légumes.'], ['Fibres', 'Il favorise la satiété.'], ['Vitamine B1', 'Utile au métabolisme énergétique.'], ['Sucré naturellement', 'À cuisiner vite après la cueillette, avant que ses sucres ne se transforment.']]
+    ),
+    'haricot-vert': T(
+      'Le haricot est originaire d’Amérique (Mexique et Andes), où il était cultivé avec le maïs et la courge. Rapporté en Europe au XVIᵉ siècle, il se répand d’abord en Italie puis en France. C’est en France que s’est développée l’habitude de le récolter très jeune, en gousse, comme haricot vert.',
+      'Le haricot vert est cultivé dans plusieurs grands bassins :',
+      ['Bretagne', 'Pays de la Loire', 'Nouvelle-Aquitaine', 'Hauts-de-France'],
+      '',
+      [['Type botanico-culinaire', 'Gousse immature consommée entière comme un légume.'], ['Famille', 'Fabacées (Phaseolus vulgaris).'], ['Variétés courantes', 'Haricot filet (très fin), mangetout, haricot beurre (jaune).'], ['Type de fruit', 'Gousse.']],
+      'Le haricot vert est léger et riche en fibres :',
+      [['Peu calorique', 'Environ 30 kcal/100 g.'], ['Fibres', 'Il contribue au bon transit.'], ['Vitamine B9', 'Utile au renouvellement cellulaire.'], ['Vitamine K', 'Présente en bonne quantité.']]
+    ),
+    potiron: T(
+      'Originaire d’Amérique du Sud, le potiron fait partie des courges rapportées en Europe au XVIᵉ siècle. Il s’est installé dans les potagers pour sa rusticité et sa longue conservation. On le confond souvent avec la citrouille, une espèce voisine rendue célèbre par Halloween.',
+      'Le potiron français est cultivé dans l’Ouest et le Centre :',
+      ['Pays de la Loire', 'Centre-Val de Loire', 'Nouvelle-Aquitaine'],
+      'Le Rouge vif d’Étampes est une variété ancienne française très appréciée.',
+      [['Type botanico-culinaire', 'Fruit botanique consommé comme un légume, toujours cuit.'], ['Famille', 'Cucurbitacées (Cucurbita maxima).'], ['Variété emblématique', 'Rouge vif d’Étampes, à la chair orange.'], ['Type de fruit', 'Péponide.']],
+      'Le potiron est doux, léger et coloré :',
+      [['Bêta-carotène', 'Sa chair orange en est très riche.'], ['Peu calorique', 'Environ 25 kcal/100 g.'], ['Fibres douces', 'Idéal en velouté, il est facile à digérer.'], ['Potassium', 'Contribue à l’équilibre hydrique.']]
+    ),
+    ail: T(
+      'Originaire d’Asie centrale, l’ail est cultivé depuis plus de 5 000 ans. Les Égyptiens en donnaient aux ouvriers des pyramides, et les Romains à leurs soldats. Selon la légende, on frotta les lèvres du futur Henri IV avec une gousse d’ail à sa naissance.',
+      'La France produit un ail réputé, surtout dans le Sud :',
+      ['Occitanie (Lomagne, Lautrec)', 'Drôme', 'Provence'],
+      'Plusieurs ails bénéficient d’une IGP, comme l’ail blanc de Lomagne, l’ail rose de Lautrec et l’ail de la Drôme ; l’ail violet de Cadours est AOP.',
+      [['Type botanico-culinaire', 'Bulbe utilisé comme condiment.'], ['Famille', 'Amaryllidacées (Allium sativum), comme l’oignon et le poireau.'], ['Variétés', 'Ail blanc, rose, violet.'], ['Organe consommé', 'Bulbe formé de caïeux (les gousses).']],
+      'L’ail parfume et apporte des composés intéressants :',
+      [['Allicine', 'Libérée quand on écrase la gousse, elle donne à l’ail son odeur caractéristique.'], ['Composés soufrés', 'Étudiés pour leur rôle dans la santé cardiovasculaire.'], ['Relève sans sel', 'Il aide à réduire le sel dans les plats.'], ['Petites quantités', 'Une ou deux gousses suffisent à parfumer un plat.']]
+    ),
+    oignon: T(
+      'Originaire d’Asie centrale, l’oignon est cultivé depuis plus de 5 000 ans. En Égypte ancienne, il nourrissait les ouvriers des pyramides et symbolisait l’éternité. Facile à conserver, il s’est imposé comme la base de presque toutes les cuisines du monde.',
+      'L’oignon est cultivé dans de nombreuses régions françaises :',
+      ['Hauts-de-France', 'Grand Est', 'Bretagne', 'Cévennes'],
+      'L’oignon rosé de Roscoff et l’oignon doux des Cévennes bénéficient tous deux d’une AOP.',
+      [['Type botanico-culinaire', 'Bulbe utilisé comme légume et condiment.'], ['Famille', 'Amaryllidacées (Allium cepa).'], ['Variétés courantes', 'Jaune, rouge, blanc, rosé.'], ['Organe consommé', 'Bulbe formé de feuilles charnues.']],
+      'L’oignon est modeste mais précieux :',
+      [['Quercétine', 'Un antioxydant présent surtout dans les couches extérieures.'], ['Fibres prébiotiques', 'Elles nourrissent la flore intestinale.'], ['Peu calorique', 'Environ 40 kcal/100 g.'], ['Composés soufrés', 'Ce sont eux qui font pleurer en l’épluchant.']]
+    ),
+    champignon: T(
+      'La culture du champignon de Paris commence au XVIIᵉ siècle, dans les potagers autour de Paris. Au XIXᵉ siècle, elle s’installe dans les anciennes carrières souterraines de la capitale, qui lui donnent son nom. Elle s’est ensuite déplacée vers les caves de tuffeau du Val de Loire.',
+      'Cultivé à l’abri de la lumière, le champignon de Paris est produit toute l’année :',
+      ['Val de Loire (Saumurois)', 'Île-de-France', 'Hauts-de-France'],
+      '',
+      [['Type botanico-culinaire', 'Ni fruit ni légume : un champignon, qui appartient au règne des Fungi.'], ['Famille', 'Agaricacées (Agaricus bisporus).'], ['Formes courantes', 'Blanc, blond (brun) ; le portobello est la même espèce à maturité.'], ['Organe consommé', 'Le carpophore (chapeau et pied).']],
+      'Le champignon de Paris est léger et nourrissant :',
+      [['Très peu calorique', 'Environ 22 kcal/100 g.'], ['Vitamines B', 'Surtout B2 et B3, utiles au métabolisme énergétique.'], ['Sélénium', 'Un oligo-élément antioxydant.'], ['Texture charnue', 'Idéal pour alléger les plats de viande.']]
+    ),
+    'patate-douce': T(
+      'Originaire d’Amérique tropicale, la patate douce était cultivée par les peuples précolombiens bien avant l’arrivée des Européens. Rapportée en Espagne par Christophe Colomb, elle est connue en Europe avant la pomme de terre, avec laquelle elle n’a pourtant aucun lien de parenté.',
+      'La patate douce vendue en France vient surtout du sud de l’Europe, avec une petite production française en développement :',
+      ['Espagne (Andalousie)', 'Portugal', 'Sud-Ouest de la France'],
+      '',
+      [['Type botanico-culinaire', 'Racine tubérisée, consommée comme un légume.'], ['Famille', 'Convolvulacées (Ipomoea batatas), comme le liseron.'], ['Variétés courantes', 'Chair orange (la plus répandue), blanche ou violette.'], ['Organe consommé', 'Racine renflée.']],
+      'La patate douce est sucrée et colorée :',
+      [['Bêta-carotène', 'Sa chair orange en est très riche.'], ['Fibres', 'Elles favorisent la satiété.'], ['Glucides', 'Une énergie plus progressive que celle de la pomme de terre.'], ['Potassium', 'Présent en bonne quantité.']]
+    ),
+    fraise: T(
+      'La fraise des bois est consommée en Europe depuis l’Antiquité. La grosse fraise de nos jardins est née en Bretagne au XVIIIᵉ siècle, du croisement entre une fraise du Chili rapportée en 1714 par l’officier Amédée-François Frézier et une fraise de Virginie. Plougastel en devient alors la capitale.',
+      'La France produit des fraises dans plusieurs grands bassins :',
+      ['Nouvelle-Aquitaine (Lot-et-Garonne, Périgord)', 'Bretagne (Plougastel)', 'Occitanie (Nîmes)', 'Provence'],
+      'La fraise du Périgord et la fraise de Nîmes bénéficient d’une IGP.',
+      [['Type botanico-culinaire', 'Faux-fruit : la partie charnue est un réceptacle floral ; les vrais fruits sont les akènes.'], ['Famille', 'Rosacées (Fragaria × ananassa).'], ['Variétés courantes', 'Gariguette, Ciflorette, Mara des bois, Charlotte.'], ['Type de fruit', 'Polyakène.']],
+      'La fraise est aussi légère que gourmande :',
+      [['Très riche en vitamine C', 'Une portion de 150 g couvre les besoins quotidiens.'], ['Peu calorique', 'Environ 33 kcal/100 g.'], ['Antioxydants', 'Ses pigments rouges sont des anthocyanes.'], ['Hydratante', 'Environ 90 % d’eau.']]
+    ),
+    cerise: T(
+      'Originaire d’Asie Mineure, la cerise était déjà consommée à l’âge de pierre. Selon la tradition, le général romain Lucullus aurait rapporté le cerisier à Rome au Iᵉʳ siècle avant notre ère. Très appréciée au Moyen Âge, elle fait l’objet de nombreuses fêtes et foires.',
+      'Le cerisier est cultivé dans les régions aux printemps doux :',
+      ['Provence (Vaucluse)', 'Auvergne-Rhône-Alpes', 'Occitanie (Céret)', 'Alsace'],
+      'Céret, dans les Pyrénées-Orientales, expédie traditionnellement les premières cerises de France.',
+      [['Type botanico-culinaire', 'Fruit charnu à noyau.'], ['Famille', 'Rosacées (Prunus avium pour la cerise douce, Prunus cerasus pour la griotte).'], ['Variétés courantes', 'Burlat, Bigarreau Napoléon, Summit, griotte.'], ['Type de fruit', 'Drupe.']],
+      'La cerise se déguste pendant quelques semaines seulement :',
+      [['Anthocyanes', 'Ces pigments rouges sont des antioxydants.'], ['Potassium', 'Présent en bonne quantité.'], ['Énergie douce', 'Environ 56 kcal/100 g.'], ['Fibres', 'Participent au transit.']]
+    ),
+    peche: T(
+      'Originaire de Chine, où elle est cultivée depuis des millénaires, la pêche est arrivée en Europe par la Perse, d’où son nom latin Prunus persica. Les Romains la diffusent en Gaule. Louis XIV la fait cultiver à Versailles, dans le Potager du roi.',
+      'La pêche française pousse dans les vallées ensoleillées :',
+      ['Auvergne-Rhône-Alpes (Drôme, Ardèche)', 'Provence-Alpes-Côte d’Azur', 'Occitanie (Roussillon)'],
+      'La pêche de vigne, petite et parfumée, est une variété ancienne très recherchée.',
+      [['Type botanico-culinaire', 'Fruit charnu à noyau.'], ['Famille', 'Rosacées (Prunus persica).'], ['Variétés courantes', 'Pêche jaune, blanche, plate ; la nectarine est une pêche à peau lisse.'], ['Type de fruit', 'Drupe.']],
+      'La pêche est un fruit d’été juteux et léger :',
+      [['Hydratante', 'Environ 87 % d’eau.'], ['Peu calorique', 'Environ 40 kcal/100 g.'], ['Caroténoïdes', 'Surtout dans les variétés à chair jaune.'], ['Fibres', 'Présentes dans la peau et la chair.']]
+    ),
+    melon: T(
+      'Le melon appartient à la famille des Cucurbitacées. Originaire d’Afrique ou d’Asie centrale, il était déjà cultivé dans l’Égypte ancienne 2 700 ans avant notre ère. Introduit en Italie puis en France au XVᵉ siècle, notamment par les papes d’Avignon, il devient un fruit emblématique des tables royales sous François Iᵉʳ et Louis XIV. Alexandre Dumas l’aimait tant qu’il céda une partie de son œuvre à la bibliothèque de Cavaillon en échange d’une rente viagère de 12 melons par an.',
+      'Aujourd’hui, la France est un grand producteur européen de melons, cultivés principalement dans trois grands bassins :',
+      ['Sud-Est (Cavaillon, Châteaurenard)', 'Sud-Ouest (Quercy, Lectoure)', 'Centre-Ouest (Haut-Poitou, Vendée)'],
+      'Le melon du Quercy et le melon du Haut-Poitou bénéficient d’une IGP (Indication Géographique Protégée), qui garantit un savoir-faire local et une teneur en sucre minimale.',
+      [['Type botanico-culinaire', 'Botaniquement un fruit, de la même famille que le concombre et la courgette ; classé parmi les légumes-fruits en agronomie, il est consommé comme un fruit.'], ['Famille', 'Cucurbitacées (Cucumis melo).'], ['Variété principale en France', 'Le Cantaloup type Charentais : peau lisse ou brodée, chair orange vif très parfumée, sillons verts marqués.'], ['Type de fruit', 'Péponide (baie à écorce dure).']],
+      'Le melon est l’allié par excellence de l’hydratation en été :',
+      [['Hydratation maximale', 'Composé à plus de 90 % d’eau, il est rafraîchissant et très peu calorique (environ 34 kcal/100 g).'], ['Riche en bêta-carotène', 'Sa chair orange vif témoigne d’une forte teneur en provitamine A, bonne pour la peau et la vue.'], ['Potassium', 'Il favorise l’élimination de l’eau et aide à réguler la pression artérielle.'], ['Source de vitamine C', 'Un coup de pouce pour le système immunitaire pendant la saison chaude.']]
+    ),
+    pasteque: T(
+      'Originaire d’Afrique, la pastèque était cultivée en Égypte il y a plus de 4 000 ans : des graines ont été retrouvées dans des tombes de pharaons. Réserve d’eau précieuse dans les régions arides, elle s’est répandue autour de la Méditerranée puis dans le monde entier.',
+      'La pastèque vendue en France vient surtout d’Espagne, avec une production française dans le Sud :',
+      ['Espagne (Andalousie, Murcie)', 'Occitanie', 'Provence'],
+      '',
+      [['Type botanico-culinaire', 'Fruit botanique consommé comme un fruit, cru et frais.'], ['Famille', 'Cucurbitacées (Citrullus lanatus).'], ['Variétés courantes', 'Chair rouge avec ou sans pépins, chair jaune.'], ['Type de fruit', 'Péponide.']],
+      'La pastèque est le fruit le plus désaltérant de l’été :',
+      [['Hydratation maximale', 'Environ 92 % d’eau.'], ['Lycopène', 'Le même pigment rouge antioxydant que dans la tomate.'], ['Peu calorique', 'Environ 30 kcal/100 g.'], ['Citrulline', 'Un acide aminé présent en quantité dans sa chair.']]
+    ),
+    myrtille: T(
+      'La myrtille sauvage pousse dans les sous-bois et les landes de montagne d’Europe, où elle est cueillie depuis la préhistoire. La myrtille cultivée, plus grosse, descend d’une espèce américaine sélectionnée aux États-Unis au début du XXᵉ siècle.',
+      'La myrtille française est cueillie en montagne ou cultivée en plaine :',
+      ['Vosges', 'Massif central', 'Alpes', 'Nouvelle-Aquitaine (cultivée)'],
+      '',
+      [['Type botanico-culinaire', 'Petit fruit rouge (baie bleue), consommé frais ou cuit.'], ['Famille', 'Éricacées (Vaccinium myrtillus pour la sauvage).'], ['Formes', 'Myrtille sauvage (chair colorée) et myrtille cultivée (chair blanche).'], ['Type de fruit', 'Baie.']],
+      'La myrtille concentre beaucoup de bienfaits dans un petit fruit :',
+      [['Anthocyanes', 'Ces pigments bleus antioxydants sont très concentrés dans la myrtille sauvage.'], ['Fibres', 'Elles participent au transit.'], ['Vitamine K', 'Présente en bonne quantité.'], ['Peu calorique', 'Environ 57 kcal/100 g.']]
+    ),
+    raisin: T(
+      'La vigne est cultivée depuis environ 8 000 ans dans le Caucase. Les Grecs l’introduisent en Gaule vers 600 avant notre ère, à Marseille. Sous François Iᵉʳ, la « Treille du Roy » de Fontainebleau produit un chasselas réputé, servi à la table royale.',
+      'Le raisin de table français est cultivé dans le Sud :',
+      ['Occitanie (Tarn-et-Garonne)', 'Provence (Vaucluse)'],
+      'Le chasselas de Moissac et le muscat du Ventoux bénéficient tous deux d’une AOP.',
+      [['Type botanico-culinaire', 'Fruit charnu en grappe.'], ['Famille', 'Vitacées (Vitis vinifera).'], ['Variétés de table', 'Chasselas, Muscat de Hambourg, Italia.'], ['Type de fruit', 'Baie (chaque grain).']],
+      'Le raisin est un fruit énergétique de fin d’été :',
+      [['Polyphénols', 'Surtout dans la peau et les pépins, comme le resvératrol.'], ['Énergie rapide', 'Riche en sucres naturels, environ 70 kcal/100 g.'], ['Potassium', 'Présent en bonne quantité.'], ['Hydratant', 'Environ 80 % d’eau.']]
+    ),
+    pomme: T(
+      'La pomme cultivée descend d’un pommier sauvage des montagnes du Kazakhstan, diffusé le long de la route de la soie. Les Grecs et les Romains développent le greffage, et les monastères médiévaux multiplient les variétés. Elle est aujourd’hui le fruit le plus consommé en France.',
+      'La France est l’un des premiers producteurs européens de pommes :',
+      ['Val de Loire', 'Provence-Alpes-Côte d’Azur', 'Nouvelle-Aquitaine', 'Normandie'],
+      'La pomme du Limousin bénéficie d’une AOP, et les pommes des Alpes de Haute-Durance d’une IGP.',
+      [['Type botanico-culinaire', 'Fruit charnu à pépins.'], ['Famille', 'Rosacées (Malus domestica).'], ['Variétés courantes', 'Golden, Gala, Reinette, Pink Lady, Canada grise.'], ['Type de fruit', 'Piridion (faux-fruit issu du réceptacle floral).']],
+      'La pomme mérite sa réputation de fruit santé :',
+      [['Fibres (pectine)', 'Elle favorise la satiété et le bon transit.'], ['Polyphénols', 'Concentrés dans la peau : mieux vaut la croquer entière.'], ['Énergie modérée', 'Environ 52 kcal/100 g.'], ['Vitamine C', 'Surtout dans les variétés acidulées.']]
+    ),
+    poire: T(
+      'Originaire d’Asie et du Caucase, la poire était déjà appréciée des Grecs et des Romains. Louis XIV en raffolait : son jardinier Jean-Baptiste de La Quintinie en cultivait des centaines de variétés au Potager du roi, à Versailles. Beaucoup de variétés actuelles ont été obtenues en France et en Belgique au XIXᵉ siècle.',
+      'La poire française est surtout cultivée dans le Sud-Est et l’Ouest :',
+      ['Auvergne-Rhône-Alpes (Savoie)', 'Provence-Alpes-Côte d’Azur', 'Val de Loire'],
+      'Les poires de Savoie bénéficient d’une IGP.',
+      [['Type botanico-culinaire', 'Fruit charnu à pépins.'], ['Famille', 'Rosacées (Pyrus communis).'], ['Variétés courantes', 'Williams, Conférence, Doyenné du Comice, Passe-Crassane.'], ['Type de fruit', 'Piridion.']],
+      'La poire est douce, fondante et désaltérante :',
+      [['Fibres', 'Elle en est l’un des fruits les plus riches.'], ['Énergie modérée', 'Environ 50 kcal/100 g.'], ['Potassium', 'Contribue à l’équilibre hydrique.'], ['Hydratante', 'Environ 84 % d’eau.']]
+    ),
+    chataigne: T(
+      'Le châtaignier est présent en Europe du Sud depuis l’Antiquité. Dans les Cévennes, en Ardèche et en Corse, on l’appelait « l’arbre à pain » : pendant des siècles, ses fruits séchés et moulus ont nourri les populations des montagnes.',
+      'La châtaigne française pousse dans les régions de moyenne montagne :',
+      ['Ardèche', 'Cévennes', 'Corse', 'Limousin'],
+      'La châtaigne d’Ardèche bénéficie d’une AOP, tout comme la farine de châtaigne corse.',
+      [['Type botanico-culinaire', 'Fruit sec, consommé cuit (grillé, bouilli, en crème).'], ['Famille', 'Fagacées (Castanea sativa), comme le chêne et le hêtre.'], ['Châtaigne ou marron ?', 'Le marron est une châtaigne dont le fruit n’est pas cloisonné ; le marron d’Inde, lui, n’est pas comestible.'], ['Type de fruit', 'Akène, protégé par une bogue épineuse.']],
+      'La châtaigne est un fruit d’hiver très nourrissant :',
+      [['Glucides complexes', 'Une énergie durable, environ 180 kcal/100 g cuite.'], ['Fibres', 'Elle favorise la satiété.'], ['Sans gluten', 'Sa farine convient aux personnes intolérantes.'], ['Minéraux', 'Potassium, magnésium et vitamines du groupe B.']]
+    ),
+    kiwi: T(
+      'Originaire de Chine, où on l’appelait « groseille de Chine », le kiwi a été développé en Nouvelle-Zélande au début du XXᵉ siècle. Rebaptisé « kiwi » en 1959 pour l’exportation, en référence à l’oiseau national néo-zélandais, il est cultivé en France depuis les années 1960.',
+      'La France produit des kiwis surtout dans le Sud-Ouest :',
+      ['Nouvelle-Aquitaine (Adour, Landes)', 'Corse', 'Auvergne-Rhône-Alpes'],
+      'Le kiwi de l’Adour bénéficie d’une IGP et d’un Label Rouge.',
+      [['Type botanico-culinaire', 'Fruit charnu à nombreuses petites graines noires.'], ['Famille', 'Actinidiacées (Actinidia deliciosa).'], ['Variété principale', 'Hayward, à chair verte ; il existe aussi des kiwis jaunes.'], ['Type de fruit', 'Baie.']],
+      'Le kiwi est l’un des fruits les plus riches en vitamine C :',
+      [['Vitamine C', 'Un seul kiwi couvre une grande partie des besoins quotidiens.'], ['Fibres', 'Il est réputé pour faciliter le transit.'], ['Actinidine', 'Une enzyme qui aide à digérer les protéines.'], ['Énergie modérée', 'Environ 60 kcal/100 g.']]
+    ),
+    clementine: T(
+      'La clémentine doit son nom au frère Clément (Vital Rodier), qui l’a découverte vers 1902 dans le jardin d’un orphelinat près d’Oran, en Algérie. Probable hybride entre un mandarinier et un oranger, elle est plantée en Corse à partir des années 1920.',
+      'La clémentine française est cultivée en Corse, principalement sur la plaine orientale :',
+      ['Corse (plaine orientale)'],
+      'La clémentine de Corse bénéficie d’une IGP : elle est cueillie à maturité et vendue avec ses feuilles, gage de fraîcheur.',
+      [['Type botanico-culinaire', 'Agrume consommé frais.'], ['Famille', 'Rutacées (Citrus × clementina).'], ['Particularité', 'Peu ou pas de pépins, peau fine qui s’épluche facilement.'], ['Type de fruit', 'Hespéridie.']],
+      'La clémentine est le fruit plaisir de l’hiver :',
+      [['Vitamine C', 'Deux clémentines couvrent une bonne partie des besoins quotidiens.'], ['Énergie modérée', 'Environ 47 kcal/100 g.'], ['Fibres', 'Présentes dans les membranes des quartiers.'], ['Pratique', 'Facile à éplucher, idéale pour les goûters.']]
+    ),
+    orange: T(
+      'Originaire de Chine du Sud et d’Asie du Sud-Est, l’orange douce arrive en Europe au XVᵉ siècle grâce aux navigateurs portugais. Longtemps réservée aux élites, elle était cultivée dans des orangeries, comme celle du château de Versailles, et offerte comme un cadeau précieux à Noël.',
+      'L’orange vendue en France vient surtout d’Espagne :',
+      ['Espagne (Valence, Andalousie)', 'Italie (Sicile)', 'Maroc'],
+      '',
+      [['Type botanico-culinaire', 'Agrume consommé frais ou en jus.'], ['Famille', 'Rutacées (Citrus sinensis).'], ['Variétés courantes', 'Navel, Valencia, orange sanguine.'], ['Type de fruit', 'Hespéridie.']],
+      'L’orange est un grand classique de l’hiver :',
+      [['Vitamine C', 'Une orange couvre une large part des besoins quotidiens.'], ['Flavonoïdes', 'Comme l’hespéridine, concentrée dans la partie blanche.'], ['Énergie modérée', 'Environ 47 kcal/100 g.'], ['Fibres', 'Le fruit entier est plus rassasiant que le jus.']]
+    ),
+    citron: T(
+      'Originaire d’Asie (nord-est de l’Inde, Birmanie, Chine), le citron atteint la Méditerranée grâce aux Arabes au Moyen Âge. Au XVIIIᵉ siècle, les marins britanniques en emportent pour lutter contre le scorbut, une maladie liée au manque de vitamine C.',
+      'Le citron vendu en France vient surtout d’Espagne et d’Italie, avec une petite production française réputée :',
+      ['Espagne (Murcie)', 'Italie (Sicile)', 'France (Menton)'],
+      'Le citron de Menton bénéficie d’une IGP.',
+      [['Type botanico-culinaire', 'Agrume utilisé comme condiment (jus et zeste).'], ['Famille', 'Rutacées (Citrus limon).'], ['Variétés courantes', 'Eureka, Primofiori, Verna.'], ['Type de fruit', 'Hespéridie.']],
+      'Le citron apporte acidité et vitamines :',
+      [['Vitamine C', 'Surtout dans le jus frais.'], ['Acide citrique', 'Il relève les plats et limite l’oxydation des fruits coupés.'], ['Très peu calorique', 'Environ 29 kcal/100 g.'], ['Zeste parfumé', 'Riche en huiles essentielles ; choisissez-le non traité.']]
+    ),
+    avocat: T(
+      'Originaire du Mexique et d’Amérique centrale, l’avocat était cultivé par les Aztèques, qui l’appelaient « ahuacatl ». Les conquistadors espagnols le rapportent en Europe au XVIᵉ siècle. Il ne devient courant en France qu’à partir des années 1960.',
+      'L’avocat vendu en France en hiver vient surtout d’Espagne :',
+      ['Espagne (Andalousie)', 'Israël', 'Pérou'],
+      '',
+      [['Type botanico-culinaire', 'Fruit consommé comme un légume, en salade ou en tartine.'], ['Famille', 'Lauracées (Persea americana), comme le laurier.'], ['Variété principale', 'Hass, à peau granuleuse qui noircit à maturité.'], ['Type de fruit', 'Baie à une seule grosse graine.']],
+      'L’avocat est un fruit riche et rassasiant :',
+      [['Bonnes graisses', 'Surtout des acides gras mono-insaturés, comme l’huile d’olive.'], ['Fibres', 'Il en contient beaucoup, ce qui le rend très rassasiant.'], ['Vitamines E, K et B9', 'Présentes en bonne quantité.'], ['Énergétique', 'Environ 160 kcal/100 g : un fruit à part.']]
+    ),
+    banane: T(
+      'Originaire d’Asie du Sud-Est et de Nouvelle-Guinée, la banane a gagné l’Afrique, puis les Antilles au XVIᵉ siècle avec les navigateurs portugais et espagnols. Elle devient un fruit courant en France au début du XXᵉ siècle, grâce aux bateaux réfrigérés.',
+      'La banane française est cultivée toute l’année aux Antilles :',
+      ['Guadeloupe', 'Martinique'],
+      'Les bananes des Antilles françaises sont cultivées selon un cahier des charges parmi les plus exigeants au monde en matière de pesticides.',
+      [['Type botanico-culinaire', 'Fruit consommé cru ; la banane plantain se cuisine comme un légume.'], ['Famille', 'Musacées (Musa).'], ['Variété principale', 'Cavendish.'], ['Type de fruit', 'Baie ; le bananier est une herbe géante, pas un arbre.']],
+      'La banane est le fruit de l’énergie :',
+      [['Potassium et magnésium', 'Utiles au bon fonctionnement musculaire.'], ['Vitamine B6', 'Présente en bonne quantité.'], ['Glucides', 'Environ 90 kcal/100 g, idéal pour les sportifs.'], ['Fibres', 'Plus présentes quand la banane est peu mûre.']]
+    ),
+    ananas: T(
+      'Originaire d’Amérique du Sud (Brésil, Paraguay), l’ananas est découvert par Christophe Colomb en Guadeloupe en 1493. Fruit de luxe en Europe, il est cultivé en serre chaude : le premier ananas français aurait été récolté à Versailles pour Louis XV, en 1733.',
+      'L’ananas vendu en France vient surtout d’Amérique centrale, et aussi de La Réunion :',
+      ['Costa Rica', 'La Réunion', 'Côte d’Ivoire'],
+      'L’ananas Victoria de La Réunion, petit et très parfumé, est très recherché.',
+      [['Type botanico-culinaire', 'Fruit tropical consommé frais.'], ['Famille', 'Broméliacées (Ananas comosus).'], ['Variétés courantes', 'MD2 (dit « extra-sweet »), Cayenne, Victoria.'], ['Type de fruit', 'Fruit composé : chaque écaille est issue d’une fleur.']],
+      'L’ananas est exotique et digeste :',
+      [['Bromélaïne', 'Une enzyme qui aide à digérer les protéines.'], ['Vitamine C', 'Présente en bonne quantité.'], ['Manganèse', 'Un oligo-élément dont il est riche.'], ['Énergie modérée', 'Environ 50 kcal/100 g.']]
+    ),
+    mangue: T(
+      'Originaire d’Inde et de Birmanie, la mangue y est cultivée depuis plus de 4 000 ans et elle est devenue le fruit national de l’Inde. Les navigateurs portugais la diffusent en Afrique et en Amérique à partir du XVIᵉ siècle.',
+      'La mangue vendue en France en hiver vient surtout d’Amérique du Sud :',
+      ['Pérou', 'Brésil', 'La Réunion et Antilles'],
+      '',
+      [['Type botanico-culinaire', 'Fruit tropical consommé frais ou en dessert.'], ['Famille', 'Anacardiacées (Mangifera indica), comme la noix de cajou et la pistache.'], ['Variétés courantes', 'Kent, Keitt, Tommy Atkins.'], ['Type de fruit', 'Drupe à gros noyau plat.']],
+      'La mangue est gourmande et riche en vitamines :',
+      [['Bêta-carotène', 'Sa chair orange en est riche.'], ['Vitamine C', 'Présente en bonne quantité.'], ['Énergie modérée', 'Environ 60 kcal/100 g.'], ['Fibres', 'Elles favorisent le transit.']]
+    ),
+    basilic: T(
+      'Originaire d’Inde, où une espèce proche (le tulsi) est une plante sacrée, le basilic a gagné la Méditerranée par le Moyen-Orient. Son nom vient du grec « basilikon », « royal ». Il est devenu l’herbe emblématique de la cuisine provençale et italienne.',
+      'Le basilic aime la chaleur ; il est cultivé en plein champ l’été et sous serre :',
+      ['Provence-Alpes-Côte d’Azur', 'Occitanie', 'Pays de la Loire (sous serre)'],
+      'Le pistou provençal, à base de basilic, d’ail et d’huile d’olive, en est l’usage le plus célèbre.',
+      [['Type botanico-culinaire', 'Herbe aromatique : on consomme les feuilles fraîches.'], ['Famille', 'Lamiacées (Ocimum basilicum), comme la menthe et le thym.'], ['Variétés courantes', 'Grand vert, basilic pourpre, basilic thaï, basilic citron.'], ['Organe consommé', 'Feuilles.']],
+      'Le basilic parfume les plats d’été :',
+      [['Huiles essentielles', 'Elles donnent à ses feuilles leur parfum puissant.'], ['Vitamine K', 'Présente en bonne quantité dans les feuilles.'], ['Relève sans sel', 'Il permet d’assaisonner autrement.'], ['À ajouter en fin de cuisson', 'La chaleur fait disparaître son arôme.']]
+    ),
+    menthe: T(
+      'La menthe, originaire du bassin méditerranéen et d’Asie, est utilisée depuis l’Antiquité. Dans la mythologie grecque, la nymphe Minthé aurait été changée en menthe. Les Romains en parfumaient leurs bains et leurs sauces.',
+      'La menthe française est cultivée notamment dans les régions de plantes aromatiques :',
+      ['Île-de-France (Milly-la-Forêt)', 'Pays de la Loire (Anjou)', 'Provence'],
+      'Milly-la-Forêt est depuis longtemps la capitale française de la menthe poivrée.',
+      [['Type botanico-culinaire', 'Herbe aromatique, utilisée fraîche ou séchée.'], ['Famille', 'Lamiacées (Mentha spicata pour la menthe verte, Mentha × piperita pour la poivrée).'], ['Variétés courantes', 'Menthe verte, menthe poivrée, menthe marocaine.'], ['Organe consommé', 'Feuilles.']],
+      'La menthe apporte une fraîcheur immédiate :',
+      [['Menthol', 'Surtout dans la menthe poivrée, il procure une sensation de fraîcheur.'], ['Digestion', 'Traditionnellement utilisée en infusion après les repas.'], ['Polyvalente', 'Aussi bonne dans les plats salés que dans les desserts.'], ['Relève sans sel', 'Elle parfume les salades et les taboulés.']]
+    ),
+    persil: T(
+      'Originaire de Méditerranée orientale, le persil était utilisé par les Grecs pour tresser des couronnes, avant de devenir une herbe culinaire chez les Romains. Charlemagne le fait inscrire parmi les plantes à cultiver dans les jardins de ses domaines.',
+      'Le persil est cultivé presque partout en France :',
+      ['Provence-Alpes-Côte d’Azur', 'Bretagne', 'Île-de-France'],
+      '',
+      [['Type botanico-culinaire', 'Herbe aromatique, utilisée fraîche.'], ['Famille', 'Apiacées (Petroselinum crispum), comme la carotte.'], ['Variétés', 'Persil plat (plus parfumé) et persil frisé.'], ['Organe consommé', 'Feuilles et tiges.']],
+      'Le persil est bien plus qu’une décoration :',
+      [['Vitamine C', 'Il en contient beaucoup, à condition d’être consommé cru.'], ['Vitamine K', 'Présente en grande quantité.'], ['Chlorophylle', 'Il rafraîchit l’haleine.'], ['Relève sans sel', 'Idéal ciselé en fin de préparation.']]
+    ),
+    ciboulette: T(
+      'Présente à l’état sauvage en Europe et en Asie, la ciboulette est cultivée dans les jardins européens depuis le Moyen Âge. C’est la plus douce de la famille de l’oignon, appréciée pour son parfum délicat.',
+      'La ciboulette pousse facilement partout en France, au jardin comme en culture :',
+      ['Provence-Alpes-Côte d’Azur', 'Île-de-France', 'Bretagne'],
+      '',
+      [['Type botanico-culinaire', 'Herbe aromatique : on consomme les feuilles creuses.'], ['Famille', 'Amaryllidacées (Allium schoenoprasum), comme l’ail et l’oignon.'], ['Particularité', 'Ses fleurs violettes sont aussi comestibles.'], ['Organe consommé', 'Feuilles.']],
+      'La ciboulette apporte un léger goût d’oignon :',
+      [['Vitamine C', 'Présente en bonne quantité quand elle est fraîche.'], ['Vitamine K', 'Présente dans ses feuilles vertes.'], ['Relève sans sel', 'Parfaite dans les omelettes et les fromages frais.'], ['À ciseler au dernier moment', 'Elle perd son parfum à la cuisson.']]
+    ),
+    thym: T(
+      'Plante sauvage de la garrigue méditerranéenne, le thym est utilisé depuis l’Antiquité : les Égyptiens s’en servaient pour l’embaumement, les Grecs le brûlaient dans les temples, et les Romains en parfumaient leurs bains.',
+      'Le thym français est cueilli ou cultivé dans le Sud :',
+      ['Provence', 'Occitanie', 'Drôme'],
+      'Les herbes de Provence, dont le thym est un ingrédient essentiel, bénéficient d’un Label Rouge.',
+      [['Type botanico-culinaire', 'Herbe aromatique, utilisée fraîche ou séchée.'], ['Famille', 'Lamiacées (Thymus vulgaris).'], ['Forme', 'Sous-arbrisseau vivace, toujours vert.'], ['Organe consommé', 'Feuilles et sommités fleuries.']],
+      'Le thym est un aromate généreux :',
+      [['Thymol', 'Le composé qui donne au thym son parfum puissant.'], ['Infusion', 'Traditionnellement utilisé en tisane pendant l’hiver.'], ['Supporte la cuisson', 'Idéal dans les plats mijotés.'], ['Relève sans sel', 'Il parfume viandes, légumes et sauces.']]
+    ),
+    gingembre: T(
+      'Originaire d’Asie du Sud-Est, le gingembre est utilisé depuis des millénaires en Inde et en Chine, en cuisine comme en médecine traditionnelle. Importé par les Romains, il devient au Moyen Âge l’une des épices les plus prisées d’Europe.',
+      'Le gingembre vendu en France est importé toute l’année :',
+      ['Pérou', 'Chine', 'Brésil'],
+      '',
+      [['Type botanico-culinaire', 'Épice et aromate, utilisé frais, séché ou confit.'], ['Famille', 'Zingibéracées (Zingiber officinale), comme le curcuma.'], ['Formes', 'Frais, en poudre, confit, mariné.'], ['Organe consommé', 'Rhizome (tige souterraine).']],
+      'Le gingembre relève et réchauffe :',
+      [['Gingérol', 'Le composé responsable de sa saveur piquante.'], ['Nausées', 'Traditionnellement utilisé pour apaiser les nausées.'], ['Relève sans sel', 'Il parfume sautés, soupes et infusions.'], ['Se congèle', 'Il se râpe facilement encore congelé.']]
+    )
+  };
+})();
