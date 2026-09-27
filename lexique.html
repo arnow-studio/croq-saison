@@ -8,10 +8,10 @@
 <body>
 <x-dc>
 <helmet>
-  <title>Lexique botanique &amp; guide des labels (AOP, IGP, Bio) | Croq’Saison</title>
+  <title>Lexique botanique &amp; guide des labels (AOP, IGP, Bio) | Sainos</title>
   <meta name="description" content="Drupe, baie, Solanacées, primeur, AOP, IGP, Label Rouge… Le dictionnaire illustré pour comprendre les fruits, les légumes et leurs labels.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://www.croqsaison.fr/lexique.html">
+  <link rel="canonical" href="https://www.sainos.fr/lexique.html">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
@@ -27,9 +27,9 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Croq’Saison — accueil">
-        <img src="images/logo.png" alt="Croq’Saison — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
-        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="222" height="34" style="{{ logoMini }}">
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
+        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="360" height="80" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html">Accueil</a>
@@ -99,7 +99,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="images/logo-mini.png" alt="Croq’Saison" width="222" height="34" style="display: block; height: 28px; width: auto;">
+      <img src="images/logo-mini.png" alt="Sainos" width="360" height="80" style="display: block; height: 28px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -107,7 +107,7 @@
         <a href="apropos.html">À propos</a>
         <a href="produits/carotte.html">Fiche carotte</a>
       </nav>
-      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Croq’Saison est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Sainos est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
     </div>
   </footer>
 </div>
@@ -126,8 +126,8 @@ class Component extends DCLogic {
     if (document.getElementById('ld-lexique')) return;
     const s = document.createElement('script');
     s.type = 'application/ld+json'; s.id = 'ld-lexique';
-    s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Lexique du potager', url: 'https://www.croqsaison.fr/lexique.html',
-      hasDefinedTerm: window.SAISON.lexique.map(t => ({ '@type': 'DefinedTerm', name: t.terme, description: t.def, url: 'https://www.croqsaison.fr/lexique.html#' + t.id })) });
+    s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Lexique du potager', url: 'https://www.sainos.fr/lexique.html',
+      hasDefinedTerm: window.SAISON.lexique.map(t => ({ '@type': 'DefinedTerm', name: t.terme, description: t.def, url: 'https://www.sainos.fr/lexique.html#' + t.id })) });
     document.head.appendChild(s);
   }
   renderVals() {
