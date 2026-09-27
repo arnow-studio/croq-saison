@@ -31,9 +31,9 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="index.html" class="nav-brand" style="display: flex; align-items: center; gap: var(--space-2); font-size: 22px;">
-        <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 22px; transform: rotate(-12deg);">🥕</span>
-        <span>Croq’Saison</span>
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Croq’Saison — accueil">
+        <img src="images/logo.png" alt="Croq’Saison — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="222" height="34" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html" aria-current="page">Accueil</a>
@@ -65,7 +65,7 @@
           <span style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-2-800); font-weight: 700;">En ce moment</span>
           <span style="font-family: var(--font-heading); font-size: clamp(36px, 5vw, 52px); line-height: 1; color: var(--color-accent-2-900);">{{ moisNom }}</span>
           <div style="display: flex; flex-wrap: wrap; gap: 4px; font-size: clamp(36px, 5vw, 50px); line-height: 1.1;">
-            <sc-for list="{{ heroEmojis }}" as="em" hint-placeholder-count="6"><span><sc-if value="{{ em.img }}" hint-placeholder-val="{{ false }}"><img src="{{ em.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: inline-block; vertical-align: -0.15em;"></sc-if><sc-if value="{{ em.noImg }}" hint-placeholder-val="{{ true }}">{{ em.e }}</sc-if></span></sc-for>
+            <sc-for list="{{ heroEmojis }}" as="em" hint-placeholder-count="6"><span><sc-if value="{{ em.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ em.imgBg }}; display: inline-block; vertical-align: -0.15em;"></span></sc-if><sc-if value="{{ em.noImg }}" hint-placeholder-val="{{ true }}">{{ em.e }}</sc-if></span></sc-for>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
             <li style="display: flex;">
               <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
-                  <span aria-hidden="true" style="width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font-size: 58px; background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><img src="{{ c.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: block;"></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
+                  <span aria-hidden="true" style="width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font-size: 58px; background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ c.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
                   <span class="tag tag-neutral" style="font-size: 12px; background: var(--color-bg);">{{ c.flag }} {{ c.origine }}</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 2px;">
@@ -127,27 +127,30 @@
 
     <section aria-label="Explorer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); padding-bottom: var(--space-8);">
       <a href="saisons.html" style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-6); background: var(--color-accent-2-200); border-radius: var(--radius-lg); text-decoration: none; color: var(--color-accent-2-900);" style-hover="background: var(--color-accent-2-300); color: var(--color-accent-2-900);">
-        <svg aria-hidden="true" width="56" height="56" viewBox="0 -960 960 960" fill="currentColor" style="flex: none;"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"></path></svg>
+        
         <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--font-heading); font-size: 24px;">Le calendrier des 12 mois</span><span style="font-size: 15px;">Janvier à décembre, mois par mois.</span></span>
       </a>
       <a href="lexique.html" style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-6); background: var(--color-accent-200); border-radius: var(--radius-lg); text-decoration: none; color: var(--color-accent-900);" style-hover="background: var(--color-accent-300); color: var(--color-accent-900);">
-        <svg aria-hidden="true" width="56" height="56" viewBox="0 -960 960 960" fill="currentColor" style="flex: none;"><path d="M228-457h104l19 53q2 6 7 9.5t12 3.5q11 0 17.5-9t2.5-19l-82-216q-2-6-7.5-10t-12.5-4h-16q-7 0-12.5 4t-7.5 10l-82 216q-4 10 2.5 19t17.5 9q7 0 12.5-3.5T210-405l18-52Zm13-37 38-107h2l38 107h-78Zm19 174q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394ZM280-499Zm173.5 314.5Q441-188 430-194q-39-23-82-34.5T260-240q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-45 0-88 11.5T530-194q-11 6-23.5 9.5T480-181q-14 0-26.5-3.5ZM560-609q0-9 6.5-18.5T581-640q29-10 58-15t61-5q20 0 39.5 2.5T778-651q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-600q-26 0-51 5t-48 13q-18 7-29.5-1T560-609Zm0 220q0-9 6.5-18.5T581-420q29-10 58-15t61-5q20 0 39.5 2.5T778-431q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-380q-26 0-51 4.5T601-363q-18 7-29.5-.5T560-389Zm0-110q0-9 6.5-18.5T581-530q29-10 58-15t61-5q20 0 39.5 2.5T778-541q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-490q-26 0-51 5t-48 13q-18 7-29.5-1T560-499Z"></path></svg>
+        
         <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--font-heading); font-size: 24px;">Le lexique du potager</span><span style="font-size: 15px;">Drupe, Solanacées, AOP, Bio…</span></span>
       </a>
     </section>
-    <section id="a-propos" aria-labelledby="titre-apropos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: var(--color-accent-2-200); color: var(--color-accent-2-900); border-radius: var(--radius-lg); scroll-margin-top: 90px;">
-      <h2 id="titre-apropos" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">À propos de Croq’Saison</h2>
+    <section id="a-propos" aria-labelledby="titre-apropos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
+        <h2 id="titre-apropos" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">À propos</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Il est né du besoin d’un citadin un peu déconnecté des réalités de la nature, désireux de partager ses découvertes sur les rythmes de la terre.</p>
+      </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 640px; font-size: 17px; line-height: 1.65; text-wrap: pretty;">
-        <p style="margin: 0;">Ce site est un projet entièrement bénévole, créé avec passion pour vous aider à découvrir les fruits et légumes de saison.</p>
-        <p style="margin: 0;">Notre objectif est purement éducatif : nous souhaitons vous donner les clés pour une alimentation plus responsable et savoureuse, en harmonie avec la nature. Il n’y a aucun but commercial derrière Croq’Saison.</p>
-        <p style="margin: 0;">De plus, nous tenons à votre vie privée. Croq’Saison n’utilise aucun cookie pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
+        
+        <p style="margin: 0;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse. Il n’y a aucun but commercial derrière Croq’Saison.</p>
+        <p style="margin: 0;">De plus, nous tenons à votre vie privée : aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
       </div>
     </section>
   </main>
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <span style="font-family: var(--font-heading); font-size: 18px;">🥕 Croq’Saison</span>
+      <img src="images/logo-mini.png" alt="Croq’Saison" width="222" height="34" style="display: block; height: 28px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -163,12 +166,18 @@
 class Component extends DCLogic {
   state = { q: '', type: 'all', france: false, scope: 'mois', ready: !!window.SAISON };
   componentDidMount() {
+    this._onScroll = () => { const s = window.scrollY > 40; if (s !== !!this.state.mini) this.setState({ mini: s }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const q = new URLSearchParams(location.search).get('q');
     if (q) this.setState({ q });
     if (!window.SAISON) this._t = setInterval(() => { if (window.SAISON) { clearInterval(this._t); this.setState({ ready: true }); } }, 50);
   }
-  componentWillUnmount() { clearInterval(this._t); }
+  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
   renderVals() {
+    const mini = !!this.state.mini;
+    return { ...this._rv(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+  }
+  _rv() {
     const S = window.SAISON;
     const forced = this.props.moisSimule ?? 0;
     const m = forced >= 1 && forced <= 12 ? forced : new Date().getMonth() + 1;

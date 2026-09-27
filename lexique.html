@@ -27,9 +27,9 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="index.html" class="nav-brand" style="display: flex; align-items: center; gap: var(--space-2); font-size: 22px;">
-        <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 22px; transform: rotate(-12deg);">🥕</span>
-        <span>Croq’Saison</span>
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Croq’Saison — accueil">
+        <img src="images/logo.png" alt="Croq’Saison — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="222" height="34" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html">Accueil</a>
@@ -81,7 +81,7 @@
                 <sc-if value="{{ t.hasEx }}" hint-placeholder-val="{{ false }}">
                   <dd style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px;">
                     <sc-for list="{{ t.ex }}" as="x" hint-placeholder-count="2">
-                      <a href="{{ x.href }}" class="tag tag-accent-2" style="font-size: 13px; text-decoration: none; padding: 5px 12px; gap: 5px;"><sc-if value="{{ x.img }}" hint-placeholder-val="{{ false }}"><img src="{{ x.img }}" alt="" style="width: 1em; height: 1em; object-fit: contain; display: inline-block; vertical-align: -0.15em;"></sc-if><sc-if value="{{ x.noImg }}" hint-placeholder-val="{{ true }}">{{ x.e }}</sc-if> {{ x.n }}</a>
+                      <a href="{{ x.href }}" class="tag tag-accent-2" style="font-size: 13px; text-decoration: none; padding: 5px 12px; gap: 5px;"><sc-if value="{{ x.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ x.imgBg }}; display: inline-block; vertical-align: -0.15em;"></span></sc-if><sc-if value="{{ x.noImg }}" hint-placeholder-val="{{ true }}">{{ x.e }}</sc-if> {{ x.n }}</a>
                     </sc-for>
                   </dd>
                 </sc-if>
@@ -98,7 +98,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <span style="font-family: var(--font-heading); font-size: 18px;">🥕 Croq’Saison</span>
+      <img src="images/logo-mini.png" alt="Croq’Saison" width="222" height="34" style="display: block; height: 28px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -114,10 +114,12 @@
 class Component extends DCLogic {
   state = { q: '', cat: 'all', ready: !!window.SAISON };
   componentDidMount() {
+    this._onScroll = () => { const s = window.scrollY > 40; if (s !== !!this.state.mini) this.setState({ mini: s }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const done = () => { this.injectLd(); this.setState({ ready: true }); if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 90); } };
     if (window.SAISON) setTimeout(done, 0); else this._t = setInterval(() => { if (window.SAISON) { clearInterval(this._t); done(); } }, 50);
   }
-  componentWillUnmount() { clearInterval(this._t); }
+  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
   injectLd() {
     if (document.getElementById('ld-lexique')) return;
     const s = document.createElement('script');
@@ -127,6 +129,10 @@ class Component extends DCLogic {
     document.head.appendChild(s);
   }
   renderVals() {
+    const mini = !!this.state.mini;
+    return { ...this._rv(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+  }
+  _rv() {
     const S = window.SAISON;
     const { q, cat } = this.state;
     const CAT = { botanique: ['Botanique', 'tag tag-accent-2'], famille: ['Famille botanique', 'tag tag-neutral'], label: ['Label', 'tag tag-accent'] };
