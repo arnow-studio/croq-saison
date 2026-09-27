@@ -9,13 +9,13 @@
 <x-dc>
 <helmet>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="../produits-data.js"></script>
   <script src="../produits-textes.js"></script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
@@ -34,6 +34,7 @@
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier</a>
         <a href="../lexique.html">Lexique</a>
+        <a href="../apropos.html">À propos</a>
       </div>
       <form role="search" action="../index.html" method="get" style="position: relative; flex: 1 1 220px; max-width: 300px; margin: 0;">
         <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
@@ -147,6 +148,7 @@
                 <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-accent-700);">Recette mise en avant · 750g</span>
                 <h3 style="margin: 0; font-size: 22px; line-height: 1.2;">{{ rec.titre }}</h3>
                 <a href="{{ rec.toutes }}" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 600;">Toutes les recettes avec {{ nomLower }} sur 750g ↗</a>
+                <span style="font-size: 13px; color: var(--color-neutral-800);">Lien externe, sans partenariat ni commission.</span>
               </div>
               <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-primary" style="white-space: nowrap; flex: none; padding: 12px 20px; font-size: 15px; text-decoration: none;">Voir la recette ↗</a>
             </aside>
@@ -243,8 +245,9 @@
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier des saisons</a>
         <a href="../lexique.html">Lexique</a>
-        <a href="../index.html#a-propos">À propos</a>
+        <a href="../apropos.html">À propos</a>
       </nav>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Croq’Saison est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
     </div>
   </footer>
 </div>
@@ -253,7 +256,7 @@
 class Component extends DCLogic {
   state = { ready: !!(window.SAISON && window.SAISON_TEXTES) };
   componentDidMount() {
-    this._onScroll = () => { const s = window.scrollY > 40; if (s !== !!this.state.mini) this.setState({ mini: s }); };
+    this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const done = () => { this.applySeo(); this.setState({ ready: true }); };
     const ok = () => window.SAISON && window.SAISON_TEXTES;

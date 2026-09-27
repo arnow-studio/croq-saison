@@ -15,13 +15,13 @@
   <meta property="og:title" content="Croq’Saison — les fruits et légumes de saison">
   <meta property="og:description" content="Découvrez chaque mois les fruits, légumes et herbes de pleine saison.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="produits-data.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Croq’Saison","url":"https://www.croqsaison.fr/","potentialAction":{"@type":"SearchAction","target":"https://www.croqsaison.fr/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
@@ -39,6 +39,7 @@
         <a href="index.html" aria-current="page">Accueil</a>
         <a href="saisons.html">Calendrier</a>
         <a href="lexique.html">Lexique</a>
+        <a href="apropos.html">À propos</a>
       </div>
       <div role="search" style="position: relative; flex: 1 1 220px; max-width: 300px;">
         <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
@@ -53,6 +54,7 @@
         <span class="tag tag-accent-2" style="align-self: flex-start; font-size: 13px; padding: 5px 14px;">Calendrier des fruits &amp; légumes</span>
         <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
         <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p>
+        <p style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 15px; font-weight: 600; color: var(--color-accent-2-900);"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-2-500);"></span>Un guide gratuit et indépendant — rien à vendre, juste de quoi mieux manger.</p>
         <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
           <a href="#catalogue" class="btn btn-primary" style="padding: 12px 22px; font-size: 15px;">Voir les produits de {{ moisNomLower }}</a>
           <a href="saisons.html" class="btn btn-secondary" style="padding: 12px 22px; font-size: 15px;">Calendrier complet</a>
@@ -110,7 +112,7 @@
                     <span class="{{ fm.cls }}" style="font-size: 12px;">{{ fm.label }}</span>
                   </sc-for>
                 </div>
-                <span style="margin-top: auto; font-weight: 700; font-size: 14px; color: var(--color-accent-700);">Voir la fiche →</span>
+                <span style="margin-top: auto; font-weight: 700; font-size: 14px; color: var(--color-accent-700);">En savoir plus →</span>
               </a>
             </li>
           </sc-for>
@@ -138,7 +140,7 @@
     <section id="a-propos" aria-labelledby="titre-apropos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
       <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
         <h2 id="titre-apropos" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">À propos</h2>
-        <p style="margin: 0; font-size: 18px; line-height: 1.6; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Il est né du besoin d’un citadin un peu déconnecté des réalités de la nature, désireux de partager ses découvertes sur les rythmes de la terre.</p>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Ce projet est né des flâneries du samedi matin d’un citadin amoureux de son marché local, désireux de remettre la saisonnalité au cœur de nos assiettes.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 640px; font-size: 17px; line-height: 1.65; text-wrap: pretty;">
         
@@ -155,9 +157,10 @@
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
         <a href="lexique.html">Lexique</a>
-        <a href="index.html#a-propos">À propos</a>
+        <a href="apropos.html">À propos</a>
         <a href="produits/carotte.html">Fiche carotte</a>
       </nav>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Croq’Saison est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
     </div>
   </footer>
 </div>
@@ -166,7 +169,7 @@
 class Component extends DCLogic {
   state = { q: '', type: 'all', france: false, scope: 'mois', ready: !!window.SAISON };
   componentDidMount() {
-    this._onScroll = () => { const s = window.scrollY > 40; if (s !== !!this.state.mini) this.setState({ mini: s }); };
+    this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const q = new URLSearchParams(location.search).get('q');
     if (q) this.setState({ q });
@@ -204,7 +207,7 @@ class Component extends DCLogic {
     const cards = list.map(p => {
       const forts = (p.f.length ? p.f : []).map(x => ({ label: S.MOIS_C[x - 1], cls: 'tag ' + (x === m ? 'tag-accent' : 'tag-accent-2') }));
       if (!p.f.length) forts.push({ label: p.m.length === 12 ? 'Toute l’année' : 'Hors saison forte', cls: 'tag tag-neutral' });
-      return { ...S.vis(p), href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — voir la fiche' };
+      return { ...S.vis(p), href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
     });
     const moisNom = S.MOIS[m - 1];
     const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';

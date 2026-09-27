@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>À propos de Croq’Saison — un guide indépendant des fruits et légumes de saison</title>
+  <meta name="description" content="Croq’Saison est un projet indépendant et éducatif pour découvrir les fruits et légumes de saison. Sans vente, sans publicité, sans cookie.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://www.croqsaison.fr/apropos.html">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
+  <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
+  <script src="produits-data.js"></script>
+  <style>
+    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    a { color: var(--color-accent-700); }
+    a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
+    *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    @keyframes croqPop { 0% { opacity: 0; transform: scale(.85) rotate(-8deg); } 60% { opacity: 1; transform: scale(1.04) rotate(2deg); } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+  </style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-direction: column;">
+  <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
+    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Croq’Saison — accueil">
+        <img src="images/logo.png" alt="Croq’Saison — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="222" height="34" style="{{ logoMini }}">
+      </a>
+      <div style="display: flex; gap: var(--space-4); align-items: center;">
+        <a href="index.html">Accueil</a>
+        <a href="saisons.html">Calendrier</a>
+        <a href="lexique.html">Lexique</a>
+        <a href="apropos.html" aria-current="page">À propos</a>
+      </div>
+      <form role="search" action="index.html" method="get" style="position: relative; flex: 1 1 220px; max-width: 300px; margin: 0;">
+        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
+        <input id="q" name="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
+      </form>
+    </nav>
+  </header>
+
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding-top: var(--space-8);">
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 600px;">
+        <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">À propos</span></nav>
+        <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">À propos</h1>
+        <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Ce projet est né des flâneries du samedi matin d’un citadin amoureux de son marché local, désireux de remettre la saisonnalité au cœur de nos assiettes.</p>
+      </div>
+      <div style="position: relative; justify-self: center; width: min(420px, 86vw); aspect-ratio: 1; display: grid; place-items: center;">
+        <div aria-hidden="true" style="position: absolute; inset: 0; background: #e6eff4; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;"></div>
+        <div style="position: relative; width: 44%; aspect-ratio: 1; display: grid; place-items: center;">{{ heroImg }}</div>
+        <a href="{{ cur.href }}" class="tag tag-neutral" style="position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); background: #ffffff; border: 1px solid var(--color-divider); font-size: 14px; padding: 7px 16px; white-space: nowrap; text-decoration: none;" aria-live="polite">{{ cur.n }}</a>
+      </div>
+    </section>
+
+    <section aria-label="Nos engagements" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4);">
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center;"><img src="images/poire.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
+        <h2 style="margin: 0; font-size: 26px;">Un objectif éducatif</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center;"><img src="images/pomme.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
+        <h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Il n’y a aucun but commercial derrière Croq’Saison : ni vente, ni publicité, ni partenariat.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: #e6eff4; display: grid; place-items: center;"><img src="images/myrtille.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
+        <h2 style="margin: 0; font-size: 26px;">Votre vie privée</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
+      <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(22px, 2.6vw, 30px);">Prêt à croquer la saison ?</p>
+      <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+        <a href="index.html#catalogue" class="btn btn-primary" style="padding: 12px 22px; font-size: 15px;">Les produits du mois</a>
+        <a href="saisons.html" class="btn btn-secondary" style="padding: 12px 22px; font-size: 15px;">Le calendrier</a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #f4efe6;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
+      <img src="images/logo-mini.png" alt="Croq’Saison" width="222" height="34" style="display: block; height: 28px; width: auto;">
+      <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="index.html">Accueil</a>
+        <a href="saisons.html">Calendrier des saisons</a>
+        <a href="lexique.html">Lexique</a>
+        <a href="apropos.html">À propos</a>
+        <a href="produits/carotte.html">Fiche carotte</a>
+      </nav>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Croq’Saison est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mini: false, i: -1, ready: !!window.SAISON };
+  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); clearInterval(this._w); }
+  componentDidMount() {
+    this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
+    const start = () => { this.next(); this._t = setInterval(() => this.next(), 3000); };
+    if (window.SAISON) start(); else this._w = setInterval(() => { if (window.SAISON) { clearInterval(this._w); start(); } }, 50);
+  }
+  next() {
+    const L = window.SAISON.produits.filter(p => p.img); if (!L.length) return;
+    let j; do { j = Math.floor(Math.random() * L.length); } while (L.length > 1 && L[j].s === (this.state.cur && this.state.cur.s));
+    this.setState({ cur: L[j], i: this.state.i + 1 });
+  }
+  renderVals() {
+    const mini = !!this.state.mini, S = window.SAISON, p = this.state.cur;
+    const heroImg = p ? React.createElement('img', { key: this.state.i, src: p.img, alt: p.n, style: { width: '100%', height: '100%', objectFit: 'contain', animation: 'croqPop .6s ease-out both' } }) : null;
+    return { heroImg, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
+      logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+  }
+}
+</script>
+</body>
+</html>
