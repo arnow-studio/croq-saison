@@ -15,14 +15,15 @@
   <meta property="og:title" content="Sainos — les fruits et légumes de saison">
   <meta property="og:description" content="Découvrez chaque mois les fruits, légumes et herbes de pleine saison.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="produits-data.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Sainos","url":"https://www.sainos.fr/","potentialAction":{"@type":"SearchAction","target":"https://www.sainos.fr/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'Outfit', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
@@ -32,8 +33,8 @@
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
       <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
-        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
-        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="360" height="80" style="{{ logoMini }}">
+        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="544" height="242" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="544" height="242" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html" aria-current="page">Accueil</a>
@@ -49,12 +50,25 @@
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4);">
+    <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: var(--space-4) var(--space-6); background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
+        <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; color: var(--color-accent-2-900);">🎒 Nouveau : le mode enfant</span>
+          <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900);">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
+        </div>
+        <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: var(--space-4) var(--space-6); background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: var(--radius-lg);">
+        <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
+          <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900);">Choisis un fruit ou un légume, réponds à la question piège et gagne son badge. Tu en as déjà {{ badgeCount }} sur {{ nbTotal }} !</span>
+        </div>
+        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Revenir au mode normal</button>
+      </div></sc-if>
     <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-8) 0;">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
         <span class="tag tag-accent-2" style="align-self: flex-start; font-size: 13px; padding: 5px 14px;">Calendrier des fruits &amp; légumes</span>
-        <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
-        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p>
-        <p style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 15px; font-weight: 600; color: var(--color-accent-2-900);"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-2-500);"></span>Un guide gratuit et indépendant — rien à vendre, juste de quoi mieux manger.</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mange au rythme des saisons !</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, découvre ce qui pousse près de chez toi : {{ total }} fruits, légumes et herbes à explorer, avec une question piège et un badge pour chacun.</p></sc-if>
         <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
           <a href="#catalogue" class="btn btn-primary" style="padding: 12px 22px; font-size: 15px;">Voir les produits de {{ moisNomLower }}</a>
           <a href="saisons.html" class="btn btn-secondary" style="padding: 12px 22px; font-size: 15px;">Calendrier complet</a>
@@ -101,7 +115,7 @@
               <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
                   <span aria-hidden="true" style="width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font-size: 58px; background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ c.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
-                  <span class="tag tag-neutral" style="font-size: 12px; background: var(--color-bg);">{{ c.flag }} {{ c.origine }}</span>
+                  <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;"><span class="tag tag-neutral" style="font-size: 12px; background: var(--color-bg);">{{ c.flag }} {{ c.origine }}</span><sc-if value="{{ c.badge }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 12px;">🏅 Badge gagné</span></sc-if></span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 2px;">
                   <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700); font-weight: 600;">{{ c.type }}</span>
@@ -112,7 +126,7 @@
                     <span class="{{ fm.cls }}" style="font-size: 12px;">{{ fm.label }}</span>
                   </sc-for>
                 </div>
-                <span style="margin-top: auto; font-weight: 700; font-size: 14px; color: var(--color-accent-700);">En savoir plus →</span>
+                <span style="margin-top: auto; font-weight: 700; font-size: 14px; color: var(--color-accent-700);"><sc-if value="{{ c.adult }}" hint-placeholder-val="{{ true }}">En savoir plus →</sc-if><sc-if value="{{ c.kid }}" hint-placeholder-val="{{ false }}">Découvrir →</sc-if></span>
               </a>
             </li>
           </sc-for>
@@ -137,6 +151,7 @@
         <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--font-heading); font-size: 24px;">Le lexique du potager</span><span style="font-size: 15px;">Drupe, Solanacées, AOP, Bio…</span></span>
       </a>
     </section>
+    <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}">
     <section id="a-propos" aria-labelledby="titre-apropos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
       <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
         <h2 id="titre-apropos" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">À propos</h2>
@@ -148,11 +163,24 @@
         <p style="margin: 0;">De plus, nous tenons à votre vie privée : aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
       </div>
     </section>
+    </sc-if>
+    <sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}">
+    <section id="a-propos" aria-labelledby="titre-apropos-k" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
+        <h2 id="titre-apropos-k" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">Sainos, c’est quoi ?</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.6; text-wrap: pretty;">Un site gratuit pour découvrir les fruits et légumes de chaque saison. Il est né des balades au marché du samedi matin d’un citadin curieux.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 640px; font-size: 18px; line-height: 1.65; text-wrap: pretty;">
+        <p style="margin: 0;">Ici, rien à acheter et pas de publicité : juste de quoi apprendre et se régaler.</p>
+        <p style="margin: 0;">Et personne ne te suit : Sainos n’utilise aucun cookie.</p>
+      </div>
+    </section>
+    </sc-if>
   </main>
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="images/logo-mini.png" alt="Sainos" width="360" height="80" style="display: block; height: 28px; width: auto;">
+      <img src="images/logo-mini.png" alt="Sainos" width="544" height="242" style="display: block; height: 44px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -167,18 +195,25 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;moisSimule&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:12,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Démo&quot;,&quot;label&quot;:&quot;Mois simulé (0 = mois réel)&quot;}}">
 class Component extends DCLogic {
-  state = { q: '', type: 'all', france: false, scope: 'mois', ready: !!window.SAISON };
+  _mode() { try { return localStorage.getItem('sainos-mode') === 'enfant' ? 'enfant' : 'normal'; } catch (e) { return 'normal'; } }
+  _badges() { try { return JSON.parse(localStorage.getItem('sainos-badges') || '[]'); } catch (e) { return []; } }
+  _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
+  setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
+  _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
+  state = { mode: this._mode(), badges: this._badges(), q: '', type: 'all', france: false, scope: 'mois', ready: !!window.SAISON };
   componentDidMount() {
+    window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const q = new URLSearchParams(location.search).get('q');
     if (q) this.setState({ q });
     if (!window.SAISON) this._t = setInterval(() => { if (window.SAISON) { clearInterval(this._t); this.setState({ ready: true }); } }, 50);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
+  componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
   renderVals() {
-    const mini = !!this.state.mini;
-    return { ...this._rv(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+    const mini = true; const kv = this._kidVals(); const rv = this._rv(); const bs = this.state.badges || [];
+    rv.cards = (rv.cards || []).map(c => ({ ...c, kid: kv.kid, adult: !kv.kid, badge: kv.kid && bs.includes(c.s) }));
+    return { ...rv, ...kv, logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 52, width: 'auto' } };
   }
   _rv() {
     const S = window.SAISON;
@@ -207,7 +242,7 @@ class Component extends DCLogic {
     const cards = list.map(p => {
       const forts = (p.f.length ? p.f : []).map(x => ({ label: S.MOIS_C[x - 1], cls: 'tag ' + (x === m ? 'tag-accent' : 'tag-accent-2') }));
       if (!p.f.length) forts.push({ label: p.m.length === 12 ? 'Toute l’année' : 'Hors saison forte', cls: 'tag tag-neutral' });
-      return { ...S.vis(p), href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
+      return { ...S.vis(p), s: p.s, href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
     });
     const moisNom = S.MOIS[m - 1];
     const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';

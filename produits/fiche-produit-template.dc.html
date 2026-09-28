@@ -9,14 +9,16 @@
 <x-dc>
 <helmet>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="../produits-data.js"></script>
   <script src="../produits-textes.js"></script>
+  <script src="../produits-enfants.js"></script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'Outfit', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
@@ -26,9 +28,9 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="../index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Croq’Saison — accueil">
-        <img src="../images/logo.png" alt="Croq’Saison — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
-        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="222" height="34" style="{{ logoMini }}">
+      <a href="../index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
+        <img src="../images/logo.png" alt="Sainos — fruits et légumes de saison" width="544" height="242" style="{{ logoBig }}">
+        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="544" height="242" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="../index.html">Accueil</a>
@@ -44,6 +46,14 @@
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8);">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-2-900);">🎒 Tu as entre 10 et 12 ans ? Découvre cette fiche en mode enfant : question piège, défi cuisine et badge.</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toEnfant }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Passer en mode enfant</button>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-900); font-weight: 700;">🎒 Mode enfant activé · 🏅 {{ badgeCount }} / {{ nbTotal }} badges</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Revenir au mode normal</button>
+      </div></sc-if>
+    <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}">
     <article style="display: flex; flex-direction: column; gap: var(--space-8);">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6);">
         <nav aria-label="Fil d’Ariane" style="font-size: 14px;">
@@ -221,6 +231,113 @@
         </section>
       </sc-if>
     </article>
+    </sc-if>
+    <sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}">
+    <article style="display: flex; flex-direction: column; gap: var(--space-8);">
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
+          <span style="align-self: flex-start; padding: 6px 14px; background: var(--color-accent-200); color: var(--color-accent-900); border-radius: 999px; font-weight: 800; font-size: 15px;">{{ k.tag }}</span>
+          <h1 style="margin: 0; font-size: clamp(44px, 6vw, 68px); line-height: 1;">{{ k.titre }}</h1>
+          <p style="margin: 0; font-size: 21px; line-height: 1.55; text-wrap: pretty;">{{ k.intro }}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <span style="padding: 8px 16px; background: #ffffff; border: 1px solid var(--color-divider); border-radius: 999px; font-size: 16px;">{{ k.orig }}</span>
+            <span style="padding: 8px 16px; background: #ffffff; border: 1px solid var(--color-divider); border-radius: 999px; font-size: 16px;">⭐ {{ k.best }}</span>
+          </div>
+        </div>
+        <div aria-hidden="true" style="position: relative; justify-self: center; width: min(360px, 80vw); aspect-ratio: 1;">
+          <div style="position: absolute; inset: 0; background: var(--color-accent-200); border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%;"></div>
+          <div style="position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(150px, 22vw, 220px); line-height: 1; transform: rotate(-10deg);"><sc-if value="{{ hero.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ hero.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ true }}">{{ hero.e }}</sc-if></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="hk-quand" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--color-surface); border-radius: var(--radius-lg);">
+        <h2 id="hk-quand" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Quand le manger ?</h2>
+        <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(max(62px, calc((100% - 88px) / 12)), 1fr)); gap: 8px;">
+          <sc-for list="{{ kcal }}" as="cm" hint-placeholder-count="12">
+            <li style="{{ cm.style }}"><span style="font-weight: 800; font-size: 15px;">{{ cm.label }}</span><span style="font-size: 20px;">{{ cm.icon }}</span></li>
+          </sc-for>
+        </ol>
+        <p style="margin: 0; font-size: 17px; display: flex; flex-wrap: wrap; gap: var(--space-4);"><span>⭐ Le meilleur moment</span><span>🙂 On en trouve</span><span>💤 Il se repose</span></p>
+      </section>
+
+      <section aria-labelledby="hk-quiz" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg);">
+        <span style="font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Question piège</span>
+        <h2 id="hk-quiz" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">{{ k.quizQ }}</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <sc-for list="{{ quiz }}" as="qz" hint-placeholder-count="3">
+            <button type="button" onClick="{{ qz.pick }}" style="{{ qz.style }}">{{ qz.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: var(--space-4); background: var(--color-accent-2-100); color: var(--color-accent-2-900); border-radius: var(--radius-lg); font-size: 18px; line-height: 1.6;"><strong>{{ quizVerdict }}</strong> {{ k.quizWhy }}</p>
+        </sc-if>
+      </section>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+        <section aria-labelledby="hk-histoire" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="hk-histoire" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Son histoire</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.hist }}</p>
+        </section>
+        <section aria-labelledby="hk-ou" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="hk-ou" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Où ça pousse ?</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.ou }}</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <sc-for list="{{ tx.regions }}" as="rg" hint-placeholder-count="3">
+              <li style="padding: 7px 14px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 30%, transparent); border-radius: 999px; font-size: 16px;">📍 {{ rg }}</li>
+            </sc-for>
+          </ul>
+        </section>
+      </div>
+
+      <aside aria-label="Le sais-tu ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg);">
+        <span aria-hidden="true" style="font-size: 48px; line-height: 1;">🤯</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 26px;">Le sais-tu ?</span>
+          <p style="margin: 0; font-size: 19px; line-height: 1.6;">{{ k.sais }}</p>
+        </div>
+      </aside>
+
+      <section aria-labelledby="hk-bon" style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <h2 id="hk-bon" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Pourquoi c’est bon pour toi</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4);">
+          <sc-for list="{{ k.bon }}" as="kb" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); background: var(--color-accent-2-100); border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
+              <span aria-hidden="true" style="font-size: 36px;">{{ kb.i }}</span>
+              <h3 style="margin: 0; font-size: 22px; color: var(--color-accent-2-900);">{{ kb.t }}</h3>
+              <p style="margin: 0; font-size: 17px; line-height: 1.55;">{{ kb.x }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="hk-defi" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg);">
+        <span style="font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Défi cuisine · avec un adulte</span>
+        <h2 id="hk-defi" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">{{ k.defiTitre }}</h2>
+        <ol style="margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: var(--space-2); font-size: 19px; line-height: 1.55;">
+          <sc-for list="{{ k.etapes }}" as="st" hint-placeholder-count="4"><li>{{ st.x }}</li></sc-for>
+        </ol>
+      </section>
+
+      <section style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: var(--color-accent-200); border-radius: var(--radius-lg);">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; color: var(--color-accent-900);">{{ badgeTitle }}</span>
+          <span style="font-size: 17px; color: var(--color-accent-900);">{{ badgeText }}</span>
+        </div>
+        <button type="button" class="btn btn-primary" onClick="{{ collect }}" disabled="{{ hasBadge }}" style="padding: 14px 26px; font-size: 18px; min-height: 52px;">{{ badgeBtn }}</button>
+      </section>
+
+      <details style="background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6);">
+        <summary style="cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--space-3); align-items: center;">
+          <h2 style="margin: 0; font-size: 22px;">Le coin des parents</h2>
+          <span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-weight: 700;">+</span>
+        </summary>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin-top: var(--space-3); font-size: 16px; line-height: 1.6;">
+          <p style="margin: 0;">{{ k.parents }}</p>
+          <button type="button" class="btn btn-secondary" onClick="{{ voirComplet }}" style="padding: 10px 18px; font-size: 15px;">Voir la fiche complète</button>
+        </div>
+      </details>
+    </article>
+    </sc-if>
 
     <section aria-labelledby="h-related" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
       <h2 id="h-related" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">{{ relatedTitle }}</h2>
@@ -240,38 +357,77 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="../images/logo-mini.png" alt="Croq’Saison" width="222" height="34" style="display: block; height: 28px; width: auto;">
+      <img src="../images/logo-mini.png" alt="Sainos" width="544" height="242" style="display: block; height: 44px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier des saisons</a>
         <a href="../lexique.html">Lexique</a>
         <a href="../apropos.html">À propos</a>
       </nav>
-      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Croq’Saison est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Sainos est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
     </div>
   </footer>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;produit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;carotte&quot;,&quot;options&quot;:[&quot;carotte&quot;,&quot;tomate&quot;,&quot;fraise&quot;,&quot;pomme&quot;,&quot;basilic&quot;,&quot;potiron&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Produit (aperçu)&quot;}}">
 class Component extends DCLogic {
-  state = { ready: !!(window.SAISON && window.SAISON_TEXTES) };
+  _mode() { try { return localStorage.getItem('sainos-mode') === 'enfant' ? 'enfant' : 'normal'; } catch (e) { return 'normal'; } }
+  _badges() { try { return JSON.parse(localStorage.getItem('sainos-badges') || '[]'); } catch (e) { return []; } }
+  _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
+  setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
+  _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
+  state = { mode: this._mode(), badges: this._badges(), pick: null, ready: !!(window.SAISON && window.SAISON_TEXTES) };
   componentDidMount() {
+    window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const done = () => { this.applySeo(); this.setState({ ready: true }); };
-    const ok = () => window.SAISON && window.SAISON_TEXTES;
+    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS;
     if (ok()) setTimeout(done, 0); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); done(); } }, 50);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
+  componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
+  _kf() {
+    const S = window.SAISON, E = window.SAISON_ENFANTS;
+    const p = S && S.bySlug(this.slug()), d = p && E && E.produits[p.s];
+    if (!d) return { hasK: false, k: { bon: [], etapes: [] }, kcal: [], quiz: [], answered: false, quizVerdict: '', hasBadge: false, badgeTitle: '', badgeText: '', badgeBtn: '', collect: () => {}, voirComplet: () => {} };
+    const now = new Date().getMonth() + 1, pk = p.f[0];
+    const sea = !pk ? 'de toute l’année 📅' : [12, 1, 2].includes(pk) ? 'd’hiver ❄️' : pk <= 5 ? 'de printemps 🌸' : pk <= 8 ? 'd’été ☀️' : 'd’automne 🍂';
+    const k = { titre: d.titre, intro: d.intro, tag: S.TYPES[p.t].one + ' ' + sea, orig: p.orig.flag + ' ' + p.orig.label,
+      best: p.f.length ? 'Meilleur en ' + p.f.map(x => S.MOIS[x - 1].toLowerCase()).join(', ') : 'Toute l’année',
+      quizQ: d.quiz[0], quizWhy: d.quiz[3], hist: d.hist, ou: d.ou, sais: d.sais,
+      bon: d.bon.map(([i, t, x]) => ({ i, t, x })), defiTitre: d.defi[0], etapes: d.defi[1].map(x => ({ x })),
+      parents: 'Famille : ' + p.fam + '. ' + p.d };
+    const kcal = S.MOIS_C.map((label, i) => {
+      const m = i + 1, f = p.f.includes(m), av = p.m.includes(m);
+      return { label, icon: f ? '⭐' : av ? '🙂' : '💤', style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, padding: '12px 4px', borderRadius: 18,
+        background: f ? 'var(--color-accent)' : av ? 'var(--color-accent-2-200)' : '#ffffff', color: f ? '#ffffff' : 'var(--color-text)',
+        border: m === now ? '2px solid var(--color-text)' : '2px solid transparent' } };
+    });
+    const pick = this.state.pick, good = d.quiz[2];
+    const quiz = d.quiz[1].map((label, i) => {
+      const sel = pick === i, ok = pick !== null && i === good;
+      return { label, pick: () => this.setState({ pick: i }), style: { padding: '14px 24px', minHeight: 54, fontSize: 18, fontWeight: 800, fontFamily: 'var(--font-body)', cursor: 'pointer', borderRadius: 999,
+        border: '2px solid ' + (ok ? 'var(--color-accent-2-800)' : sel ? 'var(--color-accent)' : 'var(--color-divider)'),
+        background: ok ? 'var(--color-accent-2-200)' : sel ? 'var(--color-accent-100)' : '#ffffff', color: 'var(--color-text)' } };
+    });
+    const has = (this.state.badges || []).includes(p.s), nom = d.titre.replace(/^(Le |La |L’|Les )/, '');
+    return { hasK: true, k, kcal, quiz, answered: pick !== null,
+      quizVerdict: pick === good ? 'Bravo, bien joué ! 🎉' : 'Presque ! La bonne réponse : « ' + d.quiz[1][good] + ' ».',
+      hasBadge: has, badgeTitle: has ? 'Badge ' + nom.toLowerCase() + ' gagné ! 🏅' : 'Tu as tout lu ?',
+      badgeText: has ? 'Il est rangé dans ta collection. Prochain produit ?' : 'Gagne le badge ' + nom.toLowerCase() + ' pour ta collection.',
+      badgeBtn: has ? 'Badge obtenu ✓' : 'Je gagne mon badge',
+      collect: () => { const b = [...new Set([...(this.state.badges || []), p.s])]; try { localStorage.setItem('sainos-badges', JSON.stringify(b)); } catch (e) {} this.setState({ badges: b }); },
+      voirComplet: () => { this.setMode('normal'); window.scrollTo(0, 0); } };
+  }
   slug() { return new URLSearchParams(location.search).get('p') || this.props.produit || 'carotte'; }
   applySeo() {
     const S = window.SAISON, p = S.bySlug(this.slug());
     if (!p) return;
-    const base = 'https://www.croqsaison.fr/produits/' + p.s + '.html';
+    const base = 'https://www.sainos.fr/produits/' + p.s + '.html';
     // Pages statiques (ex. carotte.dc.html) déclarent déjà leurs balises : on ne complète que les fiches générées.
     if (document.querySelector('script[type="application/ld+json"]')) return;
     const title = p.detail ? p.detail.title : p.n + ' de saison : origine, calendrier & conseils';
-    document.title = title + ' | Croq’Saison';
+    document.title = title + ' | Sainos';
     const meta = (attr, key, content) => { let m = document.querySelector('meta[' + attr + '="' + key + '"]'); if (!m) { m = document.createElement('meta'); m.setAttribute(attr, key); document.head.appendChild(m); } m.setAttribute('content', content); };
     const months = p.m.length === 12 ? 'toute l’année' : S.MOIS[p.m[0] - 1].toLowerCase() + ' à ' + S.MOIS[p.m[p.m.length - 1] - 1].toLowerCase();
     meta('name', 'description', p.n + ' : de saison ' + months + '. ' + p.d);
@@ -281,14 +437,14 @@ class Component extends DCLogic {
     s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
       { '@type': 'Thing', name: p.n, description: p.d, url: base, additionalType: 'https://www.wikidata.org/wiki/Q11004' },
       { '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.croqsaison.fr/' },
-        { '@type': 'ListItem', position: 2, name: S.TYPES[p.t].label, item: 'https://www.croqsaison.fr/saisons.html' },
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.sainos.fr/' },
+        { '@type': 'ListItem', position: 2, name: S.TYPES[p.t].label, item: 'https://www.sainos.fr/saisons.html' },
         { '@type': 'ListItem', position: 3, name: p.n, item: base }] }] });
     document.head.appendChild(s);
   }
   renderVals() {
-    const mini = !!this.state.mini;
-    return { ...this._rv(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+    const mini = true; const kv = this._kidVals(); const kf = this._kf(); const kidOn = kv.kid && kf.hasK;
+    return { ...this._rv(), ...kv, ...kf, kid: kidOn, adult: !kidOn, logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 52, width: 'auto' } };
   }
   _rv() {
     const S = window.SAISON;

@@ -12,14 +12,15 @@
   <meta name="description" content="Le calendrier complet des fruits, légumes et herbes de saison en France : sélectionnez un mois pour voir ce qui est en pleine saison.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://www.sainos.fr/saisons.html">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="produits-data.js"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.sainos.fr/"},{"@type":"ListItem","position":2,"name":"Calendrier des saisons","item":"https://www.sainos.fr/saisons.html"}]}</script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'Outfit', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
@@ -29,8 +30,8 @@
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
       <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
-        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
-        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="360" height="80" style="{{ logoMini }}">
+        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="544" height="242" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="544" height="242" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html">Accueil</a>
@@ -46,10 +47,19 @@
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8);">
-    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-8); max-width: 720px;">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-2-900);">🎒 Tu as entre 10 et 12 ans ? Essaie le mode enfant : quiz, défis cuisine et badges.</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toEnfant }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Passer en mode enfant</button>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-900); font-weight: 700;">🎒 Mode enfant activé · 🏅 {{ badgeCount }} / {{ nbTotal }} badges</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Revenir au mode normal</button>
+      </div></sc-if>
+
+    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: 0; max-width: 720px;">
       <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Calendrier des saisons</span></nav>
-      <h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Le calendrier des fruits et légumes de saison</h1>
-      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p>
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Le calendrier des fruits et légumes de saison</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Qu’est-ce qu’on mange ce mois-ci ?</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisis un mois et découvre les fruits, légumes et herbes qui sont à leur meilleur moment.</p></sc-if>
     </div>
 
     <section aria-label="Choisir un mois" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: var(--space-2);">
@@ -130,7 +140,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="images/logo-mini.png" alt="Sainos" width="360" height="80" style="display: block; height: 28px; width: auto;">
+      <img src="images/logo-mini.png" alt="Sainos" width="544" height="242" style="display: block; height: 44px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -145,18 +155,24 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { m: new Date().getMonth() + 1, type: 'all', ready: !!window.SAISON };
+  _mode() { try { return localStorage.getItem('sainos-mode') === 'enfant' ? 'enfant' : 'normal'; } catch (e) { return 'normal'; } }
+  _badges() { try { return JSON.parse(localStorage.getItem('sainos-badges') || '[]'); } catch (e) { return []; } }
+  _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
+  setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
+  _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
+  state = { mode: this._mode(), badges: this._badges(), m: new Date().getMonth() + 1, type: 'all', ready: !!window.SAISON };
   componentDidMount() {
+    window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const pm = parseInt(new URLSearchParams(location.search).get('mois'), 10);
     if (pm >= 1 && pm <= 12) this.setState({ m: pm });
     if (!window.SAISON) this._t = setInterval(() => { if (window.SAISON) { clearInterval(this._t); this.setState({ ready: true }); } }, 50);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
+  componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
   renderVals() {
-    const mini = !!this.state.mini;
-    return { ...this._rv(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+    const mini = true;
+    return { ...this._rv(), ...this._kidVals(), logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 52, width: 'auto' } };
   }
   _rv() {
     const S = window.SAISON;

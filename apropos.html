@@ -12,13 +12,14 @@
   <meta name="description" content="Sainos est un projet indépendant et éducatif pour découvrir les fruits et légumes de saison. Sans vente, sans publicité, sans cookie.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://www.sainos.fr/apropos.html">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Viga&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="produits-data.js"></script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent-100: #fff6f0; --color-accent-200: #fce8dc; --color-accent-300: #f6d6c2; --color-accent-800: #6e4a33; --color-accent-900: #5b3b27; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: var(--color-accent-900); --color-divider: color-mix(in srgb, var(--color-accent-700) 20%, transparent); --font-heading: 'Viga', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'Outfit', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
@@ -29,8 +30,8 @@
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
       <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
-        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="152" height="120" style="{{ logoBig }}">
-        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="360" height="80" style="{{ logoMini }}">
+        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="544" height="242" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="544" height="242" style="{{ logoMini }}">
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html">Accueil</a>
@@ -46,11 +47,19 @@
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding-top: var(--space-8);">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-2-900);">🎒 Tu as entre 10 et 12 ans ? Essaie le mode enfant : quiz, défis cuisine et badges.</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toEnfant }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Passer en mode enfant</button>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
+        <span style="color: var(--color-accent-900); font-weight: 700;">🎒 Mode enfant activé · 🏅 {{ badgeCount }} / {{ nbTotal }} badges</span>
+        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Revenir au mode normal</button>
+      </div></sc-if>
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding-top: 0;">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 600px;">
         <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">À propos</span></nav>
         <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">À propos</h1>
-        <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Ce projet est né des flâneries du samedi matin d’un citadin amoureux de son marché local, désireux de remettre la saisonnalité au cœur de nos assiettes.</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Nouveauté née des flâneries d’un amoureux des marchés locaux, ce projet indépendant et passionné vous invite à redécouvrir le vrai rythme des saisons. Une démarche simple pour remettre la fraîcheur et la saisonnalité au cœur de vos assiettes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos est né des balades au marché du samedi matin d’un citadin curieux. Son idée : t’aider à savoir ce qui pousse à chaque saison, pour manger des fruits et légumes pleins de goût.</p></sc-if>
       </div>
       <div style="position: relative; justify-self: center; width: min(420px, 86vw); aspect-ratio: 1; display: grid; place-items: center;">
         <div aria-hidden="true" style="position: absolute; inset: 0; background: #e6eff4; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;"></div>
@@ -62,18 +71,21 @@
     <section aria-label="Nos engagements" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4);">
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center;"><img src="images/poire.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
-        <h2 style="margin: 0; font-size: 26px;">Un objectif éducatif</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse.</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Un objectif éducatif</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Pour apprendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Découvrir la nature en t’amusant : questions pièges, défis cuisine et badges à collectionner.</p></sc-if>
       </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center;"><img src="images/pomme.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
-        <h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Il n’y a aucun but commercial derrière Sainos : ni vente, ni publicité, ni partenariat.</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Il n’y a aucun but commercial derrière Sainos : ni vente, ni publicité, ni partenariat.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Ici, pas de publicité et rien à acheter. Juste de quoi apprendre et se régaler.</p></sc-if>
       </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: #e6eff4; display: grid; place-items: center;"><img src="images/myrtille.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
-        <h2 style="margin: 0; font-size: 26px;">Votre vie privée</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Votre vie privée</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">On ne te suit pas</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie : personne ne regarde ce que tu fais sur Sainos.</p></sc-if>
       </div>
     </section>
 
@@ -88,7 +100,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="images/logo-mini.png" alt="Sainos" width="360" height="80" style="display: block; height: 28px; width: auto;">
+      <img src="images/logo-mini.png" alt="Sainos" width="544" height="242" style="display: block; height: 44px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -103,9 +115,15 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { mini: false, i: -1, ready: !!window.SAISON };
-  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); clearInterval(this._w); }
+  _mode() { try { return localStorage.getItem('sainos-mode') === 'enfant' ? 'enfant' : 'normal'; } catch (e) { return 'normal'; } }
+  _badges() { try { return JSON.parse(localStorage.getItem('sainos-badges') || '[]'); } catch (e) { return []; } }
+  _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
+  setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
+  _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
+  state = { mode: this._mode(), badges: this._badges(), mini: false, i: -1, ready: !!window.SAISON };
+  componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); clearInterval(this._w); }
   componentDidMount() {
+    window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const start = () => { this.next(); this._t = setInterval(() => this.next(), 3000); };
@@ -117,10 +135,10 @@ class Component extends DCLogic {
     this.setState({ cur: L[j], i: this.state.i + 1 });
   }
   renderVals() {
-    const mini = !!this.state.mini, S = window.SAISON, p = this.state.cur;
+    const mini = true, S = window.SAISON, p = this.state.cur;
     const heroImg = p ? React.createElement('img', { key: this.state.i, src: p.img, alt: p.n, style: { width: '100%', height: '100%', objectFit: 'contain', animation: 'croqPop .6s ease-out both' } }) : null;
-    return { heroImg, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
-      logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 30, width: 'auto' } };
+    return { ...this._kidVals(), heroImg, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
+      logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 52, width: 'auto' } };
   }
 }
 </script>
