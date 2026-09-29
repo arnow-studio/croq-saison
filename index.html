@@ -100,7 +100,7 @@
         <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(210px, 42vw), 1fr)); gap: clamp(10px, 2.5vw, 16px);">
           <sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
             <li style="display: flex;">
-              <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: clamp(12px, 3vw, 16px); background: #ffffff; min-width: 0; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
+              <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: clamp(12px, 3vw, 16px); background: #ffffff; min-width: 0; border: {{ c.ring }}; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
                   <span aria-hidden="true" style="width: clamp(64px, 18vw, 96px); height: clamp(64px, 18vw, 96px); border-radius: 50%; display: grid; place-items: center; font-size: clamp(40px, 11vw, 58px); background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ c.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
                   <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;"><span class="tag tag-neutral" style="font-size: 12px; background: var(--color-bg);">{{ c.flag }} {{ c.origine }}</span><sc-if value="{{ c.badge }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 12px;">🏅 Badge gagné</span></sc-if></span>
@@ -141,22 +141,22 @@
     </section>
     <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
-            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🎒 Le mode enfant</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
       </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents veulent lire la version adulte ? Un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
-          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode adulte</button>
+          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
       </div></sc-if>
     </section>
@@ -226,7 +226,7 @@ class Component extends DCLogic {
     const cards = list.map(p => {
       const forts = (p.f.length ? p.f : []).map(x => ({ label: S.MOIS_C[x - 1], cls: 'tag ' + (x === m ? 'tag-accent' : 'tag-accent-2') }));
       if (!p.f.length) forts.push({ label: p.m.length === 12 ? 'Toute l’année' : 'Hors saison forte', cls: 'tag tag-neutral' });
-      return { ...S.vis(p), s: p.s, href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
+      return { ...S.vis(p), s: p.s, ring: p.f.includes(m) ? '2px solid var(--color-accent-600)' : '2px solid transparent', href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
     });
     const moisNom = S.MOIS[m - 1];
     const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';
