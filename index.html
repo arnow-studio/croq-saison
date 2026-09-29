@@ -8,8 +8,8 @@
 <body>
 <x-dc>
 <helmet>
-  <title>Fruits et légumes de saison : le calendrier du mois | Sainos</title>
-  <meta name="description" content="Quels fruits et légumes manger ce mois-ci ? Calendrier de saison, origine France, fiches produits, bienfaits et conseils de conservation.">
+  <title>Fruits et légumes de saison : le calendrier du mois | Sainos</title>
+  <meta name="description" content="Quels fruits et légumes manger ce mois-ci ? Calendrier de saison, origine France, fiches produits, bienfaits et conseils de conservation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://www.sainos.fr/">
   <meta property="og:url" content="https://www.sainos.fr/">
@@ -74,12 +74,12 @@
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px);">
-        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-8) 0;">
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-6) 0 var(--space-8);">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
         <span class="tag tag-accent-2" style="align-self: flex-start; font-size: 13px; padding: 5px 14px;">Calendrier des fruits &amp; légumes</span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
-        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mange au rythme des saisons !</h1>
-        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, découvre ce qui pousse près de chez toi : {{ total }} fruits, légumes et herbes à explorer, avec une question piège et un badge pour chacun.</p></sc-if>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mange au rythme des saisons !</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, découvre ce qui pousse près de chez toi : {{ total }} fruits, légumes et herbes à explorer, avec une question piège et un badge pour chacun.</p></sc-if>
         <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
           <a href="#catalogue" class="btn btn-primary" style="padding: 12px 22px; font-size: 15px;">Voir les produits de {{ moisNomLower }}</a>
           <a href="saisons.html" class="btn btn-secondary" style="padding: 12px 22px; font-size: 15px;">Calendrier complet</a>
@@ -168,7 +168,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
@@ -177,7 +177,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
           <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
@@ -253,7 +253,7 @@ class Component extends DCLogic {
       return { ...S.vis(p), s: p.s, ring: p.f.includes(m) ? '2px solid var(--color-accent-600)' : '2px solid transparent', href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
     });
     const moisNom = S.MOIS[m - 1];
-    const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';
+    const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';
     const seenE = new Set();
     const heroEmojis = S.produits.filter(p => p.f.includes(m) && !seenE.has(p.e) && seenE.add(p.e)).slice(0, 8).map(p => S.vis(p));
     const SMILEYS = ['🥶','🥰','😊','🤗','😄','😁','🤩','😎','🤓','😋','😌','🥳'];

@@ -79,7 +79,7 @@
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 600px;">
         <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">À propos</span></nav>
         <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">À propos</h1>
-        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Nouveauté née des flâneries d’un amoureux des marchés locaux, ce projet indépendant et passionné vous invite à redécouvrir le vrai rythme des saisons. Une démarche simple pour remettre la fraîcheur et la saisonnalité au cœur de vos assiettes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos est né des balades au marché du samedi matin d’un citadin curieux. Son idée : t’aider à savoir ce qui pousse à chaque saison, pour manger des fruits et légumes pleins de goût.</p></sc-if>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Nouveauté née des flâneries d’un amoureux des marchés locaux, ce projet indépendant et passionné vous invite à redécouvrir le vrai rythme des saisons. Une démarche simple pour remettre la fraîcheur et la saisonnalité au cœur de vos assiettes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos est né des balades au marché du samedi matin d’un citadin curieux. Son idée : t’aider à savoir ce qui pousse à chaque saison, pour manger des fruits et légumes pleins de goût.</p></sc-if>
       </div>
       <div style="position: relative; justify-self: center; width: min(420px, 86vw); aspect-ratio: 1; display: grid; place-items: center;">
         <div aria-hidden="true" style="position: absolute; inset: 0; background: #e6eff4; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;"></div>
@@ -92,25 +92,25 @@
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center;"><img src="images/poire.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Un objectif éducatif</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Pour apprendre</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Découvrir la nature en t’amusant : questions pièges, défis cuisine et badges à collectionner.</p></sc-if>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Pour apprendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Découvrir la nature en t’amusant : questions pièges, défis cuisine et badges à collectionner.</p></sc-if>
       </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center;"><img src="images/pomme.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Il n’y a aucun but commercial derrière Sainos : ni vente, ni publicité, ni partenariat.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Il n’y a aucun but commercial derrière Sainos : ni vente, ni publicité, ni partenariat.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">Rien à vendre</h2>
         <p style="margin: 0; font-size: 16px; line-height: 1.6;">Ici, pas de publicité et rien à acheter. Juste de quoi apprendre et se régaler.</p></sc-if>
       </div>
       <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
         <span aria-hidden="true" style="width: 84px; height: 84px; border-radius: 50%; background: #e6eff4; display: grid; place-items: center;"><img src="images/myrtille.png" alt="" style="width: 62%; height: 62%; object-fit: contain;"></span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Votre vie privée</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">On ne te suit pas</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie : personne ne regarde ce que tu fais sur Sainos.</p></sc-if>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">On ne te suit pas</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie : personne ne regarde ce que tu fais sur Sainos.</p></sc-if>
       </div>
     </section>
 
     <section style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
-      <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(22px, 2.6vw, 30px);">Prêt à croquer la saison ?</p>
+      <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(22px, 2.6vw, 30px);">Prêt à croquer la saison ?</p>
       <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
         <a href="index.html#catalogue" class="btn btn-primary" style="padding: 12px 22px; font-size: 15px;">Les produits du mois</a>
         <a href="saisons.html" class="btn btn-secondary" style="padding: 12px 22px; font-size: 15px;">Le calendrier</a>
@@ -122,7 +122,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
@@ -131,7 +131,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
           <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>

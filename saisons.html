@@ -9,7 +9,7 @@
 <x-dc>
 <helmet>
   <title>Calendrier des fruits et légumes de saison, mois par mois | Sainos</title>
-  <meta name="description" content="Le calendrier complet des fruits, légumes et herbes de saison en France : sélectionnez un mois pour voir ce qui est en pleine saison.">
+  <meta name="description" content="Le calendrier complet des fruits, légumes et herbes de saison en France : sélectionnez un mois pour voir ce qui est en pleine saison.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://www.sainos.fr/saisons.html">
   <meta property="og:title" content="Calendrier des fruits et légumes de saison">
@@ -75,10 +75,10 @@
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8);">
       
-    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-8); max-width: 720px;">
+    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); max-width: 720px;">
       <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Calendrier des saisons</span></nav>
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Le calendrier des fruits et légumes de saison</h1>
-      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Qu’est-ce qu’on mange ce mois-ci ?</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Qu’est-ce qu’on mange ce mois-ci ?</h1>
       <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisis un mois et découvre les fruits, légumes et herbes qui sont à leur meilleur moment.</p></sc-if>
     </div>
 
@@ -162,7 +162,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
@@ -171,7 +171,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
           <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
@@ -247,7 +247,7 @@ class Component extends DCLogic {
       cells: S.MOIS.map((mn, i) => {
         const mm = i + 1, f = p.f.includes(mm), d = p.m.includes(mm);
         const smiley = f ? SMILEYS[i] : '';
-        return { smiley, title: p.n + ' — ' + mn + ' : ' + (f ? 'pleine saison' : d ? 'disponible' : 'hors saison'),
+        return { smiley, title: p.n + ' — ' + mn + ' : ' + (f ? 'pleine saison' : d ? 'disponible' : 'hors saison'),
           style: f ? { display: 'inline-block', fontSize: 22, lineHeight: 1, verticalAlign: 'middle', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : '#ffffff', border: 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
       })
     }));
