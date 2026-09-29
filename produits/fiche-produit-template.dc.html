@@ -15,6 +15,7 @@
   <script src="../produits-data.js"></script>
   <script src="../produits-textes.js"></script>
   <script src="../produits-enfants.js"></script>
+  <script src="../produits-varietes.js"></script>
   <style>
     :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'DynaPuff', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
@@ -23,27 +24,44 @@
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
     summary::-webkit-details-marker { display: none; }
+  
+    @media (max-width: 760px) { [data-nav-desk] { display: none !important; } }
+    @media (min-width: 761px) { [data-nav-burger] { display: none !important; } }
+    [data-nav-burger] summary::-webkit-details-marker { display: none; }
+    [data-nav-burger][open] [data-ic="open"], [data-nav-burger]:not([open]) [data-ic="close"] { display: none; }
+    [data-nav-panel] a:hover { background: var(--color-accent-100); }
   </style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding-left: clamp(20px, 5vw, 56px); padding-right: clamp(20px, 5vw, 56px); flex-wrap: wrap; row-gap: var(--space-2);">
       <a href="../index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
-        <img src="../images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="93" style="{{ logoBig }}">
-        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="398" height="93" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le goût des <span style="color: var(--color-accent-700);">saisons</span></span>
+        <img src="../images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="107" style="{{ logoBig }}">
+        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="398" height="107" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le Goût des <span style="color: var(--color-accent-700);">Saisons</span></span>
       </a>
-      <div style="display: flex; gap: var(--space-4); align-items: center;">
+      <div data-nav-desk="1" style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier</a>
         <a href="../marches.html">Marchés</a>
         <a href="../lexique.html">Lexique</a>
         <a href="../apropos.html">À propos</a>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: flex-end; margin-left: auto; flex: 1 1 360px; min-width: 0; max-width: 480px;"><form role="search" action="../index.html" method="get" style="position: relative; flex: 1 1 160px; min-width: 0; max-width: 300px; margin: 0;">
-        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
-        <input id="q" name="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
-      </form>
-      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if></div>
+      <details data-nav-burger="1" style="position: relative; margin-left: auto;">
+        <summary aria-label="Menu" style="list-style: none; width: 48px; height: 48px; box-sizing: border-box; display: grid; place-items: center; background: transparent; border: 0; color: var(--color-text); cursor: pointer;">
+          <svg data-ic="open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"></path></svg>
+          <svg data-ic="close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </summary>
+        <div data-nav-panel="1" style="position: absolute; right: 0; top: calc(100% + 10px); z-index: 50; width: min(280px, 80vw); box-sizing: border-box; padding: 10px; background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 4px;">
+          <a href="../index.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Accueil</a>
+          <a href="../saisons.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Calendrier</a>
+          <a href="../marches.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Marchés</a>
+          <a href="../lexique.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
+          <a href="../apropos.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">À propos</a>
+        
+          <div data-nav-extra="1" style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px; padding: 12px 8px 4px; border-top: 1px solid var(--color-divider);"><sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 16px; font-weight: 700; padding: 10px 18px; min-height: 48px; width: 100%; justify-content: center; box-sizing: border-box; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 16px; font-weight: 700; padding: 10px 18px; min-height: 48px; width: 100%; justify-content: center; box-sizing: border-box; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if></div>
+        </div>
+      </details>
+      <div data-nav-desk="1" style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: flex-end; margin-left: auto; flex: none;"><sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if></div>
     </nav>
   </header>
 
@@ -122,6 +140,19 @@
               </sc-for>
             </dl>
           </section>
+          <sc-if value="{{ hasVar }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="h-varietes" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-varietes" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Variétés à connaître</h2>
+            <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: var(--space-3);">
+              <sc-for list="{{ varietes }}" as="va" hint-placeholder-count="4"><li style="display: flex; flex-direction: column; gap: 4px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);"><span style="font-family: var(--font-heading); font-size: 19px; line-height: 1.2;">{{ va.n }}</span><span style="font-size: 15px; line-height: 1.5; text-wrap: pretty;">{{ va.x }}</span></li></sc-for>
+            </ul>
+            <sc-if value="{{ hasCousins }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+              <h3 style="margin: 0; font-size: 22px;">Ses cousins de la famille des {{ fam }}</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ cousinsLinked }}" as="co" hint-placeholder-count="2"><a href="{{ co.href }}" class="tag tag-accent" style="display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; font-size: 15px; text-decoration: none; min-height: 44px; box-sizing: border-box;"><img src="{{ co.img }}" alt="" style="width: 32px; height: 32px; object-fit: contain;">{{ co.n }}</a></sc-for>
+                <sc-for list="{{ cousinsExtra }}" as="cx" hint-placeholder-count="2"><span class="tag tag-neutral" style="display: flex; align-items: center; padding: 6px 14px; font-size: 15px; min-height: 44px; box-sizing: border-box;">{{ cx }}</span></sc-for>
+              </div>
+            </div></sc-if>
+          </section></sc-if>
 
           <section aria-labelledby="h-bienfaits" style="display: flex; flex-direction: column; gap: var(--space-4);">
             <h2 id="h-bienfaits" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Bienfaits &amp; valeurs nutritionnelles</h2>
@@ -134,19 +165,6 @@
                 </div>
               </sc-for>
             </div>
-            <sc-if value="{{ hasNutrition }}" hint-placeholder-val="{{ false }}">
-              <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4);">
-              <table class="table">
-                <caption style="text-align: left; font-size: 14px; padding: var(--space-2); color: var(--color-neutral-800);">Valeurs moyennes pour 100 g · {{ nomLower }} crue (indicatives)</caption>
-                <thead><tr><th scope="col">Nutriment</th><th scope="col" style="text-align: right;">Pour 100 g</th></tr></thead>
-                <tbody>
-                  <sc-for list="{{ nutrition }}" as="nu" hint-placeholder-count="6">
-                    <tr><td>{{ nu.k }}</td><td style="text-align: right; font-weight: 600;">{{ nu.v }}</td></tr>
-                  </sc-for>
-                </tbody>
-              </table>
-            </div>
-            </sc-if>
             <aside aria-label="Recette mise en avant" style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; padding: var(--space-4); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
               <span aria-hidden="true" style="flex: none; width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; font-size: 52px; background: var(--color-accent-200);"><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ false }}">{{ hero.e }}</sc-if><span role="img" aria-hidden="true" style="width: 64px; height: 64px; background: {{ hero.imgBg }}; display: block;"></span></span>
               <div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 4px; min-width: 0;">
@@ -292,6 +310,18 @@
             </sc-for>
           </ul>
         </section>
+        <sc-if value="{{ hasVar }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="hk-var" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="hk-var" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Ses variétés</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ varK }}</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <sc-for list="{{ varietes }}" as="va" hint-placeholder-count="4"><li style="padding: 7px 14px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 30%, transparent); border-radius: 999px; font-size: 16px;">{{ va.n }}</li></sc-for>
+          </ul>
+          <sc-if value="{{ hasCousins }}" hint-placeholder-val="{{ false }}"><p style="margin: var(--space-2) 0 0; font-size: 17px; font-weight: 700;">Dans sa famille, il y a aussi :</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ cousinsLinked }}" as="co" hint-placeholder-count="2"><a href="{{ co.href }}" class="tag tag-accent" style="display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; font-size: 16px; text-decoration: none; min-height: 44px; box-sizing: border-box;"><img src="{{ co.img }}" alt="" style="width: 32px; height: 32px; object-fit: contain;">{{ co.n }}</a></sc-for>
+            <sc-for list="{{ cousinsExtra }}" as="cx" hint-placeholder-count="2"><span class="tag tag-neutral" style="display: flex; align-items: center; padding: 6px 14px; font-size: 16px; min-height: 44px; box-sizing: border-box;">{{ cx }}</span></sc-for>
+          </div></sc-if>
+        </section></sc-if>
       </div>
 
       <aside aria-label="Le sais-tu ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg);">
@@ -383,7 +413,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: var(--space-6) clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="../images/logo-mini.png" alt="Sainos" width="398" height="93" style="display: block; height: 30px; width: auto;">
+      <img src="../images/logo-mini.png" alt="Sainos" width="398" height="107" style="display: block; height: 30px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier des saisons</a>
@@ -409,7 +439,7 @@ class Component extends DCLogic {
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const done = () => { this.applySeo(); this.setState({ ready: true }); };
-    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS;
+    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS && window.SAISON_VARIETES;
     if (ok()) setTimeout(done, 0); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); done(); } }, 50);
   }
   componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
@@ -486,7 +516,7 @@ class Component extends DCLogic {
   _rv() {
     const S = window.SAISON;
     const p = S && S.bySlug(this.slug());
-    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, rec: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '' };
+    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, rec: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '', hasVar: false, varietes: [], varK: '', fam: '', cousinsLinked: [], cousinsExtra: [], hasCousins: false };
     const now = new Date().getMonth() + 1;
     const d = p.detail || null;
     const tx = (window.SAISON_TEXTES || {})[p.s] || null;
@@ -517,7 +547,11 @@ class Component extends DCLogic {
     const peak = p.f[0] || now;
     const related = S.produits.filter(o => o.s !== p.s && o.f.includes(peak)).sort((a, b) => (b.t === p.t) - (a.t === p.t)).slice(0, 6)
       .map(o => ({ ...S.vis(o, '../'), href: S.url(o, '../'), n: o.n, flag: o.orig.flag, origine: o.orig.label }));
+    const V = (window.SAISON_VARIETES || {})[p.s];
+    const cousinsLinked = S.produits.filter(o => o.s !== p.s && o.fam === p.fam).map(o => ({ n: o.n, href: S.url(o, '../'), img: o.img ? '../' + o.img : '' }));
+    const cousinsExtra = (V && V.c) || [];
     return {
+      hasVar: !!V, varietes: V ? V.v.map(([n, x]) => ({ n, x })) : [], varK: V ? V.k : '', fam: p.fam, cousinsLinked, cousinsExtra, hasCousins: cousinsLinked.length + cousinsExtra.length > 0,
       nom: p.n, nomLower: p.n.toLowerCase(), emoji: p.e, hero: S.vis(p, '../'), typeLabel: S.TYPES[p.t].label,
       h1: p.n + ' de saison',
       intro: d ? d.intro : p.d, facts, cal, calSummary, duDe,
