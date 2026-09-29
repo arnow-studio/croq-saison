@@ -46,7 +46,7 @@
     </nav>
   </header>
 
-  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8);">
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 56px) 0; display: flex; flex-direction: column; gap: var(--space-8);">
           <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}">
     <article style="display: flex; flex-direction: column; gap: var(--space-8);">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6);">
@@ -349,22 +349,22 @@
     </section>
   <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="../images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="../images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
-            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🎒 Le mode enfant</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
       </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="../images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="../images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents veulent lire la version adulte ? Un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
-          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode adulte</button>
+          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
       </div></sc-if>
     </section>
