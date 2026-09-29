@@ -31,8 +31,8 @@
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
-    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
+    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding-left: clamp(20px, 5vw, 56px); padding-right: clamp(20px, 5vw, 56px); flex-wrap: wrap; row-gap: var(--space-2);">
+      <a href="index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
         <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="93" style="{{ logoBig }}">
         <img src="images/logo-mini.png" alt="" aria-hidden="true" width="398" height="93" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le goût des <span style="color: var(--color-accent-700);">saisons</span></span>
       </a>
@@ -42,28 +42,16 @@
         <a href="lexique.html">Lexique</a>
         <a href="apropos.html">À propos</a>
       </div>
-      <div role="search" style="position: relative; flex: 1 1 220px; max-width: 300px;">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: flex-end; margin-left: auto; flex: 1 1 360px; min-width: 0; max-width: 480px;"><div role="search" style="position: relative; flex: 1 1 160px; min-width: 0; max-width: 300px;">
         <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
         <input id="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" value="{{ q }}" onChange="{{ onSearch }}" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
       </div>
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if></div>
     </nav>
   </header>
 
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px);">
-    <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: var(--space-4) var(--space-6); background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
-        <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
-          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 22px; color: var(--color-accent-2-900);">🎒 Nouveau : le mode enfant</span>
-          <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900);">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
-        </div>
-        <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
-      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: var(--space-4) var(--space-6); background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: var(--radius-lg);">
-        <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
-          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 22px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-          <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900);">Choisis un fruit ou un légume, réponds à la question piège et gagne son badge. Tu en as déjà {{ badgeCount }} sur {{ nbTotal }} !</span>
-        </div>
-        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Revenir au mode adulte</button>
-      </div></sc-if>
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-8) 0;">
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-8) 0;">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
         <span class="tag tag-accent-2" style="align-self: flex-start; font-size: 13px; padding: 5px 14px;">Calendrier des fruits &amp; légumes</span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
@@ -109,17 +97,17 @@
       </div>
 
       <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
-        <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--space-4);">
+        <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(210px, 42vw), 1fr)); gap: clamp(10px, 2.5vw, 16px);">
           <sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
             <li style="display: flex;">
-              <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
-                  <span aria-hidden="true" style="width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font-size: 58px; background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ c.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
+              <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: clamp(12px, 3vw, 16px); background: #ffffff; min-width: 0; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .18s ease;" style-hover="transform: translateY(-4px) rotate(-0.6deg); box-shadow: var(--shadow-lg); color: var(--color-text);">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--space-2);">
+                  <span aria-hidden="true" style="width: clamp(64px, 18vw, 96px); height: clamp(64px, 18vw, 96px); border-radius: 50%; display: grid; place-items: center; font-size: clamp(40px, 11vw, 58px); background: {{ c.bg }};"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ c.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}">{{ c.e }}</sc-if></span>
                   <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;"><span class="tag tag-neutral" style="font-size: 12px; background: var(--color-bg);">{{ c.flag }} {{ c.origine }}</span><sc-if value="{{ c.badge }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 12px;">🏅 Badge gagné</span></sc-if></span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 2px;">
                   <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700); font-weight: 600;">{{ c.type }}</span>
-                  <h3 style="margin: 0; font-size: 24px; line-height: 1.1;">{{ c.n }}</h3>
+                  <h3 style="margin: 0; font-size: clamp(19px, 5vw, 24px); line-height: 1.1; overflow-wrap: anywhere;">{{ c.n }}</h3>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 4px; min-height: 22px;">
                   <sc-for list="{{ c.forts }}" as="fm" hint-placeholder-count="2">
@@ -151,35 +139,31 @@
         <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--font-heading); font-size: 24px;">Le lexique du potager</span><span style="font-size: 15px;">Drupe, Solanacées, AOP, Bio…</span></span>
       </a>
     </section>
-    <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}">
-    <section id="a-propos" aria-labelledby="titre-apropos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
-      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
-        <h2 id="titre-apropos" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">À propos</h2>
-        <p style="margin: 0; font-size: 18px; line-height: 1.6; text-wrap: pretty;">Ce site est un projet indépendant et passionné, créé pour vous aider à découvrir les fruits et légumes de saison. Ce projet est né des flâneries du samedi matin d’un citadin amoureux de son marché local, désireux de remettre la saisonnalité au cœur de nos assiettes.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 640px; font-size: 17px; line-height: 1.65; text-wrap: pretty;">
-        
-        <p style="margin: 0;">Notre objectif est purement éducatif : vous donner les clés pour une alimentation plus responsable et savoureuse. Il n’y a aucun but commercial derrière Sainos.</p>
-        <p style="margin: 0;">De plus, nous tenons à votre vie privée : aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p>
-      </div>
+    <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
+        <img src="images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
+          <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🎒 Le mode enfant</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
+          </div>
+          <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
+        </div>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); overflow: hidden;">
+        <img src="images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
+          <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents veulent lire la version adulte ? Un clic suffit.</span>
+          </div>
+          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode adulte</button>
+        </div>
+      </div></sc-if>
     </section>
-    </sc-if>
-    <sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}">
-    <section id="a-propos" aria-labelledby="titre-apropos-k" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; padding: var(--space-8); margin-bottom: var(--space-8); background: #e6eff4; color: #2f4553; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
-      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 520px;">
-        <h2 id="titre-apropos-k" style="margin: 0; font-size: clamp(30px, 4vw, 44px); line-height: 1.05;">Sainos, c’est quoi ?</h2>
-        <p style="margin: 0; font-size: 19px; line-height: 1.6; text-wrap: pretty;">Un site gratuit pour découvrir les fruits et légumes de chaque saison. Il est né des balades au marché du samedi matin d’un citadin curieux.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 640px; font-size: 18px; line-height: 1.65; text-wrap: pretty;">
-        <p style="margin: 0;">Ici, rien à acheter et pas de publicité : juste de quoi apprendre et se régaler.</p>
-        <p style="margin: 0;">Et personne ne te suit : Sainos n’utilise aucun cookie.</p>
-      </div>
-    </section>
-    </sc-if>
   </main>
 
   <footer style="background: #f4efe6;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: var(--space-6) clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
       <img src="images/logo-mini.png" alt="Sainos" width="398" height="93" style="display: block; height: 30px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
