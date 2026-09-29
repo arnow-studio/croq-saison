@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
+  <script src="../_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
+  <script src="../produits-data.js"></script>
+  <script src="../produits-textes.js"></script>
+  <script src="../produits-enfants.js"></script>
+  <style>
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'DynaPuff', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 400; }
+    a { color: var(--color-accent-700); }
+    a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
+    *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    summary::-webkit-details-marker { display: none; }
+  </style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-direction: column;">
+  <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
+    <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding-left: clamp(20px, 5vw, 56px); padding-right: clamp(20px, 5vw, 56px); flex-wrap: wrap; row-gap: var(--space-2);">
+      <a href="../index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
+        <img src="../images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="93" style="{{ logoBig }}">
+        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="398" height="93" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le goût des <span style="color: var(--color-accent-700);">saisons</span></span>
+      </a>
+      <div style="display: flex; gap: var(--space-4); align-items: center;">
+        <a href="../index.html">Accueil</a>
+        <a href="../saisons.html">Calendrier</a>
+        <a href="../lexique.html">Lexique</a>
+        <a href="../apropos.html">À propos</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: flex-end; margin-left: auto; flex: 1 1 360px; min-width: 0; max-width: 480px;"><form role="search" action="../index.html" method="get" style="position: relative; flex: 1 1 160px; min-width: 0; max-width: 300px; margin: 0;">
+        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Rechercher un fruit ou un légume</label>
+        <input id="q" name="q" class="input" type="search" placeholder="Rechercher : fraise, poireau…" autocomplete="off" style="min-height: 42px; font-size: 15px; background: var(--color-neutral-100);">
+      </form>
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 14px; font-weight: 700; padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if></div>
+    </nav>
+  </header>
+
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8);">
+          <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}">
+    <article style="display: flex; flex-direction: column; gap: var(--space-8);">
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6);">
+        <nav aria-label="Fil d’Ariane" style="font-size: 14px;">
+          <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <li><a href="../index.html">Accueil</a></li>
+            <li aria-hidden="true">›</li>
+            <li><a href="../saisons.html">{{ typeLabel }}</a></li>
+            <li aria-hidden="true">›</li>
+            <li aria-current="page">{{ nom }}</li>
+          </ol>
+        </nav>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center;">
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 620px;">
+            <h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.04; text-wrap: balance;">{{ h1 }}</h1>
+            <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--color-neutral-800); text-wrap: pretty;">{{ intro }}</p>
+            <ul aria-label="En bref" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+              <sc-for list="{{ facts }}" as="fa" hint-placeholder-count="4">
+                <li class="{{ fa.cls }}" style="background: #ffffff; color: var(--color-text); border: 1px solid color-mix(in srgb, var(--color-accent-700) 20%, transparent); white-space: nowrap; font-size: 14px; padding: 7px 14px; gap: 6px;"><span style="opacity: 0.75;">{{ fa.k }}</span><strong>{{ fa.v }}</strong></li>
+              </sc-for>
+            </ul>
+          </div>
+          <div aria-hidden="true" style="position: relative; justify-self: center; width: min(380px, 80vw); aspect-ratio: 1;">
+            <div style="position: absolute; inset: 0; background: var(--color-accent-200); border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%;"></div>
+            
+            <div style="position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(140px, 22vw, 210px); line-height: 1; transform: rotate(-10deg);"><sc-if value="{{ hero.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ hero.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ true }}">{{ hero.e }}</sc-if></div>
+          </div>
+        </div>
+      </div>
+
+      <section aria-labelledby="h-calendrier" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
+        <h2 id="h-calendrier" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Calendrier de saison {{ duDe }}</h2>
+        <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 6px;">
+          <sc-for list="{{ cal }}" as="cm" hint-placeholder-count="12">
+            <li style="{{ cm.style }}" title="{{ cm.title }}">
+              <span style="font-weight: 700; font-size: 14px;">{{ cm.label }}</span>
+              <span style="font-size: 11px;">{{ cm.state }}</span>
+            </li>
+          </sc-for>
+        </ol>
+        <p style="margin: 0; font-size: 15px; color: var(--color-neutral-800);">{{ calSummary }}</p>
+      </section>
+
+      <sc-if value="{{ hasTextes }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); max-width: 860px;">
+          <section aria-labelledby="h-histoire" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-histoire" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Histoire</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; text-wrap: pretty;">{{ tx.histoire }}</p>
+          </section>
+
+          <section aria-labelledby="h-origine" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-origine" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Origine</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; text-wrap: pretty;">{{ tx.origine }}</p>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+              <sc-for list="{{ tx.regions }}" as="rg" hint-placeholder-count="3">
+                <li class="tag tag-accent-2" style="background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 30%, transparent); white-space: nowrap; font-size: 14px; padding: 7px 14px;">📍 {{ rg }}</li>
+              </sc-for>
+            </ul>
+            <sc-if value="{{ tx.label }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) var(--space-4); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg); font-size: 16px; line-height: 1.6;"><span aria-hidden="true" style="font-size: 22px; line-height: 1.2;">🏅</span><span>{{ tx.label }}</span></p>
+            </sc-if>
+          </section>
+
+          <section aria-labelledby="h-classification" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-classification" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Classification</h2>
+            <dl style="margin: 0; display: flex; flex-direction: column; gap: 6px;">
+              <sc-for list="{{ classification }}" as="cl" hint-placeholder-count="4">
+                <div style="display: flex; flex-wrap: wrap; gap: 4px var(--space-4); padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); border-radius: var(--radius-lg);">
+                  <dt style="flex: 0 0 210px; font-weight: 700; font-size: 15px; line-height: 1.55;">{{ cl.k }}</dt>
+                  <dd style="flex: 1 1 280px; margin: 0; font-size: 16px; line-height: 1.55; min-width: 0;">{{ cl.v }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+          </section>
+
+          <section aria-labelledby="h-bienfaits" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-bienfaits" style="margin: 0; font-size: clamp(26px, 3vw, 34px); display: flex; gap: 14px; align-items: center;">Bienfaits &amp; valeurs nutritionnelles</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7;">{{ tx.bienfaitsIntro }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4);">
+              <sc-for list="{{ bienfaits }}" as="b" hint-placeholder-count="4">
+                <div style="display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); background: var(--color-accent-2-100); border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
+                  <h3 style="margin: 0; font-size: 20px; color: var(--color-accent-2-900);">{{ b.t }}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.55;">{{ b.x }}</p>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ hasNutrition }}" hint-placeholder-val="{{ false }}">
+              <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4);">
+              <table class="table">
+                <caption style="text-align: left; font-size: 14px; padding: var(--space-2); color: var(--color-neutral-800);">Valeurs moyennes pour 100 g · {{ nomLower }} crue (indicatives)</caption>
+                <thead><tr><th scope="col">Nutriment</th><th scope="col" style="text-align: right;">Pour 100 g</th></tr></thead>
+                <tbody>
+                  <sc-for list="{{ nutrition }}" as="nu" hint-placeholder-count="6">
+                    <tr><td>{{ nu.k }}</td><td style="text-align: right; font-weight: 600;">{{ nu.v }}</td></tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+            </sc-if>
+            <aside aria-label="Recette mise en avant" style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; padding: var(--space-4); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+              <span aria-hidden="true" style="flex: none; width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; font-size: 52px; background: var(--color-accent-200);"><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ false }}">{{ hero.e }}</sc-if><span role="img" aria-hidden="true" style="width: 64px; height: 64px; background: {{ hero.imgBg }}; display: block;"></span></span>
+              <div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--color-accent-700);">Recette mise en avant · 750g</span>
+                <h3 style="margin: 0; font-size: 22px; line-height: 1.2;">{{ rec.titre }}</h3>
+                <a href="{{ rec.toutes }}" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 600;">Toutes les recettes avec {{ nomLower }} sur 750g ↗</a>
+                <span style="font-size: 13px; color: var(--color-neutral-800);">Lien externe, sans partenariat ni commission.</span>
+              </div>
+              <a href="{{ rec.url }}" target="_blank" rel="noopener" class="btn btn-primary" style="white-space: nowrap; flex: none; padding: 12px 20px; font-size: 15px; text-decoration: none;">Voir la recette ↗</a>
+            </aside>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); max-width: 860px;">
+          <section aria-labelledby="h-choisir" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-choisir" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Bien la choisir et la conserver</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4);">
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <h3 style="margin: 0; font-size: 21px; display: flex; gap: 8px; align-items: center;">Au marché</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.choisir }}</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <h3 style="margin: 0; font-size: 21px; display: flex; gap: 8px; align-items: center;">À la maison</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.conserver }}</p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="h-recettes" style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <h2 id="h-recettes" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Idées recettes</h2>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <sc-for list="{{ recettes }}" as="r" hint-placeholder-count="3">
+                <div style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-3) var(--space-4); background: var(--color-neutral-100); border-radius: 999px;">
+                  <span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-200); color: var(--color-accent-900); display: grid; place-items: center; font-family: var(--font-heading); font-size: 18px;">{{ r.i }}</span>
+                  <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <h3 style="margin: 0; font-size: 19px;">{{ r.t }}</h3>
+                    <p style="margin: 0; font-size: 15px; color: var(--color-neutral-800);">{{ r.x }}</p>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+
+          <aside aria-label="Le saviez-vous ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-2-200); color: var(--color-accent-2-900); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 6px;">
+            <span aria-hidden="true" style="font-size: 44px; line-height: 1;">💡</span>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              <span style="font-family: var(--font-heading); font-size: 22px;">Le saviez-vous ?</span>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.saviez }}</p>
+            </div>
+          </aside>
+
+          <section aria-labelledby="h-faq" style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <h2 id="h-faq" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Questions fréquentes</h2>
+            <sc-for list="{{ faq }}" as="fq" hint-placeholder-count="3">
+              <details style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4);">
+                <summary style="cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--space-3); align-items: center;">
+                  <h3 style="margin: 0; font-family: var(--font-body); font-weight: 700; font-size: 17px;">{{ fq.q }}</h3>
+                  <span aria-hidden="true" style="flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-weight: 700;">+</span>
+                </summary>
+                <p style="margin: var(--space-2) 0 0; font-size: 16px; line-height: 1.6;">{{ fq.a }}</p>
+              </details>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasLex }}" hint-placeholder-val="{{ false }}">
+        <section aria-labelledby="h-lexique" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="h-lexique" style="margin: 0; font-size: clamp(22px, 2.4vw, 28px);">Les mots à connaître</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <sc-for list="{{ lex }}" as="lx" hint-placeholder-count="3">
+              <a href="{{ lx.href }}" class="tag tag-outline" style="font-size: 14px; padding: 7px 14px; text-decoration: none;">{{ lx.terme }}</a>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+    </article>
+    </sc-if>
+    <sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}">
+    <article style="display: flex; flex-direction: column; gap: var(--space-8);">
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
+          <span style="align-self: flex-start; padding: 6px 14px; background: var(--color-accent-200); color: var(--color-accent-900); border-radius: 999px; font-weight: 800; font-size: 15px;">{{ k.tag }}</span>
+          <h1 style="margin: 0; font-size: clamp(44px, 6vw, 68px); line-height: 1;">{{ k.titre }}</h1>
+          <p style="margin: 0; font-size: 21px; line-height: 1.55; text-wrap: pretty;">{{ k.intro }}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <span style="padding: 8px 16px; background: #ffffff; border: 1px solid var(--color-divider); border-radius: 999px; font-size: 16px;">{{ k.orig }}</span>
+            <span style="padding: 8px 16px; background: #ffffff; border: 1px solid var(--color-divider); border-radius: 999px; font-size: 16px;">⭐ {{ k.best }}</span>
+          </div>
+        </div>
+        <div aria-hidden="true" style="position: relative; justify-self: center; width: min(360px, 80vw); aspect-ratio: 1;">
+          <div style="position: absolute; inset: 0; background: var(--color-accent-200); border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%;"></div>
+          <div style="position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(150px, 22vw, 220px); line-height: 1; transform: rotate(-10deg);"><sc-if value="{{ hero.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ hero.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ hero.noImg }}" hint-placeholder-val="{{ true }}">{{ hero.e }}</sc-if></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="hk-quand" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
+        <h2 id="hk-quand" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Quand le manger ?</h2>
+        <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(max(62px, calc((100% - 88px) / 12)), 1fr)); gap: 8px;">
+          <sc-for list="{{ kcal }}" as="cm" hint-placeholder-count="12">
+            <li style="{{ cm.style }}"><span style="font-weight: 800; font-size: 15px;">{{ cm.label }}</span><span style="font-size: 20px;">{{ cm.icon }}</span></li>
+          </sc-for>
+        </ol>
+        <p style="margin: 0; font-size: 17px; display: flex; flex-wrap: wrap; gap: var(--space-4);"><span>⭐ Le meilleur moment</span><span>🙂 On en trouve</span><span>💤 Il se repose</span></p>
+      </section>
+
+      <section aria-labelledby="hk-quiz" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg);">
+        <span style="font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Question piège</span>
+        <h2 id="hk-quiz" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">{{ k.quizQ }}</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <sc-for list="{{ quiz }}" as="qz" hint-placeholder-count="3">
+            <button type="button" onClick="{{ qz.pick }}" style="{{ qz.style }}">{{ qz.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: var(--space-4); background: var(--color-accent-2-100); color: var(--color-accent-2-900); border-radius: var(--radius-lg); font-size: 18px; line-height: 1.6;"><strong>{{ quizVerdict }}</strong> {{ k.quizWhy }}</p>
+        </sc-if>
+      </section>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+        <section aria-labelledby="hk-histoire" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="hk-histoire" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Son histoire</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.hist }}</p>
+        </section>
+        <section aria-labelledby="hk-ou" style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <h2 id="hk-ou" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Où ça pousse ?</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.ou }}</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <sc-for list="{{ tx.regions }}" as="rg" hint-placeholder-count="3">
+              <li style="padding: 7px 14px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 30%, transparent); border-radius: 999px; font-size: 16px;">📍 {{ rg }}</li>
+            </sc-for>
+          </ul>
+        </section>
+      </div>
+
+      <aside aria-label="Le sais-tu ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg);">
+        <span aria-hidden="true" style="font-size: 48px; line-height: 1;">🤯</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 26px;">Le sais-tu ?</span>
+          <p style="margin: 0; font-size: 19px; line-height: 1.6;">{{ k.sais }}</p>
+        </div>
+      </aside>
+
+      <section aria-labelledby="hk-bon" style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <h2 id="hk-bon" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Pourquoi c’est bon pour toi</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4);">
+          <sc-for list="{{ k.bon }}" as="kb" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); background: var(--color-accent-2-100); border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: var(--radius-lg);">
+              <span aria-hidden="true" style="font-size: 36px;">{{ kb.i }}</span>
+              <h3 style="margin: 0; font-size: 22px; color: var(--color-accent-2-900);">{{ kb.t }}</h3>
+              <p style="margin: 0; font-size: 17px; line-height: 1.55;">{{ kb.x }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="hk-defi" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg);">
+        <span style="font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Défi cuisine · avec un adulte</span>
+        <h2 id="hk-defi" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">{{ k.defiTitre }}</h2>
+        <ol style="margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: var(--space-2); font-size: 19px; line-height: 1.55;">
+          <sc-for list="{{ k.etapes }}" as="st" hint-placeholder-count="4"><li>{{ st.x }}</li></sc-for>
+        </ol>
+      </section>
+
+      <section style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: var(--color-accent-200); border-radius: var(--radius-lg);">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 26px; color: var(--color-accent-900);">{{ badgeTitle }}</span>
+          <span style="font-size: 17px; color: var(--color-accent-900);">{{ badgeText }}</span>
+        </div>
+        <button type="button" class="btn btn-primary" onClick="{{ collect }}" disabled="{{ hasBadge }}" style="padding: 14px 26px; font-size: 18px; min-height: 52px;">{{ badgeBtn }}</button>
+      </section>
+
+      <details style="background: var(--color-neutral-100); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6);">
+        <summary style="cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--space-3); align-items: center;">
+          <h2 style="margin: 0; font-size: 22px;">Le coin des parents</h2>
+          <span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-weight: 700;">+</span>
+        </summary>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin-top: var(--space-3); font-size: 16px; line-height: 1.6;">
+          <p style="margin: 0;">{{ k.parents }}</p>
+          <button type="button" class="btn btn-secondary" onClick="{{ voirComplet }}" style="padding: 10px 18px; font-size: 15px;">Voir la fiche complète</button>
+        </div>
+      </details>
+    </article>
+    </sc-if>
+
+    <section aria-labelledby="h-related" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
+      <h2 id="h-related" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">{{ relatedTitle }}</h2>
+      <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(170px, 40vw), 1fr)); gap: var(--space-3);">
+        <sc-for list="{{ related }}" as="rp" hint-placeholder-count="6">
+          <li style="display: flex;">
+            <a href="{{ rp.href }}" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text); transition: transform .18s ease;" style-hover="transform: translateY(-3px) rotate(-0.6deg); color: var(--color-text);">
+              <span aria-hidden="true" style="font-size: 44px; line-height: 1;"><sc-if value="{{ rp.img }}" hint-placeholder-val="{{ false }}"><span role="img" aria-hidden="true" style="width: 1em; height: 1em; background: {{ rp.imgBg }}; display: block;"></span></sc-if><sc-if value="{{ rp.noImg }}" hint-placeholder-val="{{ true }}">{{ rp.e }}</sc-if></span>
+              <span style="font-family: var(--font-heading); font-size: 19px;">{{ rp.n }}</span>
+              <span style="font-size: 13px; color: var(--color-neutral-700);">{{ rp.flag }} {{ rp.origine }}</span>
+            </a>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
+        <img src="../images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
+          <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🎒 Le mode enfant</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Pour les 10-12 ans : des textes simples, une question piège sur chaque fiche, des défis cuisine et des badges à collectionner.</span>
+          </div>
+          <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
+        </div>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); overflow: hidden;">
+        <img src="../images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
+          <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
+            <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents veulent lire la version adulte ? Un clic suffit.</span>
+          </div>
+          <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode adulte</button>
+        </div>
+      </div></sc-if>
+    </section>
+    </main>
+
+  <footer style="background: #f4efe6;">
+    <div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: var(--space-6) clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
+      <img src="../images/logo-mini.png" alt="Sainos" width="398" height="93" style="display: block; height: 30px; width: auto;">
+      <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="../index.html">Accueil</a>
+        <a href="../saisons.html">Calendrier des saisons</a>
+        <a href="../lexique.html">Lexique</a>
+        <a href="../apropos.html">À propos</a>
+      </nav>
+      <p style="flex-basis: 100%; order: 3; margin: 0; font-size: 13px; line-height: 1.5; color: var(--color-neutral-800);">Sainos est un site informatif et indépendant. Aucune vente, aucune publicité, aucun cookie.</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;produit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;carotte&quot;,&quot;options&quot;:[&quot;carotte&quot;,&quot;tomate&quot;,&quot;fraise&quot;,&quot;pomme&quot;,&quot;basilic&quot;,&quot;potiron&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Produit (aperçu)&quot;}}">
+class Component extends DCLogic {
+  _mode() { try { return localStorage.getItem('sainos-mode') === 'enfant' ? 'enfant' : 'normal'; } catch (e) { return 'normal'; } }
+  _badges() { try { return JSON.parse(localStorage.getItem('sainos-badges') || '[]'); } catch (e) { return []; } }
+  _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
+  setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
+  _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
+  state = { mode: this._mode(), badges: this._badges(), pick: null, ready: !!(window.SAISON && window.SAISON_TEXTES) };
+  componentDidMount() {
+    window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
+    this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
+    const done = () => { this.applySeo(); this.setState({ ready: true }); };
+    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS;
+    if (ok()) setTimeout(done, 0); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); done(); } }, 50);
+  }
+  componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
+  _kf() {
+    const S = window.SAISON, E = window.SAISON_ENFANTS;
+    const p = S && S.bySlug(this.slug()), d = p && E && E.produits[p.s];
+    if (!d) return { hasK: false, k: { bon: [], etapes: [] }, kcal: [], quiz: [], answered: false, quizVerdict: '', hasBadge: false, badgeTitle: '', badgeText: '', badgeBtn: '', collect: () => {}, voirComplet: () => {} };
+    const now = new Date().getMonth() + 1, pk = p.f[0];
+    const sea = !pk ? 'de toute l’année 📅' : [12, 1, 2].includes(pk) ? 'd’hiver ❄️' : pk <= 5 ? 'de printemps 🌸' : pk <= 8 ? 'd’été ☀️' : 'd’automne 🍂';
+    const k = { titre: d.titre, intro: d.intro, tag: S.TYPES[p.t].one + ' ' + sea, orig: p.orig.flag + ' ' + p.orig.label,
+      best: p.f.length ? 'Meilleur en ' + p.f.map(x => S.MOIS[x - 1].toLowerCase()).join(', ') : 'Toute l’année',
+      quizQ: d.quiz[0], quizWhy: d.quiz[3], hist: d.hist, ou: d.ou, sais: d.sais,
+      bon: d.bon.map(([i, t, x]) => ({ i, t, x })), defiTitre: d.defi[0], etapes: d.defi[1].map(x => ({ x })),
+      parents: 'Famille : ' + p.fam + '. ' + p.d };
+    const kcal = S.MOIS_C.map((label, i) => {
+      const m = i + 1, f = p.f.includes(m), av = p.m.includes(m);
+      return { label, icon: f ? '⭐' : av ? '🙂' : '💤', style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, padding: '12px 4px', borderRadius: 18,
+        background: f ? 'var(--color-accent)' : av ? 'var(--color-accent-2-200)' : '#ffffff', color: f ? '#ffffff' : 'var(--color-text)',
+        border: m === now ? '2px solid var(--color-text)' : '2px solid transparent' } };
+    });
+    const pick = this.state.pick, good = d.quiz[2];
+    const quiz = d.quiz[1].map((label, i) => {
+      const sel = pick === i, ok = pick !== null && i === good;
+      return { label, pick: () => this.setState({ pick: i }), style: { padding: '14px 24px', minHeight: 54, fontSize: 18, fontWeight: 800, fontFamily: 'var(--font-body)', cursor: 'pointer', borderRadius: 999,
+        border: '2px solid ' + (ok ? 'var(--color-accent-2-800)' : sel ? 'var(--color-accent)' : 'var(--color-divider)'),
+        background: ok ? 'var(--color-accent-2-200)' : sel ? 'var(--color-accent-100)' : '#ffffff', color: 'var(--color-text)' } };
+    });
+    const has = (this.state.badges || []).includes(p.s), nom = d.titre.replace(/^(Le |La |L’|Les )/, '');
+    return { hasK: true, k, kcal, quiz, answered: pick !== null,
+      quizVerdict: pick === good ? 'Bravo, bien joué ! 🎉' : 'Presque ! La bonne réponse : « ' + d.quiz[1][good] + ' ».',
+      hasBadge: has, badgeTitle: has ? 'Badge ' + nom.toLowerCase() + ' gagné ! 🏅' : 'Tu as tout lu ?',
+      badgeText: has ? 'Il est rangé dans ta collection. Prochain produit ?' : 'Gagne le badge ' + nom.toLowerCase() + ' pour ta collection.',
+      badgeBtn: has ? 'Badge obtenu ✓' : 'Je gagne mon badge',
+      collect: () => { const b = [...new Set([...(this.state.badges || []), p.s])]; try { localStorage.setItem('sainos-badges', JSON.stringify(b)); } catch (e) {} this.setState({ badges: b }); },
+      voirComplet: () => { this.setMode('normal'); window.scrollTo(0, 0); } };
+  }
+  slug() { return new URLSearchParams(location.search).get('p') || this.props.produit || 'carotte'; }
+  applySeo() {
+    const S = window.SAISON, p = S.bySlug(this.slug());
+    if (!p) return;
+    const base = 'https://www.sainos.fr/produits/' + p.s + '.html';
+    // Pages statiques (ex. carotte.dc.html) déclarent déjà leurs balises : on ne complète que les fiches générées.
+    if (document.querySelector('script[type="application/ld+json"]')) return;
+    const title = p.detail ? p.detail.title : p.n + ' de saison : origine, calendrier & conseils';
+    document.title = title + ' | Sainos';
+    const meta = (attr, key, content) => { let m = document.querySelector('meta[' + attr + '="' + key + '"]'); if (!m) { m = document.createElement('meta'); m.setAttribute(attr, key); document.head.appendChild(m); } m.setAttribute('content', content); };
+    const months = p.m.length === 12 ? 'toute l’année' : S.MOIS[p.m[0] - 1].toLowerCase() + ' à ' + S.MOIS[p.m[p.m.length - 1] - 1].toLowerCase();
+    meta('name', 'description', p.n + ' : de saison ' + months + '. ' + p.d);
+    meta('property', 'og:title', title);
+    let c = document.querySelector('link[rel="canonical"]'); if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); } c.href = base;
+    const s = document.createElement('script'); s.type = 'application/ld+json';
+    s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+      { '@type': 'Thing', name: p.n, description: p.d, url: base, additionalType: 'https://www.wikidata.org/wiki/Q11004' },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.sainos.fr/' },
+        { '@type': 'ListItem', position: 2, name: S.TYPES[p.t].label, item: 'https://www.sainos.fr/saisons.html' },
+        { '@type': 'ListItem', position: 3, name: p.n, item: base }] }] });
+    document.head.appendChild(s);
+  }
+  renderVals() {
+    const mini = true; const kv = this._kidVals(); const kf = this._kf(); const kidOn = kv.kid && kf.hasK;
+    return { ...this._rv(), ...kv, ...kf, kid: kidOn, adult: !kidOn, logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 36, width: 'auto' } };
+  }
+  _rv() {
+    const S = window.SAISON;
+    const p = S && S.bySlug(this.slug());
+    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, rec: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '' };
+    const now = new Date().getMonth() + 1;
+    const d = p.detail || null;
+    const tx = (window.SAISON_TEXTES || {})[p.s] || null;
+    const duDe = ': ' + p.n.toLowerCase();
+    const range = arr => arr.length ? arr.map(x => S.MOIS[x - 1].toLowerCase()).join(', ') : '';
+    const facts = [
+      { k: 'Type', v: S.TYPES[p.t].one, cls: 'tag tag-neutral' },
+      { k: 'Famille', v: p.fam, cls: 'tag tag-accent-2' },
+      { k: 'Origine', v: p.orig.flag + ' ' + p.orig.label, cls: 'tag tag-neutral' },
+      { k: 'Pleine saison', v: p.f.length ? p.f.map(x => S.MOIS_C[x - 1]).join(' · ') : (p.m.length === 12 ? 'Toute l’année' : '—'), cls: 'tag tag-accent' }
+    ];
+    const cal = S.MOIS_C.map((label, i) => {
+      const mm = i + 1, f = p.f.includes(mm), av = p.m.includes(mm);
+      return { label, state: f ? 'Pleine saison' : av ? 'Disponible' : 'Hors saison', title: S.MOIS[i] + (mm === now ? ' (mois en cours)' : ''),
+        style: { display: 'flex', flexDirection: 'column', gap: 2, padding: '10px 12px', borderRadius: 18,
+          background: f ? 'var(--color-accent)' : av ? 'var(--color-accent-2-200)' : '#ffffff',
+          color: f ? 'var(--color-bg)' : av ? 'var(--color-accent-2-900)' : 'var(--color-neutral-700)',
+          border: mm === now ? '2px solid var(--color-text)' : '2px solid transparent' } };
+    });
+    const calSummary = p.m.length === 12
+      ? p.n + ' est disponible toute l’année' + (p.f.length ? ', avec une pleine saison en ' + range(p.f) + '.' : '.')
+      : 'Disponible en ' + range(p.m) + (p.f.length ? ' ; pleine saison en ' + range(p.f) + '.' : '.');
+    const lexIds = (d && d.lexique) || [];
+    const famTerm = S.lexique.find(t => S.norm(t.terme) === S.norm(p.fam));
+    const lexList = [...new Set([...(famTerm ? [famTerm.id] : []), ...lexIds, ...S.lexique.filter(t => t.ex.includes(p.s)).map(t => t.id)])]
+      .map(id => S.lexique.find(t => t.id === id)).filter(Boolean)
+      .map(t => ({ terme: t.terme, href: '../lexique.html#' + t.id }));
+    const peak = p.f[0] || now;
+    const related = S.produits.filter(o => o.s !== p.s && o.f.includes(peak)).sort((a, b) => (b.t === p.t) - (a.t === p.t)).slice(0, 6)
+      .map(o => ({ ...S.vis(o, '../'), href: S.url(o, '../'), n: o.n, flag: o.orig.flag, origine: o.orig.label }));
+    return {
+      nom: p.n, nomLower: p.n.toLowerCase(), emoji: p.e, hero: S.vis(p, '../'), typeLabel: S.TYPES[p.t].label,
+      h1: p.n + ' de saison',
+      intro: d ? d.intro : p.d, facts, cal, calSummary, duDe,
+      hasDetail: !!d, d: d || {},
+      bienfaits: tx ? tx.bienfaits.map(([t, x]) => ({ t, x })) : [],
+      rec: S.recette750 ? S.recette750(p) : {}, hasTextes: !!tx, tx: tx || {}, classification: tx ? tx.classification.map(([k, v]) => ({ k, v })) : [], hasNutrition: !!(d && d.nutrition),
+      nutrition: d ? d.nutrition.map(([k, v]) => ({ k, v })) : [],
+      recettes: d ? d.recettes.map(([t, x], i) => ({ t, x, i: i + 1 })) : [],
+      faq: d ? d.faq.map(([q, a]) => ({ q, a })) : [],
+      lex: lexList, hasLex: lexList.length > 0,
+      related, relatedTitle: 'Aussi de saison en ' + S.MOIS[peak - 1].toLowerCase()
+    };
+  }
+}
+</script>
+</body>
+</html>
