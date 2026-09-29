@@ -76,7 +76,6 @@
   <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px);">
         <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding: var(--space-6) 0 var(--space-8);">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 560px;">
-        <span class="tag tag-accent-2" style="align-self: flex-start; font-size: 13px; padding: 5px 14px;">Calendrier des fruits &amp; légumes</span>
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mangez au rythme des saisons.</h1>
         <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, ce qui pousse près de chez vous : origine, pleine saison et fiche détaillée pour {{ total }} fruits, légumes et herbes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">Mange au rythme des saisons !</h1>
         <p style="margin: 0; font-size: 18px; line-height: 1.55; text-wrap: pretty; color: var(--color-neutral-800);">Chaque mois, découvre ce qui pousse près de chez toi : {{ total }} fruits, légumes et herbes à explorer, avec une question piège et un badge pour chacun.</p></sc-if>
@@ -105,8 +104,6 @@
             <button type="button" class="{{ tf.cls }}" aria-pressed="{{ tf.on }}" onClick="{{ tf.pick }}" style="white-space: nowrap; flex: none; padding: 9px 16px; font-size: 14px;">{{ tf.label }}</button>
           </sc-for>
         </div>
-        <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-neutral-400);"></span>
-        <button type="button" class="{{ origineCls }}" aria-pressed="{{ franceOnly }}" onClick="{{ toggleFrance }}" style="white-space: nowrap; flex: none; padding: 9px 16px; font-size: 14px;">🇫🇷 Origine France uniquement</button>
         <div role="group" aria-label="Période" style="display: flex; gap: 0; margin-left: auto; background: var(--color-bg); border-radius: 999px; padding: 4px;">
           <sc-for list="{{ scopes }}" as="sc" hint-placeholder-count="2">
             <button type="button" class="{{ sc.cls }}" aria-pressed="{{ sc.on }}" onClick="{{ sc.pick }}" style="white-space: nowrap; flex: none; padding: 7px 14px; font-size: 13px; border-color: transparent;">{{ sc.label }}</button>
@@ -253,7 +250,7 @@ class Component extends DCLogic {
       return { ...S.vis(p), s: p.s, ring: p.f.includes(m) ? '2px solid var(--color-accent-600)' : '2px solid transparent', href: S.url(p), n: p.n, flag: p.orig.flag, origine: p.orig.label, type: S.TYPES[p.t].one, bg: bg[p.t], forts, aria: p.n + ' — en savoir plus' };
     });
     const moisNom = S.MOIS[m - 1];
-    const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tout le catalogue';
+    const heading = searching ? 'Résultats pour « ' + q.trim() + ' »' : scope === 'mois' ? 'En ce moment : ' + moisNom : 'Tous les fruits, légumes et herbes';
     const seenE = new Set();
     const heroEmojis = S.produits.filter(p => p.f.includes(m) && !seenE.has(p.e) && seenE.add(p.e)).slice(0, 8).map(p => S.vis(p));
     const SMILEYS = ['🥶','🥰','😊','🤗','😄','😁','🤩','😎','🤓','😋','😌','🥳'];
