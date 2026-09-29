@@ -12,14 +12,14 @@
   <meta name="description" content="Sainos est un projet indépendant et éducatif pour découvrir les fruits et légumes de saison. Sans vente, sans publicité, sans cookie.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://www.sainos.fr/apropos.html">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&family=Nunito:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400&family=Nunito:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
   <script src="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/_ds_bundle.js"></script>
   <script src="produits-data.js"></script>
   <style>
-    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'Outfit', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
+    :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'DynaPuff', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
-    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 400; }
     a { color: var(--color-accent-700); }
     a:not(.btn):not(.tag):hover { color: var(--color-accent-600); }
     *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
@@ -29,9 +29,9 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; flex-wrap: wrap; row-gap: var(--space-2);">
-      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;" aria-label="Sainos — accueil">
-        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="544" height="242" style="{{ logoBig }}">
-        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="544" height="242" style="{{ logoMini }}">
+      <a href="index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
+        <img src="images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="93" style="{{ logoBig }}">
+        <img src="images/logo-mini.png" alt="" aria-hidden="true" width="398" height="93" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le goût des <span style="color: var(--color-accent-700);">saisons</span></span>
       </a>
       <div style="display: flex; gap: var(--space-4); align-items: center;">
         <a href="index.html">Accueil</a>
@@ -46,13 +46,13 @@
     </nav>
   </header>
 
-  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-2-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
         <span style="color: var(--color-accent-2-900);">🎒 Tu as entre 10 et 12 ans ? Essaie le mode enfant : quiz, défis cuisine et badges.</span>
         <button type="button" class="btn btn-secondary" onClick="{{ toEnfant }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Passer en mode enfant</button>
       </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-top: var(--space-4); padding: 8px 8px 8px 18px; background: #ffffff; border: 1px solid color-mix(in srgb, var(--color-accent-500) 25%, transparent); border-radius: 999px; font-size: 15px;">
         <span style="color: var(--color-accent-900); font-weight: 700;">🎒 Mode enfant activé · 🏅 {{ badgeCount }} / {{ nbTotal }} badges</span>
-        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Revenir au mode normal</button>
+        <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 8px 16px; font-size: 14px; white-space: nowrap;">Revenir au mode adulte</button>
       </div></sc-if>
 
     <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding-top: 0;">
@@ -100,7 +100,7 @@
 
   <footer style="background: #f4efe6;">
     <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; align-items: center; font-size: 14px;">
-      <img src="images/logo-mini.png" alt="Sainos" width="544" height="242" style="display: block; height: 44px; width: auto;">
+      <img src="images/logo-mini.png" alt="Sainos" width="398" height="93" style="display: block; height: 30px; width: auto;">
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="index.html">Accueil</a>
         <a href="saisons.html">Calendrier des saisons</a>
@@ -138,7 +138,7 @@ class Component extends DCLogic {
     const mini = true, S = window.SAISON, p = this.state.cur;
     const heroImg = p ? React.createElement('img', { key: this.state.i, src: p.img, alt: p.n, style: { width: '100%', height: '100%', objectFit: 'contain', animation: 'croqPop .6s ease-out both' } }) : null;
     return { ...this._kidVals(), heroImg, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
-      logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 52, width: 'auto' } };
+      logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 36, width: 'auto' } };
   }
 }
 </script>
