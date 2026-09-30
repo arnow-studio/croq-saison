@@ -155,8 +155,8 @@
           </section></sc-if>
           <sc-if value="{{ hasProd }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="h-prod" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--color-accent-2-100); border-radius: var(--radius-lg);">
             <div style="display: flex; flex-direction: column; gap: var(--space-2);">
-              <h2 id="h-prod" style="margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--color-accent-2-900);">Acheter en direct près de chez vous</h2>
-              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-accent-2-900); text-wrap: pretty;">Fermes avec vente directe et magasins de producteurs à moins de 20 km. Ceux qui indiquent vendre {{ prodArt }} apparaissent en premier.</p>
+              <h2 id="h-prod" style="margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--color-accent-2-900);">Acheter près de chez vous</h2>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-accent-2-900); text-wrap: pretty;">Fermes avec vente directe, magasins de producteurs et magasins bio à moins de 20 km. Ceux qui indiquent vendre {{ prodArt }} apparaissent en premier.</p>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
               <button type="button" class="btn btn-primary" onClick="{{ prodGeo }}" style="white-space: nowrap; flex-shrink: 0; padding: 12px 22px; font-size: 16px; min-height: 48px;">📍 Autour de moi</button>
@@ -473,7 +473,7 @@ class Component extends DCLogic {
   _prodLoad(ll) {
     const id = (this._prodReq = (this._prodReq || 0) + 1), S = window.SAISON, p = S.bySlug(this.slug());
     this.setState({ prodStatus: 'Recherche des producteurs autour de vous…', prodList: [] });
-    const q = '[out:json][timeout:25];(nwr["shop"="farm"](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["shop"~"greengrocer|deli|convenience"]["name"~"producteur|ferme|paysan|circuit court",i](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["produce"]["shop"](around:20000,' + ll[0] + ',' + ll[1] + '););out center tags;';
+    const q = '[out:json][timeout:25];(nwr["shop"="farm"](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["shop"~"greengrocer|deli|convenience"]["name"~"producteur|ferme|paysan|circuit court",i](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["produce"]["shop"](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["shop"="organic"](around:20000,' + ll[0] + ',' + ll[1] + ');nwr["shop"~"supermarket|greengrocer|convenience|health_food"]["organic"="only"](around:20000,' + ll[0] + ',' + ll[1] + '););out center tags;';
     const EP = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
     const call = i => fetch(EP[i], { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(r => { if (!r.ok) throw 0; return r.json(); }).catch(e => { if (i + 1 < EP.length) return call(i + 1); throw e; });
     const en = new RegExp('\\b(' + (this._PRODUCE[p.s] || '^$') + ')', 'i');
@@ -491,10 +491,10 @@ class Component extends DCLogic {
         const addr = [[t['addr:housenumber'], t['addr:street'] || t['addr:place']].filter(Boolean).join(' '), [t['addr:postcode'], t['addr:city']].filter(Boolean).join(' ')].filter(Boolean).join(', ');
         const web = t.website || t['contact:website'] || '', tel = t.phone || t['contact:phone'] || '';
         const d = dist(ll, c);
-        return { key: (t.name || '') + c[0].toFixed(3), name: t.name || 'Vente à la ferme', kind: t.shop === 'farm' ? 'Vente à la ferme' : 'Magasin de producteurs', addr, hasAddr: !!addr, match, bio: t.organic === 'only' || t.organic === 'yes' || /\bbio\b/i.test(txt + ' ' + strip(t.name)), d, km: d < 1 ? Math.round(d * 100) * 10 + ' m' : d.toFixed(1).replace('.', ',') + ' km', nav: 'https://www.google.com/maps/dir/?api=1&destination=' + c[0] + ',' + c[1], web, hasWeb: !!web, tel, hasTel: !!tel, telHref: 'tel:' + tel.replace(/[^+\d]/g, '') };
-      }).filter(x => !seen.has(x.key) && seen.add(x.key)).sort((a, b) => (b.match - a.match) || (a.d - b.d)).slice(0, 12);
+        return { key: (t.name || '') + c[0].toFixed(3), name: t.name || 'Vente à la ferme', kind: t.shop === 'farm' ? 'Vente à la ferme' : (t.shop === 'organic' || t.organic === 'only') && !/producteur|ferme|paysan/i.test(strip(t.name)) ? 'Magasin bio' : 'Magasin de producteurs', addr, hasAddr: !!addr, match, bio: t.organic === 'only' || t.organic === 'yes' || /\bbio\b/i.test(txt + ' ' + strip(t.name)), d, km: d < 1 ? Math.round(d * 100) * 10 + ' m' : d.toFixed(1).replace('.', ',') + ' km', nav: 'https://www.google.com/maps/dir/?api=1&destination=' + c[0] + ',' + c[1], web, hasWeb: !!web, tel, hasTel: !!tel, telHref: 'tel:' + tel.replace(/[^+\d]/g, '') };
+      }).filter(x => !seen.has(x.key) && seen.add(x.key)).sort((a, b) => (b.match - a.match) || (a.d - b.d)).slice(0, 15);
       const nm = list.filter(x => x.match).length;
-      this.setState({ prodList: list, prodStatus: !list.length ? 'Aucune ferme ni magasin de producteurs recensé dans un rayon de 20 km.' : list.length + ' adresse' + (list.length > 1 ? 's' : '') + ' à moins de 20 km' + (nm ? ', dont ' + nm + ' qui indique' + (nm > 1 ? 'nt' : '') + ' vendre ' + this._art(p) + '.' : '. Aucune n’indique encore ses produits : appelez pour savoir.') });
+      this.setState({ prodList: list, prodStatus: !list.length ? 'Aucune ferme, magasin de producteurs ou magasin bio recensé dans un rayon de 20 km.' : list.length + ' adresse' + (list.length > 1 ? 's' : '') + ' à moins de 20 km' + (nm ? ', dont ' + nm + ' qui indique' + (nm > 1 ? 'nt' : '') + ' vendre ' + this._art(p) + '.' : '. Aucune n’indique encore ses produits : appelez pour savoir.') });
     }).catch(() => { if (id === this._prodReq) this._prodSay('Le service de cartographie ne répond pas pour le moment. Réessayez dans quelques instants.'); });
   }
   _FEM = ['carotte', 'laitue', 'tomate', 'aubergine', 'courgette', 'pomme-de-terre', 'patate-douce', 'fraise', 'cerise', 'peche', 'pasteque', 'myrtille', 'pomme', 'poire', 'chataigne', 'clementine', 'orange', 'banane', 'mangue', 'menthe', 'ciboulette'];
