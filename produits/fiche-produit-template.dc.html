@@ -43,6 +43,7 @@
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier</a>
         <a href="../marches.html">Marchés</a>
+        <a href="../bio.html">Bio</a>
         <a href="../lexique.html">Lexique</a>
         <a href="../apropos.html">À propos</a>
       </div>
@@ -55,6 +56,7 @@
           <a href="../index.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Accueil</a>
           <a href="../saisons.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Calendrier</a>
           <a href="../marches.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Marchés</a>
+          <a href="../bio.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Bio</a>
           <a href="../lexique.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
           <a href="../apropos.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">À propos</a>
         
@@ -152,39 +154,6 @@
                 <sc-for list="{{ cousinsExtra }}" as="cx" hint-placeholder-count="2"><span class="tag tag-neutral" style="display: flex; align-items: center; padding: 6px 14px; font-size: 15px; min-height: 44px; box-sizing: border-box;">{{ cx }}</span></sc-for>
               </div>
             </div></sc-if>
-          </section></sc-if>
-          <sc-if value="{{ hasProd }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="h-prod" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--color-accent-2-100); border-radius: var(--radius-lg);">
-            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
-              <h2 id="h-prod" style="margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--color-accent-2-900);">Acheter près de chez vous</h2>
-              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-accent-2-900); text-wrap: pretty;">Fermes avec vente directe, magasins de producteurs et magasins bio à moins de 20 km. Ceux qui indiquent vendre {{ prodArt }} apparaissent en premier.</p>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
-              <button type="button" class="btn btn-primary" onClick="{{ prodGeo }}" style="white-space: nowrap; flex-shrink: 0; padding: 12px 22px; font-size: 16px; min-height: 48px;">📍 Autour de moi</button>
-              <span style="font-weight: 700; color: var(--color-accent-2-900);">ou</span>
-              <form onSubmit="{{ prodCp }}" style="display: flex; gap: var(--space-2); flex: 1 1 280px; max-width: 420px; margin: 0;">
-                <label for="prod-cp" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Code postal ou ville</label>
-                <input id="prod-cp" name="cp" class="input" type="text" placeholder="Code postal ou ville" autocomplete="postal-code" style="flex: 1; min-width: 0; min-height: 48px; font-size: 16px; background: #ffffff;">
-                <button type="submit" class="btn btn-secondary" style="padding: 12px 20px; font-size: 16px; min-height: 48px;">Chercher</button>
-              </form>
-            </div>
-            <p role="status" aria-live="polite" style="margin: 0; font-size: 15px; font-weight: 700; color: var(--color-accent-2-900);">{{ prodStatus }}</p>
-            <sc-if value="{{ prodHas }}" hint-placeholder-val="{{ false }}"><ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: var(--space-3);">
-              <sc-for list="{{ prodList }}" as="pr" hint-placeholder-count="0"><li style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
-                <span style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline;"><span style="font-family: var(--font-heading); font-size: 19px; line-height: 1.2;">{{ pr.name }}</span><span style="font-size: 14px; font-weight: 700; white-space: nowrap;">{{ pr.km }}</span></span>
-                <span style="font-size: 13px; font-weight: 700; color: var(--color-accent-2-800);">{{ pr.kind }}</span>
-                <sc-if value="{{ pr.hasAddr }}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; line-height: 1.45;">{{ pr.addr }}</span></sc-if>
-                <span style="display: flex; flex-wrap: wrap; gap: 6px;">
-                  <sc-if value="{{ pr.match }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 13px;">Vend {{ prodArt }}</span></sc-if>
-                  <sc-if value="{{ pr.bio }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2" style="font-size: 13px;">Bio</span></sc-if>
-                </span>
-                <span style="display: flex; flex-wrap: wrap; gap: var(--space-3); font-size: 14px; font-weight: 700; margin-top: 2px;">
-                  <a href="{{ pr.nav }}" target="_blank" rel="noopener">Itinéraire →</a>
-                  <sc-if value="{{ pr.hasWeb }}" hint-placeholder-val="{{ false }}"><a href="{{ pr.web }}" target="_blank" rel="noopener">Site web</a></sc-if>
-                  <sc-if value="{{ pr.hasTel }}" hint-placeholder-val="{{ false }}"><a href="{{ pr.telHref }}">{{ pr.tel }}</a></sc-if>
-                </span>
-              </li></sc-for>
-            </ul></sc-if>
-            <p style="margin: 0; font-size: 13px; line-height: 1.55; color: var(--color-accent-2-900);">Données <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> : les produits vendus ne sont pas toujours renseignés, appelez avant de vous déplacer. Votre position n’est ni enregistrée ni transmise.</p>
           </section></sc-if>
 
           <section aria-labelledby="h-bienfaits" style="display: flex; flex-direction: column; gap: var(--space-4);">
@@ -451,6 +420,7 @@
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier des saisons</a>
         <a href="../marches.html">Marchés</a>
+        <a href="../bio.html">Bio</a>
         <a href="../lexique.html">Lexique</a>
         <a href="../apropos.html">À propos</a>
       </nav>
