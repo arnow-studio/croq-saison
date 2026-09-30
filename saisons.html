@@ -133,7 +133,7 @@
         </div>
       </div>
       <div style="display: flex; gap: var(--space-4); font-size: 13px; align-items: center; flex-wrap: wrap;">
-        <span style="display: flex; gap: 6px; align-items: center;"><span aria-hidden="true" style="font-size: 18px; line-height: 1;">{{ legendSmiley }}</span>Pleine saison (un smiley par mois)</span>
+        <span style="display: flex; gap: 6px; align-items: center;"><span aria-hidden="true" style="display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--color-accent);"></span>Pleine saison</span>
         <span style="display: flex; gap: 6px; align-items: center;"><span style="width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-2-300);"></span>Disponible</span>
       </div>
       <div style="overflow: auto; max-height: min(72vh, 680px); background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 0 var(--space-3) var(--space-3);">
@@ -267,9 +267,9 @@ class Component extends DCLogic {
       ...S.vis(p), href: S.url(p), n: p.n,
       cells: S.MOIS.map((mn, i) => {
         const mm = i + 1, f = p.f.includes(mm), d = p.m.includes(mm);
-        const smiley = f ? '🤩' : '';
+        const smiley = '';
         return { smiley, title: p.n + ' — ' + mn + ' : ' + (f ? 'pleine saison' : d ? 'disponible' : 'hors saison'),
-          style: f ? { display: 'inline-block', fontSize: 22, lineHeight: 1, verticalAlign: 'middle', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : '#ffffff', border: 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
+          style: f ? { display: 'inline-block', width: 16, height: 16, verticalAlign: 'middle', background: 'var(--color-accent)', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : '#ffffff', border: 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
       })
     }));
     const DICTONS = [
