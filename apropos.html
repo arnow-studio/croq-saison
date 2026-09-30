@@ -73,13 +73,13 @@
     </nav>
   </header>
 
-  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: clamp(40px, 7vw, 56px) clamp(20px, 5vw, 56px) 0; display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
       
     <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: center; padding-top: 0;">
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 600px;">
         <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">À propos</span></nav>
         <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">À propos</h1>
-        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Nouveauté née des flâneries d’un amoureux des marchés locaux, ce projet indépendant et passionné vous invite à redécouvrir le vrai rythme des saisons. Une démarche simple pour remettre la fraîcheur et la saisonnalité au cœur de vos assiettes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos est né des balades au marché du samedi matin d’un citadin curieux. Son idée : t’aider à savoir ce qui pousse à chaque saison, pour manger des fruits et légumes pleins de goût.</p></sc-if>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Issu d’une initiative indépendante, ce projet baptisé Sainos, anagramme de Saison, vise à valoriser les circuits courts et les produits locaux. Il propose une approche concrète pour réintégrer la fraîcheur et le rythme des saisons au cœur de l’alimentation quotidienne.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos, c’est un mot magique : si tu mélanges ses lettres, ça fait le mot saison ! Ce super projet t’aide à découvrir les bons fruits et légumes qui poussent juste à côté de chez toi. L’idée ? Manger super frais et réapprendre à cuisiner au bon moment de l’année !</p></sc-if>
       </div>
       <div style="position: relative; justify-self: center; width: min(420px, 86vw); aspect-ratio: 1; display: grid; place-items: center;">
         <div aria-hidden="true" style="position: absolute; inset: 0; background: #e6eff4; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;"></div>

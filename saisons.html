@@ -38,7 +38,8 @@
     [data-nav-burger] summary::-webkit-details-marker { display: none; }
     [data-nav-burger][open] [data-ic="open"], [data-nav-burger]:not([open]) [data-ic="close"] { display: none; }
     [data-nav-panel] a:hover { background: var(--color-accent-100); }
-  </style>
+    @media (max-width: 760px) { [data-frise] > :not(aside) { display: none !important; } }
+</style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
@@ -73,9 +74,9 @@
     </nav>
   </header>
 
-  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 56px); display: flex; flex-direction: column; gap: var(--space-8);">
+  <main style="flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: clamp(40px, 7vw, 56px) clamp(20px, 5vw, 56px) 0; display: flex; flex-direction: column; gap: var(--space-8);">
       
-    <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); max-width: 720px;">
+    <div style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 720px;">
       <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Calendrier des saisons</span></nav>
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Le calendrier des fruits et légumes de saison</h1>
       <p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-neutral-800); text-wrap: pretty;">Choisissez un mois : voici ce qui est en pleine saison, et ce qu’on trouve encore sur les étals.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h1 style="margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; text-wrap: balance;">Qu’est-ce qu’on mange ce mois-ci ?</h1>
@@ -95,7 +96,6 @@
     <section aria-labelledby="titre-mois" style="display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
       <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3);">
         <h2 id="titre-mois" style="margin: 0; font-size: clamp(30px, 4vw, 44px);">{{ moisTitre }}</h2>
-        <sc-if value="{{ isNow }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="font-size: 13px;">Mois en cours</span></sc-if>
         <div style="margin-left: auto; display: flex; gap: var(--space-2);">
           <button type="button" class="btn btn-secondary btn-icon" aria-label="Mois précédent" onClick="{{ prev }}" style="width: 42px; height: 42px; font-size: 18px;">←</button>
           <button type="button" class="btn btn-secondary btn-icon" aria-label="Mois suivant" onClick="{{ next }}" style="width: 42px; height: 42px; font-size: 18px;">→</button>
@@ -121,7 +121,7 @@
       </div>
     </section>
 
-    <section aria-labelledby="titre-frise" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
+    <section data-frise="1" aria-labelledby="titre-frise" style="display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-8);">
       <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
         <h2 id="titre-frise" style="margin: 0; font-size: clamp(26px, 3vw, 34px); margin-right: auto;">La frise de l’année</h2>
         <div role="group" aria-label="Filtrer la frise" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
@@ -134,12 +134,12 @@
         <span style="display: flex; gap: 6px; align-items: center;"><span aria-hidden="true" style="font-size: 18px; line-height: 1;">{{ legendSmiley }}</span>Pleine saison (un smiley par mois)</span>
         <span style="display: flex; gap: 6px; align-items: center;"><span style="width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-2-300);"></span>Disponible</span>
       </div>
-      <div style="overflow-x: auto; background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: var(--space-3);">
+      <div style="overflow: auto; max-height: min(72vh, 680px); background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 0 var(--space-3) var(--space-3);">
         <table class="table" style="min-width: 760px;">
           <caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Disponibilité des produits par mois</caption>
           <thead>
             <tr>
-              <th scope="col" style="width: 190px;">Produit</th>
+              <th scope="col" style="width: 190px; position: sticky; top: 0; z-index: 2; background: var(--color-neutral-100); padding-top: var(--space-3);">Produit</th>
               <sc-for list="{{ headMonths }}" as="hm" hint-placeholder-count="12"><th scope="col" style="{{ hm.style }}">{{ hm.label }}</th></sc-for>
             </tr>
           </thead>
@@ -155,6 +155,12 @@
           </tbody>
         </table>
       </div>
+      <aside aria-label="Dicton du mois" style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: var(--color-accent-2-100); border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); max-width: 820px;">
+        <span style="font-size: 14px; font-weight: 700; color: var(--color-accent-2-900);">{{ dictonLabel }}</span>
+        <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(22px, 3vw, 30px); line-height: 1.25; color: var(--color-accent-2-900); text-wrap: balance;">« {{ dicton }} »</p>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-accent-2-900); text-wrap: pretty;">{{ dictonSens }}</p></sc-if>
+        <sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--color-accent-2-900); text-wrap: pretty;">🤔 {{ dictonKid }}</p></sc-if>
+      </aside>
     </section>
   <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
@@ -223,10 +229,22 @@ class Component extends DCLogic {
     const pill = on => 'btn ' + (on ? 'btn-primary' : 'btn-secondary');
     const typeFilters = [['all', 'Tous'], ['fruit', '🍊 Fruits'], ['legume', '🥦 Légumes'], ['herbe', '🌿 Herbes']].map(([k, label]) => ({ label, on: type === k, cls: pill(type === k), pick: () => this.setState({ type: k }) }));
     const go = d => () => this.setState(s => ({ m: ((s.m - 1 + d + 12) % 12) + 1 }));
-    if (!S) return { legendSmiley: '', months: [], groups: [], rows: [], headMonths: [], typeFilters, moisTitre: '', isNow: false, prev: go(-1), next: go(1) };
+    if (!S) return { dicton: '', dictonSens: '', dictonKid: '', dictonLabel: '', legendSmiley: '', months: [], groups: [], rows: [], headMonths: [], typeFilters, moisTitre: '', isNow: false, prev: go(-1), next: go(1) };
+    if (!this._stars) {
+      const stars = {}, used = new Set();
+      const shuffle = arr => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+      const cands = mm => S.produits.filter(p => p.f.includes(mm) && p.t !== 'herbe');
+      [1,2,3,4,5,6,7,8,9,10,11,12].sort((a, b) => cands(a).length - cands(b).length).forEach(mm => {
+        const c = shuffle(cands(mm));
+        const p = c.find(x => !used.has(x.s)) || shuffle(S.produits.filter(x => x.f.includes(mm))).find(x => !used.has(x.s)) || c[0];
+        if (p) { stars[mm] = p; used.add(p.s); }
+      });
+      this._stars = stars;
+    }
+    const stars = this._stars;
     const months = S.MOIS.map((label, i) => {
       const mm = i + 1, on = mm === m;
-      const star = S.produits.find(p => p.f.includes(mm) && p.t !== 'herbe');
+      const star = stars[mm];
       const count = S.produits.filter(p => p.f.includes(mm)).length;
       return { label, ...(star ? S.vis(star) : { e: '🌱', img: '', noImg: true }), count: count + ' en pleine saison', on, pick: () => this.setState({ m: mm }),
         style: 'display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border-radius:var(--radius-lg);cursor:pointer;font:inherit;text-align:left;transition:transform .15s ease;' +
@@ -240,7 +258,7 @@ class Component extends DCLogic {
         .map(p => { const pleine = p.f.includes(m); return { ...S.vis(p), href: S.url(p), n: p.n, status: pleine ? 'Pleine saison' : 'Disponible', border: pleine ? 'var(--color-accent-600)' : 'transparent', bgc: pleine ? 'var(--color-accent-100)' : 'var(--color-neutral-100)', cls: 'tag ' + (pleine ? 'tag-accent' : 'tag-accent-2') }; });
       return { label: S.TYPES[t].label, e: S.TYPES[t].e, items };
     }).filter(g => g.items.length);
-    const headMonths = S.MOIS_C.map((l, i) => ({ label: l, style: { textAlign: 'center', padding: '8px 2px', color: i + 1 === m ? 'var(--color-accent-700)' : undefined, fontWeight: i + 1 === m ? 700 : undefined } }));
+    const headMonths = S.MOIS_C.map((l, i) => ({ label: l, style: { textAlign: 'center', padding: '8px 2px', position: 'sticky', top: 0, zIndex: 2, background: 'var(--color-neutral-100)', paddingTop: 'var(--space-3)', color: i + 1 === m ? 'var(--color-accent-700)' : undefined, fontWeight: i + 1 === m ? 700 : undefined } }));
     const SMILEYS = ['🥶','🥰','😊','🤗','😄','😁','🤩','😎','🤓','😋','😌','🥳'];
     const rows = S.produits.filter(p => type === 'all' || p.t === type).slice().sort((a, b) => a.n.localeCompare(b.n, 'fr')).map(p => ({
       ...S.vis(p), href: S.url(p), n: p.n,
@@ -251,7 +269,22 @@ class Component extends DCLogic {
           style: f ? { display: 'inline-block', fontSize: 22, lineHeight: 1, verticalAlign: 'middle', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : '#ffffff', border: 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
       })
     }));
-    return { legendSmiley: SMILEYS[m - 1], months, groups, rows, headMonths, typeFilters, moisTitre: 'En ' + S.MOIS[m - 1].toLowerCase(), isNow: m === now, prev: go(-1), next: go(1) };
+    const DICTONS = [
+      ['Janvier d’eau chiche fait le paysan riche.', 'Un hiver sec prépare de bonnes récoltes : trop de pluie en janvier fait pourrir les semences.', 'Si janvier n’est pas trop pluvieux, les graines ne pourrissent pas dans la terre et la récolte sera belle !'],
+      ['À la Chandeleur, l’hiver cesse ou prend vigueur.', 'Le 2 février marque un tournant : soit le froid recule, soit il repart de plus belle.', 'Le jour des crêpes, l’hiver décide : il s’en va… ou il revient encore plus fort !'],
+      ['Mars venteux, pommiers plantureux.', 'Le vent de mars sèche la terre et aide à polliniser les arbres fruitiers.', 'Le vent de mars promène le pollen de fleur en fleur : il y aura plein de pommes !'],
+      ['En avril, ne te découvre pas d’un fil ; en mai, fais ce qu’il te plaît.', 'Les gelées tardives sont fréquentes en avril : patience avant de planter les légumes frileux.', 'En avril, il peut encore faire froid : garde ton pull ! En mai, tu peux enfin te mettre en t-shirt.'],
+      ['Mai fleuri, an réjoui.', 'Une belle floraison en mai annonce une année généreuse en fruits.', 'Plus il y a de fleurs en mai, plus il y aura de fruits à croquer cet été !'],
+      ['Juin bien fleuri, vrai paradis.', 'Le soleil de juin fait pousser le potager à toute vitesse.', 'En juin, le soleil et les fleurs transforment le jardin en paradis des légumes.'],
+      ['Qui veut bon navet le sème en juillet.', 'Juillet est le bon moment pour semer les légumes que l’on récoltera à l’automne.', 'Pour avoir de bons navets en automne, il faut les semer en plein été !'],
+      ['Quand il pleut en août, il pleut miel et bon moût.', 'Une pluie d’août fait grossir les fruits et le raisin avant les vendanges.', 'Une petite pluie en août, et les raisins deviennent tout gonflés et sucrés comme du miel !'],
+      ['Septembre se nomme le mai de l’automne.', 'Douceur, lumière et abondance : septembre est l’un des mois les plus généreux au marché.', 'Septembre est doux comme le mois de mai, et les étals débordent de fruits et de légumes !'],
+      ['En octobre, qui ne fume rien ne récolte rien.', 'On nourrit la terre avec du fumier ou du compost à l’automne pour les récoltes de l’an prochain.', 'En octobre, on donne à manger à la terre avec du compost : elle nous le rendra en légumes !'],
+      ['À la Sainte-Catherine, tout bois prend racine.', 'Autour du 25 novembre, c’est le moment idéal pour planter arbres et arbustes fruitiers.', 'Fin novembre, tout ce qu’on plante pousse facilement : c’est le moment de planter un arbre !'],
+      ['Décembre de froid trop chiche ne fait pas le paysan riche.', 'Le froid de l’hiver repose la terre et éloigne les insectes nuisibles.', 'Le froid, c’est utile : il laisse la terre se reposer et chasse les petites bêtes qui abîment les plantes.']
+    ];
+    const dic = DICTONS[m - 1];
+    return { dicton: dic[0], dictonSens: dic[1], dictonKid: dic[2], dictonLabel: 'Le dicton de ' + S.MOIS[m - 1].toLowerCase(), legendSmiley: SMILEYS[m - 1], months, groups, rows, headMonths, typeFilters, moisTitre: 'En ' + S.MOIS[m - 1].toLowerCase(), isNow: m === now, prev: go(-1), next: go(1) };
   }
 }
 </script>
