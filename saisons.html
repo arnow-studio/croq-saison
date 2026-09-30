@@ -264,7 +264,7 @@ class Component extends DCLogic {
       ...S.vis(p), href: S.url(p), n: p.n,
       cells: S.MOIS.map((mn, i) => {
         const mm = i + 1, f = p.f.includes(mm), d = p.m.includes(mm);
-        const smiley = f ? SMILEYS[i] : '';
+        const smiley = f ? '🤩' : '';
         return { smiley, title: p.n + ' — ' + mn + ' : ' + (f ? 'pleine saison' : d ? 'disponible' : 'hors saison'),
           style: f ? { display: 'inline-block', fontSize: 22, lineHeight: 1, verticalAlign: 'middle', borderRadius: '50%', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } : { display: 'inline-block', width: 16, height: 16, borderRadius: '50%', verticalAlign: 'middle', background: d ? 'var(--color-accent-2-300)' : '#ffffff', border: 'none', boxSizing: 'border-box', outline: mm === m ? '2px solid var(--color-accent-300)' : 'none', outlineOffset: 2 } };
       })
