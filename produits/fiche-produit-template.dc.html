@@ -16,6 +16,7 @@
   <script src="../produits-textes.js"></script>
   <script src="../produits-enfants.js"></script>
   <script src="../produits-varietes.js"></script>
+  <script src="../produits-antigaspi.js"></script>
   <style>
     :root { --color-bg: #fbf8f2; --color-accent: #3d8b2f; --color-accent-100: #eef7ea; --color-accent-200: #d9eed0; --color-accent-300: #b6dca5; --color-accent-400: #74b95e; --color-accent-500: #3d8b2f; --color-accent-600: #327426; --color-accent-700: #285e1f; --color-accent-800: #1f4a19; --color-accent-900: #183a14; --color-accent-2-100: #f4f8ed; --color-accent-2-200: #e8efdb; --color-accent-2-300: #d8e2c7; --color-accent-2-800: #56613f; --color-accent-2-900: #46512f;  --color-neutral-100: #fffdf9; --color-text: #5b3b27; --color-divider: color-mix(in srgb, #8c491a 20%, transparent); --font-heading: 'DynaPuff', system-ui, sans-serif; --font-body: 'Nunito', system-ui, sans-serif; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
@@ -30,18 +31,22 @@
     [data-nav-burger] summary::-webkit-details-marker { display: none; }
     [data-nav-burger][open] [data-ic="open"], [data-nav-burger]:not([open]) [data-ic="close"] { display: none; }
     [data-nav-panel] a:hover { background: var(--color-accent-100); }
-  </style>
+  
+  [data-baseline] { transition: opacity .2s, max-height .2s; max-height: 20px; overflow: hidden; }
+  html.is-scrolled [data-baseline] { opacity: 0; max-height: 0; }
+</style>
+<script>(function(){var d=document.documentElement,on=false;function f(){var y=window.scrollY,s=on?y>8:y>60;if(s!==on){on=s;d.classList.toggle('is-scrolled',s);}}window.addEventListener('scroll',f,{passive:true});f();})();</script>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <header style="position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px);">
     <nav class="nav" aria-label="Navigation principale" style="max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; padding-left: clamp(20px, 5vw, 56px); padding-right: clamp(20px, 5vw, 56px); flex-wrap: wrap; row-gap: var(--space-2);">
       <a href="../index.html" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none;" aria-label="Sainos — accueil">
         <img src="../images/logo.png" alt="Sainos — fruits et légumes de saison" width="398" height="107" style="{{ logoBig }}">
-        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="398" height="107" style="{{ logoMini }}"><span style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le Goût des <span style="color: var(--color-accent-700);">Saisons</span></span>
+        <img src="../images/logo-mini.png" alt="" aria-hidden="true" width="398" height="107" style="{{ logoMini }}"><span data-baseline="1" style="font-family: var(--font-body); font-size: 14px; font-weight: 700; line-height: 1; color: var(--color-text); white-space: nowrap;">Le Goût des <span style="color: var(--color-accent-700);">Saisons</span></span>
       </a>
       <div data-nav-desk="1" style="display: flex; gap: var(--space-4); align-items: center;">
-        <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier</a>
+        <a href="../origines.html">Origines</a>
         <a href="../marches.html">Marchés</a>
         <a href="../bio.html">Bio</a>
         <a href="../lexique.html">Lexique</a>
@@ -53,8 +58,8 @@
           <svg data-ic="close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
         </summary>
         <div data-nav-panel="1" style="position: absolute; right: 0; top: calc(100% + 10px); z-index: 50; width: min(280px, 80vw); box-sizing: border-box; padding: 10px; background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 4px;">
-          <a href="../index.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Accueil</a>
           <a href="../saisons.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Calendrier</a>
+          <a href="../origines.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Origines</a>
           <a href="../marches.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Marchés</a>
           <a href="../bio.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Bio</a>
           <a href="../lexique.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
@@ -234,6 +239,14 @@
           </section>
         </div>
       </sc-if>
+          <sc-if value="{{ hasAG }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="h-antigaspi" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: var(--color-accent-100); border-radius: var(--radius-lg);">
+            <h2 id="h-antigaspi" style="margin: 0; font-size: clamp(26px, 3vw, 34px); color: var(--color-accent-900);">Anti-gaspi</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--space-3);">
+              <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg);"><span style="font-family: var(--font-heading); font-size: 19px; line-height: 1.2;">🧺 Le garder plus longtemps</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">{{ ag.c }}</span></div>
+              <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg);"><span style="font-family: var(--font-heading); font-size: 19px; line-height: 1.2;">❄️ Le congeler</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">{{ ag.g }}</span></div>
+              <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg);"><span style="font-family: var(--font-heading); font-size: 19px; line-height: 1.2;">♻️ Rien ne se jette</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">{{ ag.r }}</span></div>
+            </div>
+          </section></sc-if>
 
       <sc-if value="{{ hasLex }}" hint-placeholder-val="{{ false }}">
         <section aria-labelledby="h-lexique" style="display: flex; flex-direction: column; gap: var(--space-3);">
@@ -346,6 +359,10 @@
           </sc-for>
         </div>
       </section>
+        <sc-if value="{{ hasAG }}" hint-placeholder-val="{{ false }}"><section aria-labelledby="hk-antigaspi" style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-5, 20px) var(--space-6); background: var(--color-accent-100); border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg);">
+          <span aria-hidden="true" style="font-size: 44px; line-height: 1; flex: none;">♻️</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;"><h2 id="hk-antigaspi" style="margin: 0; font-size: 24px; color: var(--color-accent-900);">Astuce anti-gaspi</h2><p style="margin: 0; font-size: 18px; line-height: 1.55; color: var(--color-accent-900); text-wrap: pretty;">{{ ag.k }}</p></div>
+        </section></sc-if>
 
       <section aria-labelledby="hk-defi" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #ffffff; border: 1px solid var(--color-divider); border-radius: var(--radius-lg);">
         <span style="font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Défi cuisine · avec un adulte</span>
@@ -419,6 +436,7 @@
       <nav aria-label="Pied de page" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
         <a href="../index.html">Accueil</a>
         <a href="../saisons.html">Calendrier des saisons</a>
+        <a href="../origines.html">Origines</a>
         <a href="../marches.html">Marchés</a>
         <a href="../bio.html">Bio</a>
         <a href="../lexique.html">Lexique</a>
@@ -488,7 +506,7 @@ class Component extends DCLogic {
     this._onScroll = () => { const y = window.scrollY, cur = !!this.state.mini; const s = cur ? y > 8 : y > 140; if (s !== cur) this.setState({ mini: s }); };
     window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
     const done = () => { this.applySeo(); this.setState({ ready: true }); };
-    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS && window.SAISON_VARIETES;
+    const ok = () => window.SAISON && window.SAISON_TEXTES && window.SAISON_ENFANTS && window.SAISON_VARIETES && window.SAISON_ANTIGASPI;
     if (ok()) setTimeout(done, 0); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); done(); } }, 50);
   }
   componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); }
@@ -565,7 +583,7 @@ class Component extends DCLogic {
   _rv() {
     const S = window.SAISON;
     const p = S && S.bySlug(this.slug());
-    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, rec: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '', hasProd: false, prodList: [], prodHas: false, prodArt: '', prodStatus: '', hasVar: false, varietes: [], varK: '', fam: '', cousinsLinked: [], cousinsExtra: [], hasCousins: false };
+    if (!p) return { hero: {}, nom: '', h1: '', intro: '', typeLabel: '', emoji: '', facts: [], cal: [], calSummary: '', hasDetail: false, d: {}, rec: {}, hasTextes: false, tx: {}, classification: [], hasNutrition: false, bienfaits: [], nutrition: [], recettes: [], faq: [], lex: [], hasLex: false, related: [], relatedTitle: '', duDe: '', nomLower: '', hasProd: false, prodList: [], prodHas: false, prodArt: '', prodStatus: '', hasAG: false, ag: {}, hasVar: false, varietes: [], varK: '', fam: '', cousinsLinked: [], cousinsExtra: [], hasCousins: false };
     const now = new Date().getMonth() + 1;
     const d = p.detail || null;
     const tx = (window.SAISON_TEXTES || {})[p.s] || null;
@@ -603,6 +621,7 @@ class Component extends DCLogic {
     const pl = this.state.prodList || [];
     return {
       hasProd: !exo, prodArt: this._art(p), prodGeo: this.prodGeo, prodCp: this.prodCp, prodStatus: this.state.prodStatus || 'Indiquez votre position ou un code postal.', prodList: pl, prodHas: pl.length > 0,
+      hasAG: !!(window.SAISON_ANTIGASPI || {})[p.s], ag: (window.SAISON_ANTIGASPI || {})[p.s] || {},
       hasVar: !!V, varietes: V ? V.v.map(([n, x]) => ({ n, x })) : [], varK: V ? V.k : '', fam: p.fam, cousinsLinked, cousinsExtra, hasCousins: cousinsLinked.length + cousinsExtra.length > 0,
       nom: p.n, nomLower: p.n.toLowerCase(), emoji: p.e, hero: S.vis(p, '../'), typeLabel: S.TYPES[p.t].label,
       h1: p.n + ' de saison',
