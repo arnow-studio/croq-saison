@@ -577,7 +577,8 @@ class Component extends DCLogic {
     const txt = (nom ? nom + ' de saison' : 'Fruits et légumes de saison') + ' — Sainos';
     return { fb: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), wa: 'https://wa.me/?text=' + encodeURIComponent(txt + ' ' + url), copied: !!this.state.copied,
       native: async () => {
-        if (navigator.share) { try { await navigator.share({ title: txt, url }); } catch (e) {} return; }
+        const mobile = window.matchMedia && matchMedia('(pointer: coarse)').matches;
+        if (navigator.share && mobile) { try { await navigator.share({ title: txt, text: txt, url }); } catch (e) {} return; }
         try { await navigator.clipboard.writeText(url); } catch (e) {}
         this.setState({ copied: true }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: false }), 4000);
       } };
