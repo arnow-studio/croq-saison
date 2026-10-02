@@ -179,6 +179,13 @@
       <a href="bio.html" style="display: flex; gap: var(--space-4); align-items: center; padding: var(--space-6); background: var(--color-accent-100); border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); text-decoration: none; color: var(--color-accent-900);" style-hover="background: var(--color-accent-200); color: var(--color-accent-900);">
         <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--font-heading); font-size: 24px;">Bien choisir le bio</span><span style="font-size: 15px;">Ce qui vaut le coup en bio, astuces et labels.</span></span>
       </a>
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><a href="enseignants.html" style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: #f4efe6; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); text-decoration: none; color: var(--color-text);">
+        <span style="display: flex; gap: var(--space-4); align-items: center; flex: 1 1 360px; min-width: 0;">
+          <span aria-hidden="true" style="flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 32px;">🍎</span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><span style="font-family: var(--font-heading); font-size: 24px;">Vous êtes enseignant ?</span><span style="font-size: 15px; line-height: 1.5;">Idées de séances de la maternelle au collège, quiz par âge, fiche à imprimer. Gratuit, sans compte, sans cookie.</span></span>
+        </span>
+        <span class="btn btn-primary" style="flex: none; padding: 12px 22px; font-size: 16px; font-weight: 700; border-radius: 999px;">Sainos en classe →</span>
+      </a></sc-if>
     </section>
     <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
@@ -215,6 +222,7 @@
         <a href="lexique.html" data-nav-lex="1">Lexique</a>
         <a href="quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="apropos.html">À propos</a>
+        <a href="enseignants.html" data-adult-only="1">Enseignants</a>
         <a href="contact.html" data-adult-only="1">Contact</a>
       </nav>
       <div aria-label="Suivre Sainos" style="display: flex; gap: var(--space-2); align-items: center;">
