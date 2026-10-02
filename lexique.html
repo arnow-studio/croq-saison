@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode')s()}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
-<style>html.m-kid [data-nav-lex], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
+<style>html.m-kid [data-nav-lex], html.m-kid [data-adult-only], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
 <script src="./support.js"></script>
 <title>Lexique botanique &amp; guide des labels (AOP, IGP, Bio) | Sainos</title>
 <meta name="description" content="Drupe, baie, Solanacées, primeur, AOP, IGP, Label Rouge… Le dictionnaire illustré pour comprendre les fruits, les légumes et leurs labels.">
@@ -176,6 +176,7 @@
         <a href="lexique.html" data-nav-lex="1">Lexique</a>
         <a href="quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="apropos.html">À propos</a>
+        <a href="contact.html" data-adult-only="1">Contact</a>
       </nav>
       <div aria-label="Suivre Sainos" style="display: flex; gap: var(--space-2); align-items: center;">
         <a href="https://www.facebook.com/profile.php?id=61594827576678" target="_blank" rel="noopener" aria-label="Sainos sur Facebook" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #ffffff; text-decoration: none;"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" width="22" height="22" style="display: block; width: 22px; height: 22px;"></a>

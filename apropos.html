@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode')s()}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
-<style>html.m-kid [data-nav-lex], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
+<style>html.m-kid [data-nav-lex], html.m-kid [data-adult-only], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
 <script src="./support.js"></script>
 <title>À propos de Sainos — un guide indépendant des fruits et légumes de saison</title>
 <meta name="description" content="Sainos est un projet indépendant et éducatif pour découvrir les fruits et légumes de saison. Sans vente, sans publicité, sans cookie.">
@@ -124,6 +124,72 @@
       </div>
     </section>
 
+    <section aria-labelledby="t-amb" style="display: flex; flex-direction: column; gap: var(--space-6); padding: clamp(24px, 4vw, 48px); background: var(--color-accent-100); border: 2px solid var(--color-accent-300); border-radius: 32px;">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div style="display: flex; flex-direction: column; gap: var(--space-2); max-width: 720px;">
+          <span class="tag tag-accent" style="align-self: flex-start; font-size: 13px;">🏅 Ambassadeurs Sainos</span>
+          <h2 id="t-amb" style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; color: var(--color-accent-900);">Faites grandir Sainos autour de vous</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; text-wrap: pretty; color: var(--color-accent-900);">Sainos n’a ni budget ni publicité : il ne vit que par le bouche-à-oreille. Si vous croyez qu’apprendre les saisons fait partie de l’éducation, parlez-en à l’école, à la mairie ou à votre association. Un mail tout prêt suffit.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: var(--space-3);">
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 32px;">🏫</span>
+            <h3 style="margin: 0; font-size: 22px;">À l’école</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Mode enfant, quiz par âge, calendrier : de quoi animer une séance sur le goût, la nature ou l’alimentation.</p>
+            <a href="mailto:?subject=Un%20site%20gratuit%20pour%20parler%20des%20fruits%20et%20l%C3%A9gumes%20de%20saison%20en%20classe&body=Bonjour%2C%0A%0AJe%20souhaitais%20vous%20faire%20d%C3%A9couvrir%20Sainos%2C%20un%20site%20gratuit%2C%20sans%20publicit%C3%A9%20et%20sans%20cookie%2C%20qui%20explique%20les%20fruits%20et%20l%C3%A9gumes%20de%20saison.%0A%0AIl%20propose%20un%20mode%20enfant%20(8-12%20ans)%20avec%20un%20quiz%20par%20%C3%A2ge%2C%20des%20fiches%20illustr%C3%A9es%20et%20un%20calendrier%20des%20saisons%20%3A%20de%20quoi%20nourrir%20une%20s%C3%A9ance%20sur%20l%E2%80%99alimentation%2C%20le%20go%C3%BBt%20ou%20la%20nature.%0A%0ALe%20site%20%3A%20https%3A%2F%2Fwww.sainos.fr%0A%0ABien%20%C3%A0%20vous%2C" class="btn btn-secondary" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: auto;">✉️ Mail tout prêt</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 32px;">🏛️</span>
+            <h3 style="margin: 0; font-size: 22px;">À la mairie</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Une ligne dans le bulletin municipal, un lien sur le site de la ville ou à la cantine.</p>
+            <a href="mailto:?subject=Sainos%20%3A%20un%20site%20%C3%A9ducatif%20sur%20les%20fruits%20et%20l%C3%A9gumes%20de%20saison&body=Bonjour%2C%0A%0AJe%20me%20permets%20de%20vous%20signaler%20Sainos%2C%20un%20site%20gratuit%20et%20ind%C3%A9pendant%20(sans%20publicit%C3%A9%20ni%20cookie)%20qui%20aide%20petits%20et%20grands%20%C3%A0%20manger%20au%20rythme%20des%20saisons%20et%20%C3%A0%20d%C3%A9couvrir%20les%20march%C3%A9s%20et%20producteurs%20locaux.%0A%0AIl%20pourrait%20trouver%20sa%20place%20dans%20le%20bulletin%20municipal%2C%20sur%20le%20site%20de%20la%20ville%20ou%20aupr%C3%A8s%20du%20service%20de%20restauration%20scolaire.%0A%0ALe%20site%20%3A%20https%3A%2F%2Fwww.sainos.fr%0A%0ABien%20%C3%A0%20vous%2C" class="btn btn-secondary" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: auto;">✉️ Mail tout prêt</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: #f4e3c8; display: grid; place-items: center; font-size: 32px;">🤝</span>
+            <h3 style="margin: 0; font-size: 22px;">Dans une association</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Parents d’élèves, AMAP, jardin partagé, centre social : partagez le lien et l’affichette.</p>
+            <a href="mailto:?subject=Un%20site%20%C3%A0%20partager%20%3A%20les%20fruits%20et%20l%C3%A9gumes%20de%20saison&body=Bonjour%2C%0A%0AJe%20voulais%20partager%20avec%20l%E2%80%99association%20Sainos%2C%20un%20site%20gratuit%2C%20sans%20publicit%C3%A9%20ni%20cookie%2C%20qui%20explique%20les%20fruits%20et%20l%C3%A9gumes%20de%20saison%2C%20avec%20un%20mode%20enfant%2C%20un%20quiz%20et%20la%20liste%20des%20march%C3%A9s%20et%20producteurs%20proches%20de%20chez%20soi.%0A%0AUne%20affichette%20avec%20QR%20code%20est%20disponible%20pour%20l%E2%80%99afficher%20dans%20vos%20locaux.%0A%0ALe%20site%20%3A%20https%3A%2F%2Fwww.sainos.fr%0A%0ABien%20%C3%A0%20vous%2C" class="btn btn-secondary" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: auto;">✉️ Mail tout prêt</a>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center;">
+          <a href="affichette.html" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px;">🖨️ Imprimer l’affichette QR</a>
+          <button type="button" class="btn btn-ghost" onClick="{{ copyLink }}" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; background: #ffffff;">🔗 {{ copyLabel }}</button>
+          <a href="https://wa.me/?text=Je%20te%20conseille%20Sainos%2C%20un%20site%20gratuit%20pour%20d%C3%A9couvrir%20les%20fruits%20et%20l%C3%A9gumes%20de%20saison%20(avec%20un%20quiz%20pour%20les%20enfants)%20%3A%20https%3A%2F%2Fwww.sainos.fr" target="_blank" rel="noopener" class="btn btn-ghost" style="padding: 12px 20px; font-size: 15px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; background: #ffffff;">💬 Partager sur WhatsApp</a>
+        </div>
+      </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div style="display: flex; flex-direction: column; gap: var(--space-2); max-width: 720px;">
+          <span class="tag tag-accent" style="align-self: flex-start; font-size: 13px;">🏅 Mission spéciale</span>
+          <h2 id="t-amb" style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; color: var(--color-accent-900);">Deviens ambassadeur Sainos !</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; text-wrap: pretty; color: var(--color-accent-900);">Un ambassadeur, c’est quelqu’un qui fait découvrir quelque chose qu’il aime. Relève ces trois missions pour faire connaître les saisons autour de toi.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: var(--space-3);">
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 32px;">🏫</span>
+            <h3 style="margin: 0; font-size: 22px;">Mission classe</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Montre le quiz à ton maître ou ta maîtresse. Et si toute la classe jouait ensemble ?</p>
+            
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 32px;">👨‍👩‍👧</span>
+            <h3 style="margin: 0; font-size: 22px;">Mission famille</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Défie tes parents au quiz : qui aura le plus d’étoiles ?</p>
+            
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: #f4e3c8; display: grid; place-items: center; font-size: 32px;">📣</span>
+            <h3 style="margin: 0; font-size: 22px;">Mission copains</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty;">Parle de Sainos à tes copains, au centre de loisirs ou au conseil municipal des enfants.</p>
+            
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+          <sc-if value="{{ notAmb }}" hint-placeholder-val="{{ true }}"><button type="button" class="btn btn-primary" onClick="{{ beAmb }}" style="padding: 14px 26px; font-size: 17px; min-height: 52px;">🏅 Je deviens ambassadeur</button></sc-if>
+          <sc-if value="{{ isAmb }}" hint-placeholder-val="{{ false }}"><span style="display: flex; align-items: center; gap: var(--space-3); padding: 10px 22px 10px 10px; background: #ffffff; border-radius: 999px; box-shadow: var(--shadow-sm);"><span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 50%; background: var(--color-accent); display: grid; place-items: center; font-size: 26px;">🏅</span><span style="font-family: var(--font-heading); font-size: 20px; color: var(--color-accent-900);">Bravo, tu es ambassadeur Sainos !</span></span></sc-if>
+          <a href="quiz.html" class="btn btn-secondary" style="padding: 14px 26px; font-size: 17px; min-height: 52px;">Jouer au quiz</a>
+        </div>
+      </div></sc-if>
+    </section>
+
     <section style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
       <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(22px, 2.6vw, 30px);">Prêt à croquer la saison ?</p>
       <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
@@ -166,6 +232,7 @@
         <a href="lexique.html" data-nav-lex="1">Lexique</a>
         <a href="quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="apropos.html">À propos</a>
+        <a href="contact.html" data-adult-only="1">Contact</a>
       </nav>
       <div aria-label="Suivre Sainos" style="display: flex; gap: var(--space-2); align-items: center;">
         <a href="https://www.facebook.com/profile.php?id=61594827576678" target="_blank" rel="noopener" aria-label="Sainos sur Facebook" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #ffffff; text-decoration: none;"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" width="22" height="22" style="display: block; width: 22px; height: 22px;"></a>
@@ -184,7 +251,8 @@ class Component extends DCLogic {
   _syncMode = () => this.setState({ mode: this._mode(), badges: this._badges() });
   setMode(m) { try { localStorage.setItem('sainos-mode', m); } catch (e) {} this._syncMode(); }
   _kidVals() { const kid = this.state.mode === 'enfant'; return { kid, adult: !kid, badgeCount: (this.state.badges || []).length, nbTotal: window.SAISON ? window.SAISON.produits.length : 44, toEnfant: () => this.setMode('enfant'), toNormal: () => this.setMode('normal') }; }
-  state = { mode: this._mode(), badges: this._badges(), mini: false, i: -1, ready: !!window.SAISON };
+  _amb() { try { return localStorage.getItem('sainos-ambassadeur') === '1'; } catch (e) { return false; } }
+  state = { mode: this._mode(), badges: this._badges(), mini: false, i: -1, ready: !!window.SAISON, amb: this._amb(), copied: false };
   componentWillUnmount() { window.removeEventListener('storage', this._syncMode); window.removeEventListener('pageshow', this._syncMode); window.removeEventListener('scroll', this._onScroll); clearInterval(this._t); clearInterval(this._w); }
   componentDidMount() {
     window.addEventListener('storage', this._syncMode); window.addEventListener('pageshow', this._syncMode);
@@ -201,7 +269,10 @@ class Component extends DCLogic {
   renderVals() {
     const mini = true, S = window.SAISON, p = this.state.cur;
     const heroImg = p ? React.createElement('img', { key: this.state.i, src: p.img, alt: p.n, style: { width: '100%', height: '100%', objectFit: 'contain', animation: 'croqPop .6s ease-out both' } }) : null;
-    return { ...this._kidVals(), heroImg, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
+    return { ...this._kidVals(), heroImg, isAmb: this.state.amb, notAmb: !this.state.amb,
+      beAmb: () => { try { localStorage.setItem('sainos-ambassadeur', '1'); } catch (e) {} this.setState({ amb: true }); },
+      copyLabel: this.state.copied ? 'Lien copié\u202F!' : 'Copier le lien du site',
+      copyLink: () => { const u = 'https://www.sainos.fr'; const done = () => { this.setState({ copied: true }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: false }), 2500); }; if (navigator.clipboard) navigator.clipboard.writeText(u).then(done, done); else done(); }, cur: p ? { n: p.n, href: S.url(p) } : { n: '', href: '#' },
       logoBig: { display: mini ? 'none' : 'block', height: 'clamp(84px, 11vw, 120px)', width: 'auto' }, logoMini: { display: mini ? 'block' : 'none', height: 36, width: 'auto' } };
   }
 }
