@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode')s()}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
+<style>html.m-kid [data-nav-lex], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400&family=Nunito:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="_ds/organic-f9092e65-12bb-43ea-a459-3e0b5f502c38/styles.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
@@ -76,7 +78,8 @@
         <a href="origines.html" aria-current="page">Origines</a>
         <a href="marches.html">Marchés</a>
         <a href="bio.html">Bio</a>
-        <a href="lexique.html">Lexique</a>
+        <a href="lexique.html" data-nav-lex="1">Lexique</a>
+        <a href="quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="apropos.html">À propos</a>
       </div>
       <details data-nav-burger="1" style="position: relative; margin-left: auto;">
@@ -89,7 +92,8 @@
           <a href="origines.html" aria-current="page" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-accent-900); background: var(--color-accent-100);">Origines</a>
           <a href="marches.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Marchés</a>
           <a href="bio.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Bio</a>
-          <a href="lexique.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
+          <a href="lexique.html" data-nav-lex="1" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
+        <a href="quiz.html" data-nav-quiz="1" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Quiz</a>
           <a href="apropos.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">À propos</a>
         
           <div data-nav-extra="1" style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px; padding: 12px 8px 4px; border-top: 1px solid var(--color-divider);">
@@ -109,9 +113,9 @@
     <section style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 720px;">
       <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Origines</span></nav>
       <h1 class="only-adult" style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">La carte de France des terroirs</h1>
-      <h1 class="only-kid" style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">D’où viennent nos fruits et légumes ?</h1>
+      <h1 class="only-kid" style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">D’où viennent nos fruits et légumes ?</h1>
       <p class="only-adult" style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Ail de Lomagne, clémentine de Corse, piment d’Espelette… Certains produits sont si liés à leur terroir qu’ils en portent le nom. Explorez les appellations protégées (AOP, IGP) et les terroirs réputés, région par région.</p>
-      <p class="only-kid" style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Certains fruits et légumes poussent si bien dans un coin de France qu’on leur donne le nom de l’endroit ! Clique sur les images de la carte pour découvrir d’où ils viennent.</p>
+      <p class="only-kid" style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Certains fruits et légumes poussent si bien dans un coin de France qu’on leur donne le nom de l’endroit ! Clique sur les images de la carte pour découvrir d’où ils viennent.</p>
     </section>
 
     <section aria-label="Carte des origines" style="display: flex; flex-direction: column; gap: var(--space-4);">
@@ -128,7 +132,7 @@
     </section>
 
     <section class="only-adult" aria-labelledby="t-labels" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-3);">
-      <h2 id="t-labels" style="grid-column: 1 / -1; margin: 0; font-size: clamp(26px, 3vw, 34px);">AOP, IGP : quelle différence ?</h2>
+      <h2 id="t-labels" style="grid-column: 1 / -1; margin: 0; font-size: clamp(26px, 3vw, 34px);">AOP, IGP : quelle différence ?</h2>
       <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);"><span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 20px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: #e0892f;"></span>AOP</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">Appellation d’origine protégée. Tout se fait dans la zone : production, transformation et élaboration, selon un savoir-faire reconnu. C’est le lien au terroir le plus fort.</span></div>
       <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);"><span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 20px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent);"></span>IGP</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">Indication géographique protégée. Au moins une étape se fait dans la zone, et la qualité ou la réputation du produit est liée à son origine.</span></div>
       <div style="display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);"><span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 20px;"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: #a99a86;"></span>Terroir réputé</span><span style="font-size: 15px; line-height: 1.55; text-wrap: pretty;">Pas de label officiel, mais une région célèbre pour ce produit, souvent grâce à son climat, son sol ou une longue tradition.</span></div>
@@ -140,7 +144,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" data-set-mode="enfant" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
@@ -150,7 +154,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà <span id="nb-badges">0</span> badges sur 44. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà <span id="nb-badges">0</span> badges sur 44. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
           <button type="button" class="btn btn-secondary" data-set-mode="normal" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
@@ -167,7 +171,8 @@
         <a href="origines.html">Origines</a>
         <a href="marches.html">Marchés</a>
         <a href="bio.html">Bio</a>
-        <a href="lexique.html">Lexique</a>
+        <a href="lexique.html" data-nav-lex="1">Lexique</a>
+        <a href="quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="apropos.html">À propos</a>
       </nav>
       <div aria-label="Suivre Sainos" style="display: flex; gap: var(--space-2); align-items: center;">
