@@ -117,9 +117,9 @@
 
     <div style="display: flex; flex-direction: column; gap: var(--space-8); padding-bottom: var(--space-8);">
       <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="3">
-        <section id="{{ sec.id }}" aria-label="{{ sec.aria }}" style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: var(--space-4); scroll-margin-top: 90px;">
-          <span aria-hidden="true" style="font-family: var(--font-heading); font-size: 48px; line-height: 1; color: var(--color-accent);">{{ sec.l }}</span>
-          <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-4);">
+        <section id="{{ sec.id }}" aria-label="{{ sec.aria }}" style="display: grid; grid-template-columns: clamp(36px, 6vw, 56px) minmax(0, 1fr); gap: clamp(8px, 1.5vw, 16px); scroll-margin-top: 90px;">
+          <span aria-hidden="true" style="font-family: var(--font-heading); font-size: clamp(36px, 5vw, 48px); line-height: 1; color: var(--color-accent);">{{ sec.l }}</span>
+          <dl style="margin: 0; min-width: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--space-4);">
             <sc-for list="{{ sec.items }}" as="t" hint-placeholder-count="2">
               <div id="{{ t.id }}" style="display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); background: #ffffff; border: none; border-radius: var(--radius-lg); scroll-margin-top: 90px;">
                 <span class="{{ t.catCls }}" style="align-self: flex-start; font-size: 12px;">{{ t.catLabel }}</span>
