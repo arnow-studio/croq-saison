@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode')s()}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
+<style>html.m-kid [data-nav-lex], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -50,7 +52,8 @@
         <a href="../origines.html">Origines</a>
         <a href="../marches.html">Marchés</a>
         <a href="../bio.html">Bio</a>
-        <a href="../lexique.html">Lexique</a>
+        <a href="../lexique.html" data-nav-lex="1">Lexique</a>
+        <a href="../quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="../apropos.html">À propos</a>
       </div>
       <details data-nav-burger="1" style="position: relative; margin-left: auto;">
@@ -63,7 +66,8 @@
           <a href="../origines.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Origines</a>
           <a href="../marches.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Marchés</a>
           <a href="../bio.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Bio</a>
-          <a href="../lexique.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
+          <a href="../lexique.html" data-nav-lex="1" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Lexique</a>
+        <a href="../quiz.html" data-nav-quiz="1" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">Quiz</a>
           <a href="../apropos.html" style="display: flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; color: var(--color-text); background: transparent;">À propos</a>
         
           <div data-nav-extra="1" style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px; padding: 12px 8px 4px; border-top: 1px solid var(--color-divider);"><sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ toEnfant }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-2-300); background: #ffffff; color: var(--color-accent-2-900); font: inherit; font-size: 16px; font-weight: 700; padding: 10px 18px; min-height: 48px; width: 100%; justify-content: center; box-sizing: border-box; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-2-100); border-color: var(--color-accent-2-500);">🎒 Mode Enfants</button></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toNormal }}" style="display: flex; align-items: center; gap: 6px; border: 2px solid var(--color-accent-300); background: #ffffff; color: var(--color-accent-900); font: inherit; font-size: 16px; font-weight: 700; padding: 10px 18px; min-height: 48px; width: 100%; justify-content: center; box-sizing: border-box; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: var(--color-accent-100); border-color: var(--color-accent-500);">Mode Parents</button></sc-if><div aria-label="Suivre Sainos" data-nav-social="1" style="display: flex; justify-content: center; gap: var(--space-2); align-items: center;"><a href="https://www.facebook.com/profile.php?id=61594827576678" target="_blank" rel="noopener" aria-label="Sainos sur Facebook" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--color-neutral-100); text-decoration: none;"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt="" width="22" height="22" style="display: block; width: 22px; height: 22px;"></a><a href="https://www.instagram.com/sainos_fr/" target="_blank" rel="noopener" aria-label="Sainos sur Instagram" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--color-neutral-100); text-decoration: none;"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" width="22" height="22" style="display: block; width: 22px; height: 22px;"></a><a href="https://www.tiktok.com/@sainos_fr" target="_blank" rel="noopener" aria-label="Sainos sur TikTok" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--color-neutral-100); text-decoration: none;"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="" width="22" height="22" style="display: block; width: 22px; height: 22px;"></a></div></div>
@@ -221,7 +225,7 @@
           <aside aria-label="Le saviez-vous ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-2-200); color: var(--color-accent-2-900); border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 6px;">
             <span aria-hidden="true" style="font-size: 44px; line-height: 1;">💡</span>
             <div style="display: flex; flex-direction: column; gap: var(--space-2);">
-              <span style="font-family: var(--font-heading); font-size: 22px;">Le saviez-vous ?</span>
+              <span style="font-family: var(--font-heading); font-size: 22px;">Le saviez-vous ?</span>
               <p style="margin: 0; font-size: 16px; line-height: 1.6;">{{ d.saviez }}</p>
             </div>
           </aside>
@@ -290,7 +294,7 @@
       </section>
 
       <section aria-labelledby="hk-quand" style="display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); background: #f4efe6; border-radius: var(--radius-lg);">
-        <h2 id="hk-quand" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Quand le manger ?</h2>
+        <h2 id="hk-quand" style="margin: 0; font-size: clamp(28px, 3.4vw, 38px);">Quand le manger ?</h2>
         <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(max(62px, calc((100% - 88px) / 12)), 1fr)); gap: 8px;">
           <sc-for list="{{ kcal }}" as="cm" hint-placeholder-count="12">
             <li style="{{ cm.style }}"><span style="font-weight: 800; font-size: 15px;">{{ cm.label }}</span><span style="font-size: 20px;">{{ cm.icon }}</span></li>
@@ -318,7 +322,7 @@
           <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.hist }}</p>
         </section>
         <section aria-labelledby="hk-ou" style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <h2 id="hk-ou" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Où ça pousse ?</h2>
+          <h2 id="hk-ou" style="margin: 0; font-size: clamp(26px, 3vw, 34px);">Où ça pousse ?</h2>
           <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">{{ k.ou }}</p>
           <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2);">
             <sc-for list="{{ tx.regions }}" as="rg" hint-placeholder-count="3">
@@ -343,7 +347,7 @@
       <aside aria-label="Le sais-tu ?" style="display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-6); background: var(--color-accent-100); color: var(--color-accent-900); border-radius: var(--radius-lg);">
         <span aria-hidden="true" style="font-size: 48px; line-height: 1;">🤯</span>
         <div style="display: flex; flex-direction: column; gap: var(--space-2);">
-          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 26px;">Le sais-tu ?</span>
+          <span style="font-family: var(--font-heading); font-weight: 400; font-size: 26px;">Le sais-tu ?</span>
           <p style="margin: 0; font-size: 19px; line-height: 1.6;">{{ k.sais }}</p>
         </div>
       </aside>
@@ -414,7 +418,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-2-900); text-wrap: pretty;">Origine, pleine saison, conseils pour bien choisir au marché et idées recettes : tout pour faire vos courses au rythme des saisons. Vos enfants veulent explorer à leur tour ? Passez en mode enfant.</span>
           </div>
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
@@ -423,7 +427,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
-            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
+            <span style="font-size: 16px; line-height: 1.5; color: var(--color-accent-900); text-wrap: pretty;">Tu as déjà {{ badgeCount }} badges sur {{ nbTotal }}. Tes parents font les courses ? Passe-leur la version parent, un clic suffit.</span>
           </div>
           <button type="button" class="btn btn-secondary" onClick="{{ toNormal }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode parent</button>
         </div>
@@ -440,7 +444,8 @@
         <a href="../origines.html">Origines</a>
         <a href="../marches.html">Marchés</a>
         <a href="../bio.html">Bio</a>
-        <a href="../lexique.html">Lexique</a>
+        <a href="../lexique.html" data-nav-lex="1">Lexique</a>
+        <a href="../quiz.html" data-nav-quiz="1">Quiz</a>
         <a href="../apropos.html">À propos</a>
       </nav>
       <div aria-label="Suivre Sainos" style="display: flex; gap: var(--space-2); align-items: center;">
