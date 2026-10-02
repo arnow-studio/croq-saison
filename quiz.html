@@ -126,7 +126,7 @@
         <button type="button" class="pill" data-theme="tout" aria-pressed="true" style="justify-content: center; min-height: 56px; font-size: 17px;">🧺 Tout mélangé</button>
         <button type="button" class="pill" data-theme="fruit" aria-pressed="false" style="justify-content: center; min-height: 56px; font-size: 17px;">🍎 Les fruits</button>
         <button type="button" class="pill" data-theme="legume" aria-pressed="false" style="justify-content: center; min-height: 56px; font-size: 17px;">🥕 Les légumes</button>
-        <button type="button" class="pill" data-theme="saison" aria-pressed="false" style="justify-content: center; min-height: 56px; font-size: 17px;">🗓️ De saison en <span class="mois"></span></button>
+        <button type="button" class="pill" data-theme="defi" aria-pressed="false" style="justify-content: center; min-height: 56px; font-size: 17px;">🎲 Défi surprise</button>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center;">
         <button type="button" id="q-go" class="btn btn-primary" style="padding: 14px 32px; font-size: 19px; min-height: 56px;">C’est parti !</button>
@@ -259,11 +259,11 @@
   function qOrig(p) { var lab = S.ORIG && S.ORIG[p.o] ? S.ORIG[p.o].label : null; if (!lab) return null; var o = ['France', 'Espagne', 'Italie', 'Pérou', 'Costa Rica', 'Antilles', 'Corse'].filter(function (x) { return x !== lab; }); return mk(p, 'D’où vient le plus souvent ' + art(p) + p.n.toLowerCase() + ' qu’on achète en France' + NB + '?', lab, o, 'Le plus souvent, ' + art(p) + p.n.toLowerCase() + ' vient ' + ({ France: 'de France', Espagne: 'd’Espagne', Italie: 'd’Italie', 'Pérou': 'du Pérou', 'Costa Rica': 'du Costa Rica', Antilles: 'des Antilles', Corse: 'de Corse' }[lab] || 'de ' + lab) + '. ' + (kp(p).ou || '')); }
   var GEN = { 1: [qPhoto, qPhoto, qType], 2: [qPhoto, qType, qSaison, qSaison], 3: [qFiche, qFiche, qFiche, qSaison], 4: [qFiche, qFam, qFam, qOrig] };
   var LAB = { 1: '🐣 4-6 ans', 2: '🌱 7-9 ans', 3: '🌳 10-12 ans', 4: '🏅 13 ans et +' };
-  function pool() { return all.filter(function (p) { return theme === 'tout' || (theme === 'saison' ? p.m.indexOf(M) >= 0 : p.t === theme); }); }
+  function pool() { return all.filter(function (p) { return theme === 'tout' || theme === 'defi' || p.t === theme; }); }
   function key() { return 'sainos-quiz-best-' + age; }
   function showBest() { var b = +ls(key()) || 0; $('q-best').textContent = b ? '⭐ Ton record (' + LAB[age] + ')' + NB + ': ' + b + ' / ' + N : ''; }
   function build() {
-    var g = GEN[age], out = [];
+    var g = theme === 'defi' ? (age < 4 ? GEN[age + 1] : [qFiche, qFam, qOrig, qSaison]) : GEN[age], out = [];
     shuffle(pool()).forEach(function (p) {
       if (out.length >= N) return;
       var fs = shuffle(g); for (var j = 0; j < fs.length; j++) { var q; try { q = fs[j](p); } catch (e) { q = null; } if (q && q.opts && q.opts.length > 1 && q.ans >= 0) { out.push(q); return; } }
