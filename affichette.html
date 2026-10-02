@@ -12,8 +12,12 @@
 <helmet>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;600&family=Nunito:wght@600;700;800&display=swap">
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
-  <style>body { margin: 0; background: #e9e4da; } a { color: #285e1f; } a:hover { color: #327426; } @page { size: 148mm 210mm; margin: 0; } @media print { body { background: #f5ead8; } #wrap { padding: 0 !important; } }</style>
+  <style>body { margin: 0; background: #e9e4da; } a { color: #285e1f; } a:hover { color: #327426; } @page { size: 148mm 210mm; margin: 0; } @media print { [data-noprint] { display: none !important; } body { background: #f5ead8; } #wrap { padding: 0 !important; } }</style>
 </helmet>
+<div data-noprint="1" style="position: fixed; top: 16px; right: 16px; z-index: 10; display: flex; gap: 8px; align-items: center; padding: 8px 8px 8px 16px; background: #ffffff; border-radius: 999px; box-shadow: 0 6px 20px rgba(60,40,20,.18); font-family: 'Nunito', sans-serif;">
+  <span style="font-size: 14px; font-weight: 700; color: #5b3b27;">Choisissez « Enregistrer en PDF »</span>
+  <button type="button" onClick="{{ doPrint }}" style="border: 0; cursor: pointer; background: #3d8b2f; color: #ffffff; font: inherit; font-weight: 800; font-size: 15px; padding: 10px 18px; border-radius: 999px;">⬇️ Télécharger en PDF</button>
+</div>
 <div id="wrap" style="display: flex; justify-content: center; padding: 40px;">
   <div data-screen-label="Affichette A5" style="position: relative; width: 148mm; height: 210mm; overflow: hidden; background: #f5ead8; font-family: 'Nunito', sans-serif; color: #4a2e1f; box-sizing: border-box; padding: 14mm 12mm 11mm; display: flex; flex-direction: column;">
     <div style="position: absolute; right: -38mm; top: -30mm; width: 100mm; height: 100mm; border-radius: 50%; background: #e9d4b4;"></div>
@@ -41,6 +45,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;url&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://www.sainos.fr/?utm_source=affichette&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
 class Component extends DCLogic {
+  componentDidMount() { if (/[?&]pdf/.test(location.search)) { const go = () => setTimeout(() => window.print(), 600); if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go(); } }
   renderVals() {
     let qr = '';
     if (window.qrcode) {
@@ -48,7 +53,7 @@ class Component extends DCLogic {
       const svg = q.createSvgTag({ cellSize: 8, margin: 0, scalable: true }).replace(/fill="black"/g, 'fill="#4a2e1f"').replace(/fill="white"/g, 'fill="#ffffff"');
       qr = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     } else setTimeout(() => this.forceUpdate(), 150);
-    return { qr };
+    return { qr, doPrint: () => window.print() };
   }
 }
 </script>
