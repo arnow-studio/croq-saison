@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode')s()}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
+<script>(function(){var d=document.documentElement;function s(){var k=false;try{k=localStorage.getItem('sainos-mode')==='enfant'}catch(e){}d.classList.toggle('m-kid',k)}try{var o=Storage.prototype.setItem;Storage.prototype.setItem=function(a,b){o.apply(this,arguments);if(a==='sainos-mode'){var p=d.classList.contains('m-kid');s();if(p!==d.classList.contains('m-kid'))try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}}}}catch(e){}s();window.addEventListener('storage',s);window.addEventListener('pageshow',s)})();</script>
 <style>html.m-kid [data-nav-lex], html.m-kid [data-adult-only], html:not(.m-kid) [data-nav-quiz] { display: none !important; }</style>
 <script src="./support.js"></script>
 <title>À propos de Sainos — un guide indépendant des fruits et légumes de saison</title>
@@ -95,12 +95,10 @@
       <div style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 600px;">
         <nav aria-label="Fil d’Ariane" style="font-size: 14px; display: flex; gap: var(--space-2);"><a href="index.html">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">À propos</span></nav>
         <h1 style="margin: 0; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.02; text-wrap: balance;">À propos</h1>
-        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos, anagramme de Saison, est un projet indépendant qui valorise les circuits courts et les produits locaux, pour remettre la fraîcheur et le rythme des saisons dans nos assiettes.</p>
-        <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">J’habite près de Paris et le samedi matin, je suis au marché, le panier sous le bras. Ce sont les maraîchers qui m’ont appris quand la fraise a vraiment du goût, et pourquoi une tomate de janvier n’a rien d’une tomate.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos, c’est un mot magique : mélange ses lettres et ça fait saison ! Ici, tu découvres les fruits et légumes qui poussent près de chez toi, pour manger super frais au bon moment de l’année.</p>
-        <p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">J’adore aller au marché le samedi matin. Les maraîchers m’ont appris plein de secrets sur les fruits et les légumes, et je te les partage ici !</p></sc-if>
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos, anagramme de Saison, est un projet indépendant qui valorise les circuits courts et les produits locaux, pour remettre la fraîcheur et le rythme des saisons dans nos assiettes.</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 19px; line-height: 1.65; text-wrap: pretty;">Sainos, c’est un mot magique : mélange ses lettres et ça fait saison ! Ici, tu découvres les fruits et légumes qui poussent près de chez toi, pour manger super frais au bon moment de l’année.</p></sc-if>
       </div>
       <div style="position: relative; justify-self: center; width: min(420px, 86vw); aspect-ratio: 1;">
-        <img src="images/portrait-createur.jpg?v=6" alt="Le créateur de Sainos dessiné en panda, chapeau de cow-boy et lunettes de soleil, dans une forêt de bambous" width="1024" height="1024" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;">
+        <img src="images/portrait-arnaud.jpg" alt="Le créateur de Sainos dessiné en BD, casquette sur la tête, dans un champ" width="1024" height="1024" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;">
       </div>
     </section>
 
@@ -122,6 +120,55 @@
         <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 style="margin: 0; font-size: 26px;">Votre vie privée</h2>
         <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie n’est utilisé pour vous suivre ou collecter vos données. Vous pouvez naviguer en toute tranquillité !</p></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 style="margin: 0; font-size: 26px;">On ne te suit pas</h2>
         <p style="margin: 0; font-size: 16px; line-height: 1.6;">Aucun cookie : personne ne regarde ce que tu fais sur Sainos.</p></sc-if>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-coulisses" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--space-6) var(--space-8); align-items: start;">
+      <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><h2 id="t-coulisses" style="margin: 0; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; text-wrap: balance;">Les coulisses de Sainos</h2></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><h2 id="t-coulisses" style="margin: 0; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; text-wrap: balance;">Les secrets de Sainos</h2></sc-if>
+      <div style="grid-column: span 2; display: flex; flex-direction: column; gap: var(--space-5, 20px); min-width: 0;">
+        <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; gap: var(--space-5, 20px);">
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 26px;">🌱</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Pourquoi Sainos</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Tout est parti d’une question simple devant un étal en plein hiver : pourquoi des fraises en janvier ? En cherchant la réponse, j’ai découvert tout ce qu’on ignore sur ce qu’on mange. Sainos rassemble ce que j’aurais aimé savoir plus tôt.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 26px;">🔎</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">D’où viennent les informations</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Les périodes de saison croisent plusieurs calendriers reconnus de producteurs et d’organismes publics. Les marchés viennent d’OpenStreetMap, la carte collaborative. Une erreur ? <a href="contact.html">Signalez-la</a>, elle sera corrigée.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: #f4e3c8; display: grid; place-items: center; font-size: 26px;">✍️</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Qui est derrière</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Sainos est imaginé et tenu à jour par une seule personne, sur son temps libre. Pas d’entreprise, pas d’équipe, pas d’investisseur : juste l’envie de partager.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 26px;">🗓️</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Ce qui arrive bientôt</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">De nouvelles fiches, des recettes de saison simples et de nouvelles questions pour le quiz. Pour ne rien manquer, suivez Sainos sur les réseaux.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 26px;">💚</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Merci</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Aux maraîchers et arboriculteurs qui prennent le temps d’expliquer leur métier, aux contributeurs d’OpenStreetMap, et à vous, les premiers ambassadeurs.</p></div>
+          </div>
+        </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: var(--space-5, 20px);">
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 26px;">🌱</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Pourquoi Sainos ?</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Tout a commencé par une question : pourquoi il y a des fraises au magasin en plein hiver ? Pour trouver la réponse, j’ai mené l’enquête… et j’ai eu envie de tout te raconter !</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 26px;">🔎</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">C’est vrai, tout ça ?</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Oui ! Les saisons viennent de calendriers de vrais producteurs, et chaque info est vérifiée. Si tu vois une erreur, dis-le à un adulte : on la corrigera.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: #f4e3c8; display: grid; place-items: center; font-size: 26px;">✍️</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Qui a fait Sainos ?</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Une seule personne, passionnée de marchés et de jardins, qui prépare chaque fiche et chaque quiz pour toi.</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-2-200); display: grid; place-items: center; font-size: 26px;">🗓️</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Et bientôt ?</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">De nouveaux fruits et légumes, de nouveaux quiz et de nouveaux badges à gagner !</p></div>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <span aria-hidden="true" style="flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent-200); display: grid; place-items: center; font-size: 26px;">💚</span>
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><h3 style="margin: 0; font-size: 22px; line-height: 1.2;">Merci !</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; text-wrap: pretty;">Aux agriculteurs qui font pousser nos fruits et légumes, et à toi qui les découvres !</p></div>
+          </div>
+        </div></sc-if>
       </div>
     </section>
 
@@ -200,7 +247,7 @@
     </section>
   <section aria-label="Choisir le mode" style="margin: var(--space-8) 0;">
       <sc-if value="{{ adult }}" hint-placeholder-val="{{ true }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-2-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="images/pano-adulte.png" alt="Un couple fait son marché, un maraîcher repique des salades au champ" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="images/pano-apropos-adulte-v2.jpg" alt="Le créateur de Sainos debout dans un champ de maïs au printemps" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-2-900);">🧺 Mode parent activé</span>
@@ -209,7 +256,7 @@
           <button type="button" class="btn btn-primary" onClick="{{ toEnfant }}" style="padding: 12px 22px; font-size: 16px; white-space: nowrap;">Passer en mode enfant</button>
         </div>
       </div></sc-if><sc-if value="{{ kid }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid var(--color-accent-300); border-radius: var(--radius-lg); overflow: hidden;">
-        <img src="images/pano-enfant.png" alt="Deux enfants choisissent des fruits au marché, un arboriculteur cueille des pommes au verger" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
+        <img src="images/pano-apropos-enfant.jpg" alt="Le créateur de Sainos dessiné dans un champ, mains sur les hanches" width="1500" height="500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;">
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6);">
           <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 320px; min-width: 0;">
             <span style="font-family: var(--font-heading); font-weight: 400; font-size: 24px; color: var(--color-accent-900);">🎒 Mode enfant activé</span>
